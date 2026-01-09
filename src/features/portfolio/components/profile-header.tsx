@@ -9,7 +9,7 @@ export function ProfileHeader() {
       <div className="shrink-0 border-r border-edge">
         <div className="mx-0.5 my-[3px]">
           <img
-            className="size-32 rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
+            className="size-32 rounded-full object-cover ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40"
             alt={`${USER.displayName}'s avatar`}
             src={USER.avatar}
             fetchPriority="high"
