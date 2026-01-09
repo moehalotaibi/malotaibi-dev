@@ -21,7 +21,7 @@ Front-End Developer and UX Designer with hands-on experience in designing and bu
 ability to translate UX research, wireframes, and prototypes into responsive and accessible front-end experiences. Experienced in working
 on enterprise and government digital platforms, with a solid foundation in design thinking, usability, and modern UI development
 `,
-  avatar: "/images/mohammed-avatar.jpeg",
+  avatar: "/images/mohammed-avatar.jpg",
   ogImage:
     "img src='/images/mohammed-og-image.jpg'",
   namePronunciationUrl: "/audio/chanhdai.mp3",
