@@ -7,7 +7,8 @@ export const CERTIFICATIONS: Certification[] = [
     issuerIconName: "meta",
     issueDate: "2025-12-24",
     credentialID: "250PTQ3MFU7Z",
-    credentialURL: "https://www.coursera.org/account/accomplishments/verify/250PTQ3MFU7Z",
+    credentialURL:
+      "https://www.coursera.org/account/accomplishments/verify/250PTQ3MFU7Z",
   },
   {
     title: "Foundations of User Experience (UX) Design",
@@ -15,7 +16,36 @@ export const CERTIFICATIONS: Certification[] = [
     issuerIconName: "google",
     issueDate: "2025-12-05",
     credentialID: "07UBKNSO3V66",
-    credentialURL: "https://www.coursera.org/account/accomplishments/verify/07UBKNSO3V66",
+    credentialURL:
+      "https://www.coursera.org/account/accomplishments/verify/07UBKNSO3V66",
+  },
+  {
+    title: "UX/UI",
+    issuer: "SATR - Tuwaiq Academy",
+    issueDate: "2026-02-16",
+    credentialID: "",
+    credentialURL: "https://satr.tuwaiq.edu.sa",
+  },
+  {
+    title: "UX Research and Planning",
+    issuer: "SATR - Tuwaiq Academy",
+    issueDate: "2026-02-16",
+    credentialID: "",
+    credentialURL: "https://satr.tuwaiq.edu.sa",
+  },
+  {
+    title: "Applied UX/UI Project",
+    issuer: "SATR - Tuwaiq Academy",
+    issueDate: "2026-02-16",
+    credentialID: "",
+    credentialURL: "https://satr.tuwaiq.edu.sa",
+  },
+  {
+    title: "UI Prototyping",
+    issuer: "SATR - Tuwaiq Academy",
+    issueDate: "2026-02-16",
+    credentialID: "",
+    credentialURL: "https://satr.tuwaiq.edu.sa",
   },
   {
     title: "Graphic Design Diploma",

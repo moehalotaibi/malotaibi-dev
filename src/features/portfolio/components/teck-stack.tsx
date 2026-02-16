@@ -32,8 +32,17 @@ export function TeckStack() {
           <ul className="flex flex-wrap gap-4 select-none">
             {TECH_STACK.map((tech) => {
               const hasLocalIcon = tech.key in Icons;
-              const IconComponent = hasLocalIcon ? Icons[tech.key as IconKey] : null;
-              const useLocalImage = ['cursor', 'obsidian', 'after-effects', 'illustrator', 'indesign', 'photoshop', 'premiere'].includes(tech.key);
+              const IconComponent = hasLocalIcon
+                ? Icons[tech.key as IconKey]
+                : null;
+              const useLocalImage = [
+                "cursor",
+                "after-effects",
+                "illustrator",
+                "indesign",
+                "photoshop",
+                "premiere",
+              ].includes(tech.key);
 
               return (
                 <li key={tech.key} className="flex">
@@ -52,32 +61,38 @@ export function TeckStack() {
                         <Image
                           src={`/images/${tech.key}.png`}
                           alt={`${tech.title} icon`}
-                          width={32}
-                          height={32}
+                          width={40}
+                          height={40}
                           className={cn(
-                            "h-8 w-8",
-                            ['after-effects', 'illustrator', 'indesign', 'photoshop', 'premiere'].includes(tech.key) && "rounded-md"
+                            "h-10 w-10 object-contain",
+                            [
+                              "after-effects",
+                              "illustrator",
+                              "indesign",
+                              "photoshop",
+                              "premiere",
+                            ].includes(tech.key) && "rounded-md"
                           )}
                           unoptimized
                         />
                       ) : hasLocalIcon && IconComponent ? (
-                        <IconComponent className="h-8 w-8" />
+                        <IconComponent className="h-10 w-10" />
                       ) : tech.theme ? (
                         <>
                           <Image
                             src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-light.svg`}
                             alt={`${tech.title} light icon`}
-                            width={32}
-                            height={32}
-                            className="hidden [html.light_&]:block"
+                            width={40}
+                            height={40}
+                            className="hidden h-10 w-10 object-contain [html.light_&]:block"
                             unoptimized
                           />
                           <Image
                             src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}-dark.svg`}
                             alt={`${tech.title} dark icon`}
-                            width={32}
-                            height={32}
-                            className="hidden [html.dark_&]:block"
+                            width={40}
+                            height={40}
+                            className="hidden h-10 w-10 object-contain [html.dark_&]:block"
                             unoptimized
                           />
                         </>
@@ -85,8 +100,9 @@ export function TeckStack() {
                         <Image
                           src={`https://assets.chanhdai.com/images/tech-stack-icons/${tech.key}.svg`}
                           alt={`${tech.title} icon`}
-                          width={32}
-                          height={32}
+                          width={40}
+                          height={40}
+                          className="h-10 w-10 object-contain"
                           unoptimized
                         />
                       )}
