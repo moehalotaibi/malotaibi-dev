@@ -4,7 +4,7 @@ export type UXProject = {
   description: string;
   image: string;
   technologies: string[];
-  status: "operational" | "building" | "completed";
+  status: "operational" | "building" | "completed" | "finalizing";
   link?: string;
   figmaUrl?: string;
   detailedDescription?: string;
@@ -12,4 +12,3 @@ export type UXProject = {
   solutions?: string[];
   gallery?: string[];
 };
-
