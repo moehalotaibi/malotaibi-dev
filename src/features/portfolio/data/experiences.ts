@@ -2,6 +2,34 @@ import type { Experience } from "../types/experiences";
 
 export const EXPERIENCES: Experience[] = [
   {
+    id: "agile-advice",
+    companyName: "Agile Advice",
+    positions: [
+      {
+        id: "agile-ux-designer",
+        title: "UX Designer",
+        employmentPeriod: {
+          start: "03.2026",
+        },
+        employmentType: "Full-time",
+        icon: "design",
+        description: `- Leading the end-to-end UX design process for Agile Advice's digital products and client-facing platforms.
+- Creating wireframes, prototypes, and high-fidelity designs to deliver seamless user experiences.
+- Collaborating with stakeholders to translate business requirements into intuitive, user-centered interfaces.
+- Conducting user research and usability testing to continuously improve product design.`,
+        skills: [
+          "UI/UX Design",
+          "Figma",
+          "User Research",
+          "Wireframing",
+          "Prototyping",
+          "Design Systems",
+        ],
+      },
+    ],
+    isCurrentEmployer: true,
+  },
+  {
     id: "elm",
     companyName: "ELM Company",
     companyLogo: "/images/elm.jpg",
@@ -42,6 +70,7 @@ export const EXPERIENCES: Experience[] = [
         title: "Freelancer",
         employmentPeriod: {
           start: "07.2023",
+          end: "02.2026",
         },
         employmentType: "Part-time",
         icon: "design",
@@ -56,7 +85,6 @@ export const EXPERIENCES: Experience[] = [
         ],
       },
     ],
-    isCurrentEmployer: true,
   },
   {
     id: "education",
@@ -71,18 +99,14 @@ export const EXPERIENCES: Experience[] = [
         },
         icon: "education",
         description: `Bachelor of Marketing and Communication`,
-        skills: [
-          "Marketing",
-          "Communication",
-          "Business",
-          "Strategy",
-        ],
+        skills: ["Marketing", "Communication", "Business", "Strategy"],
       },
       {
         id: "fullstack-bootcamp",
         title: "Full Stack Web Development Bootcamp",
         employmentPeriod: {
           start: "2025",
+          end: "2026",
         },
         icon: "education",
         description: `- HTML, CSS, JavaScript
@@ -95,6 +119,25 @@ export const EXPERIENCES: Experience[] = [
           "JavaScript",
           "Responsive Design",
           "Web Development",
+        ],
+      },
+      {
+        id: "udacity-nanodegree",
+        title: "Udacity — User Experience Nanodegree Program",
+        employmentPeriod: {
+          start: "2026",
+          end: "2026",
+        },
+        icon: "education",
+        description: `- Completed end-to-end UX case studies including research, wireframing, prototyping, and usability testing.
+- Built a comprehensive UX portfolio with real-world product design projects.`,
+        skills: [
+          "UX Research",
+          "User Personas",
+          "Wireframing",
+          "Prototyping",
+          "Usability Testing",
+          "Information Architecture",
         ],
       },
     ],

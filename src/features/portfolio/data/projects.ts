@@ -2,10 +2,35 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "udacity-ux-nanodegree",
+    title: "UX Nanodegree — Capstone & Portfolio Projects",
+    period: {
+      start: "2026",
+      end: "2026",
+    },
+    link: "https://drive.google.com/drive/folders/1kP5qEUUyCiyBTZKctVDlDMYdwTLuYzzu?usp=sharing",
+    skills: [
+      "UX Research",
+      "User Personas",
+      "Wireframing",
+      "Prototyping",
+      "Usability Testing",
+      "Information Architecture",
+      "Figma",
+    ],
+    description: `End-to-end UX case studies completed as part of the Udacity User Experience Nanodegree Program.
+- Conducted user research, competitive analysis, and created user personas to guide design decisions.
+- Developed wireframes, user flows, and high-fidelity prototypes for real-world product scenarios.
+- Performed usability testing and iterated on designs based on user feedback and data insights.
+
+[View Full Project Files →](https://drive.google.com/drive/folders/1kP5qEUUyCiyBTZKctVDlDMYdwTLuYzzu?usp=sharing)`,
+  },
+  {
     id: "elm-graduation-project",
     title: "Elm Company Website Redesign",
     period: {
       start: "2024",
+      end: "2024",
     },
     link: "https://elm.sa",
     skills: [
@@ -25,7 +50,8 @@ export const PROJECTS: Project[] = [
     id: "coffee-address-analysis",
     title: "Coffee Address Market Analysis",
     period: {
-      start: "2024",
+      start: "2023",
+      end: "2023",
     },
     link: "#",
     skills: [

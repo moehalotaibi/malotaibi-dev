@@ -1,6 +1,10 @@
 import Image from "next/image";
 import React from "react";
 
+import { Markdown } from "@/components/markdown";
+import { Tag } from "@/components/ui/tag";
+import { ProseMono } from "@/components/ui/typography";
+
 import type { Experience } from "../../types/experiences";
 import { ExperiencePositionItem } from "./experience-position-item";
 

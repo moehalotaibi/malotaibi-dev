@@ -2,13 +2,11 @@ import type { Certification } from "../types/certifications";
 
 export const CERTIFICATIONS: Certification[] = [
   {
-    title: "Introduction to Front-End Development",
-    issuer: "Meta",
-    issuerIconName: "meta",
-    issueDate: "2025-12-24",
-    credentialID: "250PTQ3MFU7Z",
-    credentialURL:
-      "https://www.coursera.org/account/accomplishments/verify/250PTQ3MFU7Z",
+    title: "User Experience Nanodegree Program",
+    issuer: "Udacity",
+    issueDate: "2026-03-01",
+    credentialID: "",
+    credentialURL: "https://www.udacity.com",
   },
   {
     title: "Foundations of User Experience (UX) Design",
@@ -18,6 +16,15 @@ export const CERTIFICATIONS: Certification[] = [
     credentialID: "07UBKNSO3V66",
     credentialURL:
       "https://www.coursera.org/account/accomplishments/verify/07UBKNSO3V66",
+  },
+  {
+    title: "Introduction to Front-End Development",
+    issuer: "Meta",
+    issuerIconName: "meta",
+    issueDate: "2025-12-24",
+    credentialID: "250PTQ3MFU7Z",
+    credentialURL:
+      "https://www.coursera.org/account/accomplishments/verify/250PTQ3MFU7Z",
   },
   {
     title: "UX/UI",

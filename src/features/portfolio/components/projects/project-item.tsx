@@ -1,4 +1,4 @@
-import { BoxIcon, InfinityIcon } from "lucide-react";
+import { BoxIcon } from "lucide-react";
 import Image from "next/image";
 
 import { Markdown } from "@/components/markdown";
@@ -62,17 +62,7 @@ export function ProjectItem({
                     {!isSinglePeriod && (
                       <>
                         <span className="font-mono">—</span>
-                        {isOngoing ? (
-                          <>
-                            <InfinityIcon
-                              className="size-4.5 translate-y-[0.5px]"
-                              aria-hidden
-                            />
-                            <span className="sr-only">Present</span>
-                          </>
-                        ) : (
-                          <span>{end}</span>
-                        )}
+                        <span>{isOngoing ? "Present" : end}</span>
                       </>
                     )}
                   </dd>
