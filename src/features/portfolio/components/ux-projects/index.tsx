@@ -1,6 +1,11 @@
 "use client";
 
-import { ArrowUpRightIcon, ChevronDownIcon, GlobeIcon } from "lucide-react";
+import {
+  ArrowUpRightIcon,
+  ChevronDownIcon,
+  EyeIcon,
+  GlobeIcon,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -8,10 +13,13 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 
 import { UX_PROJECTS } from "../../data/ux-projects";
+import type { UXProject } from "../../types/ux-projects";
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "../panel";
+import { ProjectDetailModal } from "./project-detail-modal";
 
 export function UXProjects() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [modalProject, setModalProject] = useState<UXProject | null>(null);
 
   return (
     <Panel id="ux-projects">
@@ -162,12 +170,29 @@ export function UXProjects() {
                       {project.status === "completed" && "Completed"}
                     </span>
                   </div>
+
+                  {/* View Details Button */}
+                  <button
+                    onClick={() => setModalProject(project)}
+                    className="flex w-full items-center justify-center gap-2 rounded-lg border border-edge bg-muted/50 px-3 py-2 text-sm font-medium transition-colors hover:bg-accent2"
+                  >
+                    <EyeIcon className="size-4" />
+                    View Details
+                  </button>
                 </div>
               </div>
             );
           })}
         </div>
       </PanelContent>
+
+      <ProjectDetailModal
+        project={modalProject}
+        open={modalProject !== null}
+        onOpenChange={(open) => {
+          if (!open) setModalProject(null);
+        }}
+      />
     </Panel>
   );
 }

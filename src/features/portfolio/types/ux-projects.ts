@@ -11,4 +11,5 @@ export type UXProject = {
   challenges?: string[];
   solutions?: string[];
   gallery?: string[];
+  screenshots?: { src: string; alt: string }[];
 };
