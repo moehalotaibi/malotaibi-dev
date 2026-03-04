@@ -5,17 +5,27 @@ export const CERTIFICATIONS: Certification[] = [
     title: "User Experience Nanodegree Program",
     issuer: "Udacity",
     issueDate: "2026-03-01",
-    credentialID: "",
-    credentialURL: "https://www.udacity.com",
+    credentialID: "9b904088-11bb-11f1-81cc-8b75fe8fc5a9",
+    credentialURL:
+      "https://www.udacity.com/certificate/e/9b904088-11bb-11f1-81cc-8b75fe8fc5a9",
   },
   {
-    title: "Foundations of User Experience (UX) Design",
+    title: "Google UX Design Professional Certificate",
     issuer: "Google",
     issuerIconName: "google",
-    issueDate: "2025-12-05",
-    credentialID: "07UBKNSO3V66",
+    issueDate: "2026-03-04",
+    credentialID: "SUYWKSU26FFQ",
     credentialURL:
-      "https://www.coursera.org/account/accomplishments/verify/07UBKNSO3V66",
+      "https://www.coursera.org/account/accomplishments/professional-cert/SUYWKSU26FFQ",
+    courses: [
+      "Foundations of User Experience (UX) Design",
+      "Start the UX Design Process: Empathize, Define, and Ideate",
+      "Build Wireframes and Low-Fidelity Prototypes",
+      "Conduct UX Research and Test Early Concepts",
+      "Create High-Fidelity Designs and Prototypes in Figma",
+      "Build Dynamic User Interfaces (UI) for Websites",
+      "Design a User Experience for Social Good & Prepare for Jobs",
+    ],
   },
   {
     title: "Introduction to Front-End Development",
