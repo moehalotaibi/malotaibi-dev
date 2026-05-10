@@ -37,6 +37,13 @@ export const CERTIFICATIONS: Certification[] = [
       "https://www.coursera.org/account/accomplishments/verify/250PTQ3MFU7Z",
   },
   {
+    title: "Full Stack Web Development Bootcamp",
+    issuer: "Udemy",
+    issueDate: "2025-11-22",
+    credentialID: "",
+    credentialURL: "",
+  },
+  {
     title: "UX/UI",
     issuer: "SATR - Tuwaiq Academy",
     issueDate: "2026-02-16",

@@ -35,6 +35,7 @@ export function TeckStack() {
               const IconComponent = hasLocalIcon
                 ? Icons[tech.key as IconKey]
                 : null;
+              const useLocalSvg = ["framer"].includes(tech.key);
               const useLocalImage = [
                 "cursor",
                 "after-effects",
@@ -57,7 +58,16 @@ export function TeckStack() {
                         />
                       }
                     >
-                      {useLocalImage ? (
+                      {useLocalSvg ? (
+                        <Image
+                          src={`/images/${tech.key}.svg`}
+                          alt={`${tech.title} icon`}
+                          width={40}
+                          height={40}
+                          className="h-10 w-10 object-contain"
+                          unoptimized
+                        />
+                      ) : useLocalImage ? (
                         <Image
                           src={`/images/${tech.key}.png`}
                           alt={`${tech.title} icon`}

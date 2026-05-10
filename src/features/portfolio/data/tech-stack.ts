@@ -8,6 +8,12 @@ export const TECH_STACK: TechStack[] = [
     categories: ["Tools", "Design"],
   },
   {
+    key: "framer",
+    title: "Framer",
+    href: "https://www.framer.com/",
+    categories: ["Tools", "Design"],
+  },
+  {
     key: "photoshop",
     title: "Photoshop",
     href: "https://www.adobe.com/products/photoshop.html",
@@ -36,12 +42,6 @@ export const TECH_STACK: TechStack[] = [
     title: "InDesign",
     href: "https://www.adobe.com/products/indesign.html",
     categories: ["Tools", "Design"],
-  },
-  {
-    key: "motion",
-    title: "Motion",
-    href: "https://motion.dev/",
-    categories: ["Library", "Animation"],
   },
   {
     key: "cursor",

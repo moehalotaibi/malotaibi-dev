@@ -1,45 +1,71 @@
-import { FileTextIcon, MailIcon, PhoneIcon, GithubIcon, LinkedinIcon, MapPinIcon, CalendarIcon } from "lucide-react";
+import {
+  FileTextIcon,
+  GlobeIcon,
+  LinkedinIcon,
+  MailIcon,
+  PhoneIcon,
+} from "lucide-react";
 import Link from "next/link";
 
-import { Panel, PanelContent, PanelHeader, PanelTitle } from "@/features/portfolio/components/panel";
-import { cn } from "@/lib/utils";
+import {
+  Panel,
+  PanelContent,
+  PanelHeader,
+  PanelTitle,
+} from "@/features/portfolio/components/panel";
 
 export const metadata = {
   title: "CV",
-  description: "Mohammed Alotaibi - Front-End Developer & UX Designer Resume",
+  description: "Mohammed Alotaibi - UX Designer Resume",
 };
 
 export default function CVPage() {
   return (
-    <div className="mx-auto md:max-w-3xl space-y-8 pb-8">
+    <div className="mx-auto space-y-8 pb-8 md:max-w-3xl">
       {/* Header */}
       <div className="border-x border-edge bg-background px-6 py-8">
-        <h1 className="text-4xl font-bold mb-4">Mohammed Alotaibi</h1>
-        
+        <h1 className="mb-4 text-4xl font-bold">Mohammed Alotaibi</h1>
+
         <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-          <a href="tel:+966553012825" className="flex items-center gap-2 hover:text-foreground transition-colors">
+          <a
+            href="tel:+966553012825"
+            className="flex items-center gap-2 transition-colors hover:text-foreground"
+          >
             <PhoneIcon className="size-4" />
             +966 553 012 825
           </a>
-          <a href="mailto:moe.halotaibi@gmail.com" className="flex items-center gap-2 hover:text-foreground transition-colors">
+          <a
+            href="mailto:moe.halotaibi@gmail.com"
+            className="flex items-center gap-2 transition-colors hover:text-foreground"
+          >
             <MailIcon className="size-4" />
             moe.halotaibi@gmail.com
           </a>
-          <a href="https://www.linkedin.com/in/mohammed-alotaibi-1aa047311/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
+          <a
+            href="https://www.linkedin.com/in/mohammed-alotaibi-1aa047311/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 transition-colors hover:text-foreground"
+          >
             <LinkedinIcon className="size-4" />
             LinkedIn
           </a>
-          <a href="https://github.com/moehalotaibi" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-foreground transition-colors">
-            <GithubIcon className="size-4" />
-            GitHub
+          <a
+            href="https://malotaibi.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 transition-colors hover:text-foreground"
+          >
+            <GlobeIcon className="size-4" />
+            malotaibi.dev
           </a>
         </div>
 
-        <div className="mt-6 flex gap-3">
+        <div className="mt-6">
           <Link
-            href="https://drive.google.com/file/d/1jNPdiKi3FL-9der4YIIz8viogeFH8OFr/view?usp=sharing"
+            href="https://drive.google.com/file/d/1_xw-EXWEFIBch22882AYDB2BTLOakxkG/view?usp=sharing"
             target="_blank"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-foreground text-background rounded-lg hover:opacity-90 transition-opacity text-sm font-medium"
+            className="inline-flex items-center gap-2 rounded-lg bg-foreground px-4 py-2 text-sm font-medium text-background transition-opacity hover:opacity-90"
           >
             <FileTextIcon className="size-4" />
             Download PDF
@@ -53,8 +79,13 @@ export default function CVPage() {
           <PanelTitle>Summary</PanelTitle>
         </PanelHeader>
         <PanelContent>
-          <p className="text-muted-foreground leading-relaxed">
-            Front-End Developer and UX Designer with hands-on experience in designing and building user-centered digital interfaces. Strong ability to translate UX research, wireframes, and prototypes into responsive and accessible front-end experiences. Experienced in working on enterprise and government digital platforms, with a solid foundation in design thinking, usability, and modern UI development.
+          <p className="leading-relaxed text-muted-foreground">
+            UX Designer with hands-on experience in designing and building
+            user-centered digital interfaces. Strong ability to translate UX
+            research, wireframes, and prototypes into responsive and accessible
+            front-end experiences. Experienced in working on enterprise and
+            government digital platforms, with a solid foundation in design
+            thinking, usability, and modern UI development.
           </p>
         </PanelContent>
       </Panel>
@@ -64,31 +95,53 @@ export default function CVPage() {
         <PanelHeader>
           <PanelTitle>Education</PanelTitle>
         </PanelHeader>
-        <PanelContent className="space-y-6">
+        <PanelContent className="space-y-8">
           <div>
-            <div className="flex items-start justify-between gap-4 mb-2">
+            <div className="mb-1 flex items-start justify-between gap-4">
               <div>
-                <h3 className="font-semibold text-lg">Imam Mohammed Ibn Saud University</h3>
-                <p className="text-muted-foreground">Bachelor of Marketing and Communication</p>
+                <h3 className="text-lg font-semibold">
+                  Imam Mohammed Ibn Saud University
+                </h3>
+                <p className="mt-0.5 text-sm text-muted-foreground">
+                  Bachelor of Marketing and Communication
+                </p>
               </div>
-              <div className="text-sm text-muted-foreground whitespace-nowrap">
+              <span className="text-sm whitespace-nowrap text-muted-foreground">
                 Aug 2021 – Nov 2024
-              </div>
+              </span>
             </div>
           </div>
 
           <div>
-            <div className="flex items-start justify-between gap-4 mb-2">
+            <div className="mb-1 flex items-start justify-between gap-4">
               <div>
-                <h3 className="font-semibold text-lg">Full Stack Web Development Bootcamp</h3>
-                <p className="text-muted-foreground">2025</p>
+                <h3 className="text-lg font-semibold">
+                  User Experience Nanodegree Program
+                </h3>
+                <p className="mt-0.5 text-sm text-muted-foreground">Udacity</p>
               </div>
             </div>
-            <ul className="mt-2 space-y-1 text-sm text-muted-foreground list-disc list-inside">
-              <li>HTML, CSS, JavaScript</li>
-              <li>Responsive Web Design</li>
-              <li>UI Implementation from Design</li>
-              <li>Project-Based Learning</li>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>UX Research & User Flows</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>Wireframing & Interactive Prototyping</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>UI Design & Design Systems</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>Usability Testing & Iteration</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>Responsive & Mobile-First Design</span>
+              </li>
             </ul>
           </div>
         </PanelContent>
@@ -101,51 +154,80 @@ export default function CVPage() {
         </PanelHeader>
         <PanelContent className="space-y-6">
           <div>
-            <div className="flex items-start justify-between gap-4 mb-2">
+            <div className="mb-1 flex items-start justify-between gap-4">
               <div>
-                <h3 className="font-semibold text-lg">COOP Trainee, Internship</h3>
-                <p className="text-muted-foreground">ELM Company</p>
+                <h3 className="text-lg font-semibold">UX Designer</h3>
+                <p className="text-sm text-muted-foreground">Agile Advice</p>
               </div>
-              <div className="text-sm text-muted-foreground whitespace-nowrap">
-                Aug 2024 – Apr 2025
-              </div>
+              <span className="text-sm whitespace-nowrap text-muted-foreground">
+                Mar 2025 – Present
+              </span>
             </div>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               <li className="flex gap-2">
-                <span className="text-foreground">•</span>
-                <span>Redesigned Elm Company's UI/UX using Figma and Spline, creating a modern, interactive interface with improved navigation and usability.</span>
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>
+                  Lead UX design for client digital products, translating
+                  business goals into user flows, wireframes, and high-fidelity
+                  prototypes in Figma.
+                </span>
               </li>
               <li className="flex gap-2">
-                <span className="text-foreground">•</span>
-                <span>Designed a landing page for the Ministry of Human Resources and Social Development, focusing on accessibility, clarity, and user-friendly layouts.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-foreground">•</span>
-                <span>Produced a motion graphic video for Elm Company, showcasing products, work culture, and challenges through engaging storytelling and animation.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-foreground">•</span>
-                <span>Led the full UI/UX design of Elm's product "OSTOUL", from research and wireframes to interactive prototypes, emphasizing user-centric design.</span>
-              </li>
-              <li className="flex gap-2">
-                <span className="text-foreground">•</span>
-                <span>Designed an AI application, simplifying human-AI interaction with intuitive flows and clean interface design.</span>
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>
+                  Conduct user research and usability testing to inform design
+                  decisions, delivering measurable improvements in task
+                  completion and user satisfaction.
+                </span>
               </li>
             </ul>
           </div>
 
           <div>
-            <div className="flex items-start justify-between gap-4 mb-2">
+            <div className="mb-1 flex items-start justify-between gap-4">
               <div>
-                <h3 className="font-semibold text-lg">Freelancer</h3>
+                <h3 className="text-lg font-semibold">
+                  COOP Trainee, Internship
+                </h3>
+                <p className="text-sm text-muted-foreground">ELM Company</p>
               </div>
-              <div className="text-sm text-muted-foreground whitespace-nowrap">
-                Jul 2023 – Present
-              </div>
+              <span className="text-sm whitespace-nowrap text-muted-foreground">
+                Aug 2024 – Apr 2025
+              </span>
             </div>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Delivered professional logo designs for a variety of clients, such as the Business Services Company Agile Advice, the clothing brand and the AI startup "Rashid", and the startup business "ORO". Focused on translating each client's vision into a distinctive brand identity through creative concepts and modern design execution.
-            </p>
+            <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>
+                  Redesigned Elm Company&apos;s UI/UX using Figma and Spline,
+                  creating a modern, interactive interface with improved
+                  navigation and usability.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>
+                  Produced a motion graphic video for Elm Company, showcasing
+                  products, work culture, and challenges through engaging
+                  storytelling and animation.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>
+                  Led the full UI/UX design of Elm&apos;s product
+                  &quot;OSTOUL&quot;, from research and wireframes to
+                  interactive prototypes, emphasizing user-centric design.
+                </span>
+              </li>
+              <li className="flex gap-2">
+                <span className="mt-0.5 text-foreground">•</span>
+                <span>
+                  Designed an AI application, simplifying human–AI interaction
+                  with intuitive flows and clean interface design.
+                </span>
+              </li>
+            </ul>
           </div>
         </PanelContent>
       </Panel>
@@ -158,20 +240,33 @@ export default function CVPage() {
         <PanelContent>
           <ul className="space-y-2 text-sm text-muted-foreground">
             <li className="flex gap-2">
-              <span className="text-foreground">•</span>
-              <span>Collage presentation provide market analysis to local company in order to expand to foreign market "coffee address"</span>
+              <span className="mt-0.5 text-foreground">•</span>
+              <span>
+                Collage presentation providing market analysis to a local
+                company in order to expand to a foreign market — &quot;Coffee
+                Address&quot;.
+              </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-foreground">•</span>
-              <span>Developed a UI/UX design concept for Elm Company's website as part of the Graduation Project.</span>
+              <span className="mt-0.5 text-foreground">•</span>
+              <span>
+                Developed a UI/UX design concept for Elm Company&apos;s website
+                as part of the Graduation Project.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-foreground">•</span>
-              <span>Applied user-centered design and design thinking principles to improve usability, navigation, and visual appeal.</span>
+            <li className="ml-4 flex gap-2">
+              <span className="mt-0.5 text-foreground">–</span>
+              <span>
+                Applied user-centered design and design thinking principles to
+                improve usability, navigation, and visual appeal.
+              </span>
             </li>
-            <li className="flex gap-2">
-              <span className="text-foreground">•</span>
-              <span>Created interactive prototypes and wireframes to showcase solutions for a real-world digital platform.</span>
+            <li className="ml-4 flex gap-2">
+              <span className="mt-0.5 text-foreground">–</span>
+              <span>
+                Created interactive prototypes and wireframes to showcase
+                solutions for a real-world digital platform.
+              </span>
             </li>
           </ul>
         </PanelContent>
@@ -184,10 +279,34 @@ export default function CVPage() {
         </PanelHeader>
         <PanelContent className="space-y-4">
           <div>
-            <h3 className="font-semibold mb-2">Technical Skills</h3>
+            <h3 className="mb-2 font-semibold">UI Skills</h3>
             <div className="flex flex-wrap gap-2">
-              {["TypeScript", "JavaScript", "HTML", "CSS", "Motion"].map((skill) => (
-                <span key={skill} className="px-3 py-1 bg-muted text-sm rounded-full">
+              {["Visual Design", "UI Design", "Interaction Design"].map(
+                (skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full bg-muted px-3 py-1 text-sm"
+                  >
+                    {skill}
+                  </span>
+                )
+              )}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="mb-2 font-semibold">UX Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "User-Centered Design",
+                "UX Research",
+                "Wireframing",
+                "Design Systems",
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full bg-muted px-3 py-1 text-sm"
+                >
                   {skill}
                 </span>
               ))}
@@ -195,22 +314,40 @@ export default function CVPage() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-2">UX Skills</h3>
+            <h3 className="mb-2 font-semibold">Tools</h3>
             <div className="flex flex-wrap gap-2">
-              {["User-Centered Design", "UX Research", "Wireframing", "Design Systems"].map((skill) => (
-                <span key={skill} className="px-3 py-1 bg-muted text-sm rounded-full">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-2">Tools</h3>
-            <div className="flex flex-wrap gap-2">
-              {["Figma", "Cursor", "Obsidian", "Adobe Creative Cloud"].map((tool) => (
-                <span key={tool} className="px-3 py-1 bg-muted text-sm rounded-full">
+              {[
+                "Figma",
+                "Git & GitHub",
+                "Cursor / VS Code",
+                "Adobe Creative Cloud",
+              ].map((tool) => (
+                <span
+                  key={tool}
+                  className="rounded-full bg-muted px-3 py-1 text-sm"
+                >
                   {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h3 className="mb-2 font-semibold">Technical Skills</h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                "React.js",
+                "Tailwind CSS",
+                "Motion",
+                "HTML5",
+                "CSS3",
+                "JavaScript ES6+",
+              ].map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full bg-muted px-3 py-1 text-sm"
+                >
+                  {skill}
                 </span>
               ))}
             </div>
@@ -224,18 +361,26 @@ export default function CVPage() {
           <PanelTitle>Certifications</PanelTitle>
         </PanelHeader>
         <PanelContent>
-          <div className="grid sm:grid-cols-2 gap-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             {[
-              "Introduction to Front-End Development",
-              "Foundations of User Experience (UX) Design",
-              "Graphic Design Diploma",
-              "Adobe Creative Cloud",
-              "UI/UX MasterClass",
-              "Introduction to Blender"
+              {
+                title: "Front-End Developer Professional Certificate",
+                issuer: "Meta",
+              },
+              { title: "Graphic Design Diploma", issuer: "" },
+              { title: "UI/UX Certification", issuer: "Tuwaiq Academy" },
+              { title: "UX Design Professional Certificate", issuer: "Google" },
+              { title: "Adobe Creative Cloud – Professional", issuer: "" },
+              { title: "Full Stack Web Development Bootcamp", issuer: "" },
             ].map((cert) => (
-              <div key={cert} className="flex items-start gap-2 text-sm">
-                <span className="text-foreground">✓</span>
-                <span className="text-muted-foreground">{cert}</span>
+              <div key={cert.title} className="flex items-start gap-2 text-sm">
+                <span className="mt-0.5 text-foreground">✓</span>
+                <span className="text-muted-foreground">
+                  {cert.title}
+                  {cert.issuer && (
+                    <span className="text-foreground/60"> — {cert.issuer}</span>
+                  )}
+                </span>
               </div>
             ))}
           </div>
@@ -248,14 +393,16 @@ export default function CVPage() {
           <PanelTitle>Languages</PanelTitle>
         </PanelHeader>
         <PanelContent>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <h3 className="font-semibold mb-1">Arabic</h3>
+              <h3 className="mb-1 font-semibold">Arabic</h3>
               <p className="text-sm text-muted-foreground">Native Language</p>
             </div>
             <div>
-              <h3 className="font-semibold mb-1">English</h3>
-              <p className="text-sm text-muted-foreground">Professional Working Proficiency</p>
+              <h3 className="mb-1 font-semibold">English</h3>
+              <p className="text-sm text-muted-foreground">
+                Professional Working Proficiency
+              </p>
             </div>
           </div>
         </PanelContent>
@@ -263,4 +410,3 @@ export default function CVPage() {
     </div>
   );
 }
-

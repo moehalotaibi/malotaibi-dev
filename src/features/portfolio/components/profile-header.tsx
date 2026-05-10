@@ -6,7 +6,7 @@ import { VerifiedIcon } from "./verified-icon";
 export function ProfileHeader() {
   return (
     <div className="screen-line-after flex border-x border-edge">
-      <div className="shrink-0 border-r border-edge">
+      <div className="relative shrink-0 border-r border-edge">
         <div className="mx-0.5 my-[3px]">
           <div className="size-32 overflow-hidden rounded-full ring-1 ring-border ring-offset-2 ring-offset-background select-none sm:size-40">
             <img
@@ -17,20 +17,6 @@ export function ProfileHeader() {
             />
           </div>
         </div>
-
-        <a
-          href="https://www.my.gov.sa/wps/portal/snp/aboutksa"
-          target="_blank"
-          rel="noreferrer"
-          className="absolute top-0 -left-px"
-        >
-          {/* Flag of Saudi Arabia */}
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/320px-Flag_of_Saudi_Arabia.svg.png"
-            alt="Flag of Saudi Arabia"
-            className="h-8 sm:h-9"
-          />
-        </a>
       </div>
 
       <div className="flex flex-1 flex-col">

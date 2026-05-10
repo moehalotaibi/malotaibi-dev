@@ -62,31 +62,6 @@ export const EXPERIENCES: Experience[] = [
     ],
   },
   {
-    id: "freelance",
-    companyName: "Freelance",
-    positions: [
-      {
-        id: "freelance-designer",
-        title: "Freelancer",
-        employmentPeriod: {
-          start: "07.2023",
-          end: "02.2026",
-        },
-        employmentType: "Part-time",
-        icon: "design",
-        description: `Delivered professional logo designs for a variety of clients, such as the Business Services Company Agile Advice, the clothing brand and the AI startup "Rashid", and the startup business "ORO". Focused on translating each client's vision into a distinctive brand identity through creative concepts and modern design execution.`,
-        skills: [
-          "Logo Design",
-          "Brand Identity",
-          "Graphic Design",
-          "Adobe Illustrator",
-          "Adobe Photoshop",
-          "Creativity",
-        ],
-      },
-    ],
-  },
-  {
     id: "education",
     companyName: "Education",
     positions: [
@@ -100,26 +75,6 @@ export const EXPERIENCES: Experience[] = [
         icon: "education",
         description: `Bachelor of Marketing and Communication`,
         skills: ["Marketing", "Communication", "Business", "Strategy"],
-      },
-      {
-        id: "fullstack-bootcamp",
-        title: "Full Stack Web Development Bootcamp",
-        employmentPeriod: {
-          start: "2025",
-          end: "2026",
-        },
-        icon: "education",
-        description: `- HTML, CSS, JavaScript
-- Responsive Web Design
-- UI Implementation from Design
-- Project-Based Learning`,
-        skills: [
-          "HTML",
-          "CSS",
-          "JavaScript",
-          "Responsive Design",
-          "Web Development",
-        ],
       },
       {
         id: "udacity-nanodegree",
