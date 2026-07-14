@@ -70,6 +70,8 @@ export function ProjectDetailModal({
                       "inline-flex items-center gap-1.5 rounded-full px-2 py-0.5 text-xs font-medium",
                       project.status === "operational" &&
                         "bg-green-500/10 text-green-600 dark:text-green-400",
+                      project.status === "live" &&
+                        "bg-green-500/10 text-green-600 dark:text-green-400",
                       project.status === "building" &&
                         "bg-orange-500/10 text-orange-600 dark:text-orange-400",
                       project.status === "finalizing" &&
@@ -82,12 +84,14 @@ export function ProjectDetailModal({
                       className={cn(
                         "size-1.5 rounded-full",
                         project.status === "operational" && "bg-green-500",
+                        project.status === "live" && "bg-green-500",
                         project.status === "building" && "bg-orange-500",
                         project.status === "finalizing" && "bg-purple-500",
                         project.status === "completed" && "bg-blue-500"
                       )}
                     />
                     {project.status === "operational" && "Operational"}
+                    {project.status === "live" && "Website Live"}
                     {project.status === "building" && "Building"}
                     {project.status === "finalizing" && "Finalizing"}
                     {project.status === "completed" && "Completed"}
@@ -107,43 +111,45 @@ export function ProjectDetailModal({
                 ))}
               </div>
 
-              <div className="space-y-3">
-                <h4 className="text-sm font-semibold">Design Screenshots</h4>
-                {screenshots.length > 0 ? (
-                  <div className="grid grid-cols-2 gap-3">
-                    {screenshots.map((shot, i) => (
-                      <button
-                        key={i}
-                        type="button"
-                        onClick={() => setLightboxSrc(shot)}
-                        className="relative aspect-video cursor-zoom-in overflow-hidden rounded-lg border border-edge bg-muted/30 transition-transform duration-200 hover:scale-[1.02] hover:shadow-md"
-                      >
-                        <Image
-                          src={shot.src}
-                          alt={shot.alt}
-                          fill
-                          className="object-cover"
-                          unoptimized
-                        />
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-edge py-10 text-muted-foreground">
-                    <ImageIcon className="size-8 opacity-40" />
-                    <p className="text-sm">No screenshots yet</p>
-                  </div>
-                )}
-              </div>
+              {(screenshots.length > 0 || project.status === "building") && (
+                <div className="space-y-3">
+                  <h4 className="text-sm font-semibold">Design Screenshots</h4>
+                  {screenshots.length > 0 ? (
+                    <div className="grid grid-cols-2 gap-3">
+                      {screenshots.map((shot, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          onClick={() => setLightboxSrc(shot)}
+                          className="relative aspect-video cursor-zoom-in overflow-hidden rounded-lg border border-edge bg-muted/30 transition-transform duration-200 hover:scale-[1.02] hover:shadow-md"
+                        >
+                          <Image
+                            src={shot.src}
+                            alt={shot.alt}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-edge py-10 text-muted-foreground">
+                      <ImageIcon className="size-8 opacity-40" />
+                      <p className="text-sm">No screenshots yet</p>
+                    </div>
+                  )}
+                </div>
+              )}
 
-              {project.figmaUrl && (
+              {(project.link || project.figmaUrl) && (
                 <a
-                  href={project.figmaUrl}
+                  href={project.link ?? project.figmaUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex w-full items-center justify-center gap-2 rounded-lg border border-edge bg-muted/50 px-3 py-2.5 text-sm font-medium transition-colors hover:bg-accent2"
                 >
-                  View My Design
+                  {project.link ? "Visit Website" : "View My Design"}
                   <ArrowUpRightIcon className="size-4" />
                 </a>
               )}

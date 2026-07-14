@@ -2,29 +2,38 @@ import type { UXProject } from "../types/ux-projects";
 
 export const UX_PROJECTS: UXProject[] = [
   {
+    id: "labvision-academy",
+    title: "LABvision Academy",
+    description:
+      "Arabic e-learning platform for medical laboratory sciences, helping students and professionals prepare for the Saudi laboratory licensing exam (SLLE) with specialized courses, a 200+ question bank, mock exams, and a dedicated lab job board.",
+    image: "/images/projects/labvision.jpg",
+    technologies: ["UI/UX Design", "Web Development", "EdTech", "Arabic RTL"],
+    status: "live",
+    link: "https://labvision-academy.vercel.app/",
+    screenshots: [
+      {
+        src: "/images/projects/labvision.jpg",
+        alt: "LABvision Academy homepage",
+      },
+    ],
+  },
+  {
     id: "agile-advice",
     title: "Agile Advice",
     description:
       "Complete brand identity and website design for Agile Advice, a business services company. Created a cohesive visual language and user-friendly digital experience.",
-    image: "/images/projects/agile-advice.png",
-    technologies: ["Figma", "Brand Identity", "Logo Design", "Web Design"],
-    status: "completed",
+    image: "/images/projects/agile-advice-hero.jpg",
+    technologies: [
+      "UI/UX Design",
+      "Figma",
+      "Brand Identity",
+      "Logo Design",
+      "Web Design",
+    ],
+    status: "live",
+    link: "https://www.agileadvice.sa/",
     figmaUrl:
       "https://www.figma.com/design/Z42CiJPCD5zpJKKfRHZicS/Untitled?node-id=0-1&t=eCzJFj9No5239VG8-1",
-    screenshots: [
-      {
-        src: "/images/projects/agile-advice-screenshot-1.png",
-        alt: "Agile Advice website homepage",
-      },
-      {
-        src: "/images/projects/agile-advice-screenshot-2.png",
-        alt: "Agile Advice project management section",
-      },
-      {
-        src: "/images/projects/agile-advice-screenshot-3.png",
-        alt: "Agile Advice features section",
-      },
-    ],
   },
   {
     id: "Ostoul",

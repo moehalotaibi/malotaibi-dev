@@ -2,6 +2,28 @@ import type { Project } from "../types/projects";
 
 export const PROJECTS: Project[] = [
   {
+    id: "malotaibi-dev-portfolio",
+    title: "Personal Portfolio Website — malotaibi.dev",
+    period: {
+      start: "12.2025",
+    },
+    link: "https://github.com/moehalotaibi/malotaibi-dev",
+    skills: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "UI/UX Design",
+      "Vercel",
+    ],
+    description: `Designed and built my personal portfolio from scratch as a fully custom Next.js application.
+- Developed reusable, accessible UI components with TypeScript and Tailwind CSS.
+- Combined my UX design background with front-end engineering for a fast, minimalist experience.
+- Deployed on Vercel with CI linting, formatting, and type-checking.
+
+[View Source on GitHub →](https://github.com/moehalotaibi/malotaibi-dev) · [Live Site →](https://protfoiloio-fg2e.vercel.app)`,
+  },
+  {
     id: "udacity-ux-nanodegree",
     title: "UX Nanodegree — Capstone & Portfolio Projects",
     period: {

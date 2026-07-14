@@ -1,15 +1,11 @@
 "use client";
 
-import {
-  ArrowUpRightIcon,
-  ChevronDownIcon,
-  EyeIcon,
-  GlobeIcon,
-} from "lucide-react";
+import { ArrowUpRightIcon, ChevronDownIcon, EyeIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 import { UX_PROJECTS } from "../../data/ux-projects";
@@ -17,9 +13,16 @@ import type { UXProject } from "../../types/ux-projects";
 import { Panel, PanelContent, PanelHeader, PanelTitle } from "../panel";
 import { ProjectDetailModal } from "./project-detail-modal";
 
+const MAX_VISIBLE_PROJECTS = 4;
+
 export function UXProjects() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [modalProject, setModalProject] = useState<UXProject | null>(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const visibleProjects = showAll
+    ? UX_PROJECTS
+    : UX_PROJECTS.slice(0, MAX_VISIBLE_PROJECTS);
 
   return (
     <Panel id="ux-projects">
@@ -29,7 +32,7 @@ export function UXProjects() {
 
       <PanelContent className="p-0">
         <div className="grid gap-4 p-4 sm:grid-cols-2">
-          {UX_PROJECTS.map((project) => {
+          {visibleProjects.map((project) => {
             const isExpanded = expandedId === project.id;
 
             return (
@@ -41,7 +44,9 @@ export function UXProjects() {
                 <div
                   className={cn(
                     "relative w-full overflow-hidden bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-blue-500/10",
-                    project.id === "snb-mobile"
+                    project.id === "snb-mobile" ||
+                      project.id === "labvision-academy" ||
+                      project.id === "agile-advice"
                       ? "aspect-video"
                       : "aspect-[4/5]"
                   )}
@@ -65,19 +70,18 @@ export function UXProjects() {
                       {project.title}
                     </h3>
                     <div className="flex shrink-0 items-center gap-1">
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-muted-foreground transition-colors hover:text-foreground"
-                          aria-label={`Visit ${project.title}`}
-                        >
-                          <GlobeIcon className="size-4" />
-                        </a>
-                      )}
                       {project.status !== "building" &&
-                        (project.figmaUrl ? (
+                        (project.link ? (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-muted-foreground transition-colors hover:text-foreground"
+                            aria-label={`Visit ${project.title}`}
+                          >
+                            <ArrowUpRightIcon className="size-4" />
+                          </a>
+                        ) : project.figmaUrl ? (
                           <a
                             href={project.figmaUrl}
                             target="_blank"
@@ -146,6 +150,8 @@ export function UXProjects() {
                         "flex items-center gap-1.5 rounded-full px-2 py-1 font-medium",
                         project.status === "operational" &&
                           "bg-green-500/10 text-green-600 dark:text-green-400",
+                        project.status === "live" &&
+                          "bg-green-500/10 text-green-600 dark:text-green-400",
                         project.status === "building" &&
                           "bg-orange-500/10 text-orange-600 dark:text-orange-400",
                         project.status === "finalizing" &&
@@ -158,6 +164,7 @@ export function UXProjects() {
                         className={cn(
                           "size-1.5 rounded-full",
                           project.status === "operational" && "bg-green-500",
+                          project.status === "live" && "bg-green-500",
                           project.status === "building" && "bg-orange-500",
                           project.status === "finalizing" && "bg-purple-500",
                           project.status === "completed" && "bg-blue-500"
@@ -165,6 +172,7 @@ export function UXProjects() {
                       />
                       {project.status === "operational" &&
                         "All Systems Operational"}
+                      {project.status === "live" && "Website Live"}
                       {project.status === "building" && "Building"}
                       {project.status === "finalizing" && "Finalizing"}
                       {project.status === "completed" && "Completed"}
@@ -184,6 +192,26 @@ export function UXProjects() {
             );
           })}
         </div>
+
+        {UX_PROJECTS.length > MAX_VISIBLE_PROJECTS && (
+          <div className="flex h-12 items-center justify-center pb-px">
+            <Button
+              variant="default"
+              className="group/show-more flex"
+              onClick={() => setShowAll(!showAll)}
+              aria-expanded={showAll}
+            >
+              <span>{showAll ? "Show Less" : "Show More"}</span>
+              <ChevronDownIcon
+                className={cn(
+                  "transition-transform duration-300",
+                  showAll && "rotate-180"
+                )}
+                aria-hidden
+              />
+            </Button>
+          </div>
+        )}
       </PanelContent>
 
       <ProjectDetailModal
