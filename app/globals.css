@@ -1,0 +1,307 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+    --measure: 1200px;
+  }
+
+  html {
+    background: #111210;
+    color: #eceae2;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Figma's cursor, site-wide — dark fill + white outline (visible on the
+       charcoal), hotspot at the tip. Falls back to the OS cursor. */
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='29' viewBox='30 12 336 370'%3E%3Cpath d='M39.97 31.88C38.22 23.48 47.2 16.95 54.64 21.22L351.11 191.13C358.65 195.45 357.4 206.69 349.09 209.25L205.2 253.51C202.97 254.2 201.05 255.64 199.79 257.6L127.77 368.53C122.94 375.97 111.52 373.84 109.71 365.16L39.97 31.88Z' fill='%23333333'/%3E%3Cpath d='M346.17 199.75L202.28 244.01C197.82 245.38 193.99 248.28 191.45 252.19L119.43 363.12L49.7 29.84L346.17 199.75Z' stroke='white' stroke-width='19.88' fill='none'/%3E%3C/svg%3E")
+        2 2,
+      auto;
+  }
+
+  /* Links/buttons would swap back to the OS hand cursor via the UA
+     stylesheet — keep the Figma cursor there too. Hover affordance comes
+     from the glow, magnetic pulls, and hover states instead. */
+  a,
+  button,
+  [role="button"] {
+    cursor: inherit;
+  }
+
+  ::selection {
+    background: #a78bfa;
+    color: #111210;
+  }
+
+  :focus-visible {
+    outline: 1px solid #eceae2;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .shell {
+    width: 100%;
+    max-width: var(--measure);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* Terminal-style label used for every eyebrow, comment, and metadata line */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #a09f97;
+  }
+
+  /* Rounded-pill button — outline by default */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid #363733;
+    padding: 0.7rem 1.3rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #eceae2;
+    white-space: nowrap;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .pill:hover {
+    border-color: #eceae2;
+  }
+
+  .pill-solid {
+    background: #f2efe1;
+    border-color: #f2efe1;
+    color: #111210;
+  }
+
+  .pill-solid:hover {
+    background: transparent;
+    border-color: #eceae2;
+    color: #eceae2;
+  }
+
+  /* Small bordered chip for skills / stacks */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    border: 1px solid #262723;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.35rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.02em;
+    color: #a09f97;
+    white-space: nowrap;
+  }
+
+  .card {
+    border-radius: 1rem;
+    border: 1px solid #262723;
+    background: #191a17;
+  }
+
+  /* Circular cream badge that sits on section rules */
+  .badge-circle {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    background: #f2efe1;
+    color: #111210;
+  }
+
+  .rule {
+    height: 1px;
+    background: #262723;
+    border: 0;
+  }
+}
+
+@layer utilities {
+  /* Hero backdrop — faint square grid, like a design canvas */
+  .line-grid {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 88px 88px;
+  }
+
+  /* Placeholder-frame backdrop */
+  .dot-grid {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  .dot-fade {
+    -webkit-mask-image: radial-gradient(ellipse 85% 80% at 50% 40%, black 35%, transparent 78%);
+    mask-image: radial-gradient(ellipse 85% 80% at 50% 40%, black 35%, transparent 78%);
+  }
+
+  /* Brand marquee — drifts left → right, edges fade out. Two copies of the
+     content make translateX(-50%) → 0 a seamless loop. */
+  @keyframes marquee-ltr {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, black 12%, black 88%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-ltr var(--marquee-t, 36s) linear infinite;
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  /* Figma-cursor drift — a slow circular orbit that keeps orientation.
+     Radius and duration are per-element via CSS vars. */
+  @keyframes orbit {
+    from {
+      transform: rotate(0turn) translateX(var(--orbit-r, 8px)) rotate(0turn);
+    }
+    to {
+      transform: rotate(1turn) translateX(var(--orbit-r, 8px)) rotate(-1turn);
+    }
+  }
+
+  .orbit {
+    animation: orbit var(--orbit-t, 9s) linear infinite;
+  }
+
+  /* Gradient text — hero words and the About subline */
+  .text-gradient-violet {
+    background: linear-gradient(100deg, #c9b8fd 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-amber {
+    background: linear-gradient(100deg, #fce29b 0%, #f0a92e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .reveal {
+    transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1),
+      transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  /* The first-entry splash only exists when scripts can run — without JS
+     nothing would ever fade it out, so it never renders at all. */
+  .entry-splash {
+    display: none;
+  }
+
+  @media (scripting: enabled) {
+    .entry-splash {
+      display: block;
+    }
+  }
+
+  /* Hidden state only applies when scripts can run — crawlers and users
+     with JS blocked simply get visible content. */
+  @media (scripting: enabled) {
+    .reveal {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    .reveal[data-shown="true"] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Appended utilities — app chrome (tooltip entrance, cursor glow).    */
+/* ------------------------------------------------------------------ */
+
+@layer utilities {
+  /* Radix tooltip — subtle scale/fade driven by data-state */
+  @keyframes tooltip-in {
+    from {
+      opacity: 0;
+      transform: scale(0.94) translateY(2px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes tooltip-out {
+    from {
+      opacity: 1;
+      transform: none;
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.94) translateY(2px);
+    }
+  }
+
+  .tooltip-content {
+    transform-origin: var(--radix-tooltip-content-transform-origin);
+    animation: tooltip-in 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tooltip-content[data-state="closed"] {
+    animation: tooltip-out 0.12s ease-in;
+  }
+
+  /* Trailing pointer glow — sized here, positioned by motion transforms */
+  .cursor-glow {
+    width: 28px;
+    height: 28px;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      rgba(167, 139, 250, 0.9) 0%,
+      rgba(167, 139, 250, 0.3) 45%,
+      transparent 72%
+    );
+    mix-blend-mode: screen;
+    opacity: 0.5;
+  }
+}
