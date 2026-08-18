@@ -251,7 +251,17 @@ export const caseStudyDetails: CaseStudyDetail[] = [
             "alt": "Annotated improvements in the redesign",
             "ratio": "square"
           }
-        ]
+        ],
+        "beforeAfter": {
+          "before": {
+            "src": "/work/keeta/before-home.jpg",
+            "alt": "The original Keeta homepage"
+          },
+          "after": {
+            "src": "/work/keeta/home.jpg",
+            "alt": "Redesigned homepage"
+          }
+        }
       },
       {
         "id": "outcomes",

@@ -46,7 +46,7 @@ export default function CopyEmailButton() {
           type="button"
           onClick={onCopy}
           aria-label={copied ? "Email address copied" : "Copy email address"}
-          className={`relative z-10 grid h-9 w-9 place-items-center rounded-lg border border-rule transition-colors hover:border-rule-strong hover:text-paper ${
+          className={`relative z-10 grid h-10 w-10 place-items-center rounded-lg border border-rule transition-colors hover:border-rule-strong hover:text-paper ${
             copied ? "text-accent-green" : "text-paper-mid"
           }`}
           {...(reduced

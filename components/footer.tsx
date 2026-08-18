@@ -31,7 +31,7 @@ function FooterLinkRow({
 }) {
   const props = {
     className:
-      "inline-block text-meta text-paper-mid transition-colors hover:text-paper",
+      "inline-flex items-center text-meta text-paper-mid transition-colors hover:text-paper max-lg:min-h-[40px]",
     ...(reduced ? {} : { whileHover: { x: 3 }, whileTap: { scale: 0.97 } }),
     transition: SPRING,
   };
@@ -64,7 +64,7 @@ function SocialRow({ item, reduced }: { item: Social; reduced: boolean }) {
   return (
     <motion.a
       href={item.href}
-      className="flex items-center gap-2.5 text-meta text-paper-mid transition-colors hover:text-paper"
+      className="flex items-center gap-2.5 text-meta text-paper-mid transition-colors hover:text-paper max-lg:min-h-[40px]"
       onHoverStart={spin}
       {...(reduced ? {} : { whileTap: { scale: 0.97 } })}
     >
@@ -215,7 +215,8 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-rule">
-        <div className="shell flex items-center justify-between py-4">
+        {/* lg:pb-16 clears the fixed layers-breadcrumb chip (lg+ only). */}
+        <div className="shell flex items-center justify-between py-4 lg:pb-16">
           <p className="label">
             {site.fullName} © {new Date().getFullYear()}
           </p>

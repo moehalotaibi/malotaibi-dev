@@ -23,7 +23,7 @@ export default function DividerBand() {
                 <motion.a
                   href={s.href}
                   aria-label={s.label}
-                  className="grid h-9 w-9 place-items-center rounded-full border border-rule text-paper-mid transition-colors hover:border-rule-strong hover:text-paper"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-rule text-paper-mid transition-colors hover:border-rule-strong hover:text-paper"
                   whileHover={reduced ? undefined : { scale: 1.15 }}
                   whileTap={reduced ? undefined : { scale: 0.97 }}
                   transition={SPRING}

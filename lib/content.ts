@@ -87,7 +87,7 @@ export const hero = {
       kind: "status",
       text: "Let's Connect",
       accent: "green",
-      className: "-right-12 top-[54%]",
+      className: "-right-8 top-[88%] xl:-right-12",
     },
     {
       kind: "comment",

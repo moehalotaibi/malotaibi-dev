@@ -97,7 +97,7 @@ export default function Nav() {
                           : "",
                       )
                     }
-                    className={`relative flex items-center gap-2 rounded-full px-3 py-2 font-mono text-micro uppercase tracking-[0.1em] transition-colors sm:px-4 ${
+                    className={`relative flex items-center gap-2 rounded-full px-3 py-2 font-mono text-micro uppercase tracking-[0.1em] transition-colors max-lg:min-h-[44px] max-lg:min-w-[44px] max-lg:justify-center sm:px-4 ${
                       active
                         ? "text-accent-blue"
                         : "text-paper-mid hover:text-paper"
@@ -121,7 +121,7 @@ export default function Nav() {
                         />
                       ))}
                     <UI name={item.icon} className="relative h-3.5 w-3.5" />
-                    <span className="relative hidden sm:inline">
+                    <span className="relative hidden whitespace-nowrap md:inline">
                       {item.label}
                     </span>
                   </MotionLink>
@@ -136,13 +136,13 @@ export default function Nav() {
           <MotionLink
             href="/contact"
             aria-label="Contact Me"
-            className="flex items-center gap-2 rounded-full border border-rule bg-ink/80 px-4 py-2.5 font-mono text-micro uppercase tracking-[0.1em] text-paper-mid backdrop-blur-md transition-colors hover:border-rule-strong hover:text-paper"
+            className="flex items-center justify-center gap-2 rounded-full border border-rule bg-ink/80 px-4 py-2.5 font-mono text-micro uppercase tracking-[0.1em] text-paper-mid backdrop-blur-md transition-colors hover:border-rule-strong hover:text-paper max-lg:min-h-[44px]"
             {...(reduced
               ? {}
               : { whileHover: { y: -1 }, whileTap: { scale: 0.97 } })}
           >
             <UI name="mail" className="h-3.5 w-3.5" />
-            <span className="hidden md:inline">Contact Me</span>
+            <span className="hidden whitespace-nowrap lg:inline">Contact Me</span>
           </MotionLink>
         </Magnetic>
       </div>

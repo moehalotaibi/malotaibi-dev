@@ -64,12 +64,14 @@ export default function BeforeAfter({ before, after }: Props) {
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     dragging.current = true;
     try {
-      // Capture so fast drags don't slip off the 36px handle.
+      // Capture so fast drags don't slip off the container.
       e.currentTarget.setPointerCapture(e.pointerId);
     } catch {
       // NotFoundError if the pointer is already gone — drag still works
-      // while the cursor stays over the handle.
+      // while the cursor stays over the container.
     }
+    // A tap or drag anywhere on the image drives the divider.
+    setFromClientX(e.clientX);
     e.preventDefault();
   };
 
@@ -100,6 +102,13 @@ export default function BeforeAfter({ before, after }: Props) {
     <div
       ref={containerRef}
       className="relative mx-auto aspect-[9/16] max-w-sm select-none overflow-hidden rounded-xl border border-rule bg-raised"
+      // pan-y: vertical swipes still scroll the page (the browser cancels
+      // the drag); taps and horizontal drags anywhere drive the divider.
+      style={{ touchAction: "pan-y" }}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={endDrag}
+      onPointerCancel={endDrag}
     >
       {/* After — base layer */}
       <Image
@@ -155,12 +164,8 @@ export default function BeforeAfter({ before, after }: Props) {
           aria-valuemin={MIN}
           aria-valuemax={MAX}
           aria-valuenow={INITIAL}
-          className="pointer-events-auto absolute left-0 top-1/2 flex h-9 w-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream text-ink shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
+          className="pointer-events-auto absolute left-0 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream text-ink shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
           style={{ touchAction: "none" }}
-          onPointerDown={onPointerDown}
-          onPointerMove={onPointerMove}
-          onPointerUp={endDrag}
-          onPointerCancel={endDrag}
           onKeyDown={onKeyDown}
         >
           {/* ⟷ affordance — two mirrored chevrons */}

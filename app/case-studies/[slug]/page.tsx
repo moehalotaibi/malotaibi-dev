@@ -111,7 +111,7 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
                   href={study.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`mt-1 inline-block text-meta ${accentText[study.accent]} transition-opacity hover:opacity-75`}
+                  className={`-mt-1.5 -mb-2.5 inline-block py-2.5 text-meta ${accentText[study.accent]} transition-opacity hover:opacity-75`}
                 >
                   Visit &rarr;
                 </a>
