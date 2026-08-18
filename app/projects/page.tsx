@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "UX Projects",
   description:
     "Featured UX design work — brand identity, product design, and live platforms.",
+  alternates: { canonical: "/projects" },
 };
 
 // Server page (metadata) — interactivity lives in the client rows.

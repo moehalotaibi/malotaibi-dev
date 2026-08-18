@@ -35,7 +35,7 @@ export default function DividerBand() {
           </div>
           <motion.a
             href={`mailto:${site.email}`}
-            className="label hidden transition-colors hover:text-paper md:block"
+            className="label hidden normal-case transition-colors hover:text-paper md:block"
             whileHover={reduced ? undefined : { y: -1 }}
             whileTap={reduced ? undefined : { scale: 0.97 }}
             transition={SPRING}

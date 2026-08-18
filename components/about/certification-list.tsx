@@ -26,7 +26,7 @@ export default function CertificationList() {
                 href={cert.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-meta font-medium text-paper underline-offset-4 hover:underline"
+                className="-my-2.5 py-2.5 text-meta font-medium text-paper underline-offset-4 hover:underline"
               >
                 {cert.title}
               </a>

@@ -33,7 +33,7 @@ import { motion, useReducedMotion } from "motion/react";
 type Gap = { top: number; height: number; value: number };
 
 // matchMedia store for pointer-fine gating (server snapshot: coarse) —
-// same pattern as pen-tool-curve.
+// same pattern as hero.
 function subscribeFine(onChange: () => void) {
   const mql = window.matchMedia("(pointer: fine)");
   mql.addEventListener("change", onChange);

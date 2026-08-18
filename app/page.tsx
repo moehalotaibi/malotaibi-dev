@@ -3,6 +3,7 @@
 // SpineContainer wraps the sections in a relative div and draws the
 // scroll-linked connector spine behind them (decorative, lg+ only).
 
+import type { Metadata } from "next";
 import HomeHero from "@/components/home/hero";
 import DividerBand from "@/components/home/divider-band";
 import IntroSection from "@/components/home/intro";
@@ -12,6 +13,10 @@ import CaseStudiesSection from "@/components/home/case-studies";
 import ProjectsIndex from "@/components/home/projects";
 import TechStack from "@/components/home/tech-stack";
 import SpineContainer from "@/components/home/path-spine";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (
@@ -27,3 +32,4 @@ export default function Home() {
     </SpineContainer>
   );
 }
+

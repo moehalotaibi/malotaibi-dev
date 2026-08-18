@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import MotionReveal from "@/components/motion/motion-reveal";
-import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import CountUp from "@/components/motion/count-up";
-import SectionHeader from "@/components/section-header";
-import ShotFrame from "@/components/shot-frame";
-import BeforeAfter from "@/components/work/before-after";
+import CaseSection from "@/components/work/case-section";
 import ReadingProgress from "@/components/work/reading-progress";
 import { caseStudies } from "@/lib/content";
 import { getCaseStudyDetail } from "@/lib/case-studies";
@@ -26,7 +23,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const study = caseStudies.find((s) => s.slug === slug);
   if (!study) return {};
-  return { title: study.title, description: study.description };
+  return {
+    title: study.title,
+    description: study.description,
+    alternates: { canonical: `/case-studies/${slug}` },
+  };
 }
 
 // Server page (metadata + static params) — interactivity lives in the
@@ -121,98 +122,15 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
         </MotionReveal>
       </section>
 
-      {/* Sections */}
+      {/* Sections — editorial two-column shells, treatment inferred from
+          the data shape (quotes / numbered steps / feature rows). */}
       {detail.sections.map((section, sectionIndex) => (
-        <section
+        <CaseSection
           key={section.id}
-          className="shell pb-section"
-          aria-labelledby={section.id}
-        >
-          <MotionReveal>
-            <div>
-              {section.kicker ? (
-                <p className="label mb-4">{section.kicker}</p>
-              ) : null}
-              <SectionHeader
-                id={section.id}
-                title={section.title}
-                accent={sectionIndex === 0 ? study.accent : "cream"}
-              />
-            </div>
-          </MotionReveal>
-
-          {section.intro ? (
-            <MotionReveal delay={60} y={12}>
-              <p className="max-w-[52ch] text-body text-paper-mid">
-                {section.intro}
-              </p>
-            </MotionReveal>
-          ) : null}
-
-          {section.items ? (
-            <StaggerGroup
-              className={`mt-8 grid gap-4 ${
-                section.items.length === 3
-                  ? "sm:grid-cols-2 lg:grid-cols-3"
-                  : "sm:grid-cols-2"
-              }`}
-              stagger={0.08}
-            >
-              {section.items.map((item, itemIndex) => (
-                <StaggerItem key={item.title}>
-                  <div className="card h-full p-6">
-                    {section.numbered ? (
-                      <span className="label mb-3 block">
-                        {String(itemIndex + 1).padStart(2, "0")}
-                      </span>
-                    ) : null}
-                    <h3
-                      className={`text-meta font-medium ${accentText[item.accent ?? study.accent]}`}
-                    >
-                      {item.title}
-                    </h3>
-                    <p className="mt-2 text-meta text-paper-mid">{item.body}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-          ) : null}
-
-          {section.images ? (
-            <StaggerGroup
-              className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-              stagger={0.1}
-            >
-              {section.images.map((img) => (
-                <StaggerItem
-                  key={img.src}
-                  className={
-                    img.ratio === "wide" || img.ratio === "video"
-                      ? "sm:col-span-2 lg:col-span-3"
-                      : undefined
-                  }
-                >
-                  <ShotFrame
-                    ratio={img.ratio ?? "phone"}
-                    title={img.alt}
-                    image={img.src}
-                    imageAlt={img.alt}
-                  />
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-          ) : null}
-
-          {section.beforeAfter ? (
-            <MotionReveal className="mt-10" y={14}>
-              <BeforeAfter
-                before={section.beforeAfter.before}
-                after={section.beforeAfter.after}
-              />
-              <p className="label mt-4 text-center">{"// drag to compare"}</p>
-            </MotionReveal>
-          ) : null}
-        </section>
+          section={section}
+          index={sectionIndex}
+          accent={study.accent}
+        />
       ))}
 
       {/* CTA */}

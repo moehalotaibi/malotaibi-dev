@@ -14,7 +14,7 @@ export default function CaseStudiesSection() {
   return (
     <section className="shell pb-section" aria-labelledby="case-studies">
       <MotionReveal>
-        <SectionHeader id="case-studies" title="Case studies" badge="list" />
+        <SectionHeader id="case-studies" title="Case Studies" badge="list" />
       </MotionReveal>
       <StaggerGroup className="border-b border-rule">
         {caseStudies.map((study) => (

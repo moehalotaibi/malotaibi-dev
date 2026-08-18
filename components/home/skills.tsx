@@ -17,13 +17,13 @@ export default function SkillsRows() {
   return (
     <section className="shell pb-section" aria-labelledby="skills">
       <MotionReveal>
-        <SectionHeader id="skills" title="Experience & skills" accent="amber" />
+        <SectionHeader id="skills" title="Experience & Skills" accent="amber" />
       </MotionReveal>
       <div className="border-b border-rule">
         {skills.map((s) => (
           <MotionReveal key={s.index}>
             <motion.div
-              className="grid gap-6 border-t border-rule py-10 md:grid-cols-[minmax(170px,0.8fr)_0.9fr_1.4fr]"
+              className="grid gap-6 border-t border-rule py-10 md:grid-cols-[minmax(150px,1fr)_2fr] lg:grid-cols-[minmax(170px,0.8fr)_0.9fr_1.4fr]"
               initial={reduced ? undefined : "rest"}
               whileHover={reduced ? undefined : "hover"}
             >
@@ -37,20 +37,24 @@ export default function SkillsRows() {
                   {s.word}
                 </motion.p>
               </div>
-              <p className="max-w-[44ch] text-meta text-paper-mid">{s.body}</p>
-              <StaggerGroup className="flex flex-wrap content-start gap-2 md:justify-end">
-                {s.tags.map((t) => (
-                  <StaggerItem as="span" key={t}>
-                    <motion.span
-                      className="tag rounded-full border-rule-strong bg-transparent text-paper"
-                      whileHover={reduced ? undefined : { scale: 1.08, y: -2 }}
-                      transition={SPRING}
-                    >
-                      {t}
-                    </motion.span>
-                  </StaggerItem>
-                ))}
-              </StaggerGroup>
+              {/* md band: one cell stacking description + chips; phone and
+                  lg+ dissolve the wrapper so children stay direct grid items. */}
+              <div className="contents md:flex md:flex-col md:gap-4 lg:contents">
+                <p className="max-w-[44ch] text-meta text-paper-mid">{s.body}</p>
+                <StaggerGroup className="flex flex-wrap content-start gap-2 lg:justify-end">
+                  {s.tags.map((t) => (
+                    <StaggerItem as="span" key={t}>
+                      <motion.span
+                        className="tag rounded-full border-rule-strong bg-transparent text-paper"
+                        whileHover={reduced ? undefined : { scale: 1.08, y: -2 }}
+                        transition={SPRING}
+                      >
+                        {t}
+                      </motion.span>
+                    </StaggerItem>
+                  ))}
+                </StaggerGroup>
+              </div>
             </motion.div>
           </MotionReveal>
         ))}

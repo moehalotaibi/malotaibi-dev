@@ -31,7 +31,7 @@ const FADE = { stiffness: 260, damping: 30 } as const;
 type LocalRect = { l: number; t: number; r: number; b: number };
 
 // matchMedia store for pointer-fine gating (server snapshot: coarse) —
-// same pattern as pen-tool-curve.
+// same pattern as hero.
 function subscribeFine(onChange: () => void) {
   const mql = window.matchMedia("(pointer: fine)");
   mql.addEventListener("change", onChange);

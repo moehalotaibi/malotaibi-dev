@@ -16,7 +16,7 @@ const RATIOS: Record<NonNullable<Props["ratio"]>, string> = {
   video: "aspect-video",
   square: "aspect-square",
   tall: "aspect-[4/5]",
-  phone: "aspect-[9/16]",
+  phone: "aspect-[9/19.5]",
   wide: "aspect-[5/2]",
 };
 

@@ -19,7 +19,7 @@ export type Segment = {
 
 export const site = {
   name: "moe.",
-  fullName: "Mohammed Alotaibi",
+  fullName: "Mohammed Al-Otaibi",
   role: "UX Designer/Front-End Dev",
   location: "Riyadh, Saudi Arabia",
   email: "moe.halotaibi@gmail.com",
@@ -66,7 +66,7 @@ export const hero = {
     { text: "visual design", accent: "amber" },
     { text: " and " },
     { text: "ux research", accent: "cyan" },
-    { text: " — creating with code. Small details matter." },
+    { text: " — designing and building user-centered digital interfaces." },
   ] as Segment[],
   // Layout copied from the reference hero: cursor cluster hanging off the
   // greeting chip, comment at the top-right edge, status chip beside line 3,
@@ -98,7 +98,11 @@ export const hero = {
       kind: "cursor",
       text: "Code",
       accent: "blue",
-      className: "-left-20 top-[90%]",
+      // Pill overlaps the bottom-left of Dev's "D" (Figma cursors sit ON
+      // the canvas): ~8px vertical overlap at 1024, ~13px from xl up,
+      // measured against the glyph ink (cap top/baseline) — never more
+      // than a third of the glyph height, clear of tagline and type-test.
+      className: "left-[26%] top-[85%] xl:top-[86%]",
     },
     {
       kind: "cursor",
@@ -286,7 +290,7 @@ export const caseStudies: CaseStudy[] = [
     tag: "UX Case Study · Food Delivery",
     title: "Keeta Redesign",
     description:
-      "Modern redesign of Keeta application, focusing on improved user experience, intuitive navigation, and contemporary visual design.",
+      "Modern redesign of the Keeta application, focusing on improved user experience, intuitive navigation, and contemporary visual design.",
     heroStat: { value: "5", label: "Usability test participants" },
     stats: [
       { value: "3", label: "Home → Restaurant → Checkout" },
@@ -402,7 +406,7 @@ export const projects: Project[] = [
     stack: "Figma, UI/UX Design",
     accent: "cyan",
     bullets: [
-      "Modern redesign of Keeta application, focusing on improved user experience, intuitive navigation, and contemporary visual design.",
+      "Modern redesign of the Keeta application, focusing on improved user experience, intuitive navigation, and contemporary visual design.",
     ],
     href: "https://www.figma.com/design/wAHgbCdJWZPm9n5V3Zr1rj/Untitled?node-id=0-1&t=UFMSMIZnHj3d69J2-1",
     image: "/work/keeta.png",
@@ -506,8 +510,8 @@ export const techStack = {
 
 export const about = {
   hello: "Hello! I'm Mohammed",
-  subline: "UX Designer / Front-End Dev",
-  roleTag: "UX Designer/Front-End Dev",
+  subline: "UX Designer",
+  roleTag: "UX Designer",
   headline: [
     { text: "UX Designer with hands-on experience in designing and building " },
     { text: "user-centered digital interfaces", accent: "violet" },
@@ -554,7 +558,7 @@ export const roles: Role[] = [
   {
     period: "08.2024 — 04.2025",
     title: "COOP Trainee, Internship",
-    org: "ELM Company",
+    org: "Elm Company",
     accent: "cyan",
     details: [
       "Redesigned Elm Company's UI/UX using Figma and Spline, creating a modern, interactive interface with improved navigation and usability.",
@@ -565,7 +569,7 @@ export const roles: Role[] = [
     ],
     tags: ["UI/UX Design", "Figma", "Spline", "Wireframing", "Prototyping", "User Research", "Motion Graphics", "Design Thinking"],
     image: "/work/elm.jpg",
-    imageAlt: "ELM Company",
+    imageAlt: "Elm Company",
     imageFit: "contain",
   },
 ];

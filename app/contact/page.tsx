@@ -8,6 +8,7 @@ import { contact, site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact",
   description: `Get in touch with ${site.fullName} — ${site.role}, ${site.location}.`,
+  alternates: { canonical: "/contact" },
 };
 
 // Server page (metadata) — interactivity lives in the client components.
@@ -66,3 +67,4 @@ export default function ContactPage() {
     </>
   );
 }
+

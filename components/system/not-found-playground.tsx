@@ -127,7 +127,13 @@ export default function NotFoundPlayground() {
             </Throwable>
           </MotionReveal>
 
-          <MotionReveal delay={520} className="absolute -right-4 -top-4 z-10 sm:-right-7">
+          {/* Touch widths get a 44px pin (WCAG target size); the pin's own
+              h-9 w-9 (36px) still applies on lg+ — sized from here because
+              this file owns the 404 layout, not the pin component. */}
+          <MotionReveal
+            delay={520}
+            className="absolute -right-4 -top-4 z-10 sm:-right-7 max-lg:[&_button]:h-11 max-lg:[&_button]:w-11"
+          >
             <CommentPin />
           </MotionReveal>
         </div>

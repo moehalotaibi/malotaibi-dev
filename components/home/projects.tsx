@@ -18,7 +18,7 @@ export default function ProjectsIndex() {
   return (
     <section className="shell pb-section" aria-labelledby="projects">
       <MotionReveal>
-        <SectionHeader id="projects" title="UX projects" badge="briefcase" />
+        <SectionHeader id="projects" title="UX Projects" badge="briefcase" />
       </MotionReveal>
       <StaggerGroup className="border-b border-rule">
         {projects.map((p) => (

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Hanken_Grotesk, Space_Mono } from "next/font/google";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
@@ -38,16 +38,20 @@ export const metadata: Metadata = {
     template: `%s — ${site.name}`,
   },
   description: `${site.fullName} designs interface systems and builds them in React and Next.js. Based in ${site.location}.`,
+  // No og title/description/url here: pages don't declare their own openGraph
+  // blocks (shallow merge would drop siteName), so og:* must fall back to each
+  // page's resolved title/description instead of freezing the homepage's.
   openGraph: {
-    title: `${site.fullName} — ${site.role}`,
-    description: `Interface systems, design tokens, and front-end. ${site.location}.`,
-    url: site.url,
     siteName: site.name,
     type: "website",
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#111210",
 };
 
 export default function RootLayout({

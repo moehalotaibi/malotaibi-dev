@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Case Studies",
   description:
     "End-to-end UX and product design work — from research to shipped product.",
+  alternates: { canonical: "/case-studies" },
 };
 
 // Server page (metadata) — interactivity lives in the client cards.

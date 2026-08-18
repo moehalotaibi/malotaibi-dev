@@ -10,6 +10,7 @@
 // (GridCellHighlight). A Figma-style color-styles panel parked in the
 // right margin (ColorStylesPanel) re-themes the headline + tagline accents
 // — real buttons, throwable card, theme state lives here (heroAccent).
+// An auto-layout toy sits in the empty left margin (AutoLayoutToy).
 // Copy and classes are unchanged from the server
 // version; only motion was added. Static under reduced motion and on
 // touch (primitives handle their own gating; local hover/drag props are
@@ -33,7 +34,7 @@ import StaggerText from "@/components/motion/stagger-text";
 import Magnetic from "@/components/motion/magnetic";
 import { MouseParallax } from "@/components/motion/parallax";
 import { CursorArrow } from "@/components/icons";
-import PenToolCurve from "@/components/home/pen-tool-curve";
+import AutoLayoutToy from "@/components/home/auto-layout-toy";
 import HeadlineRedlines from "@/components/home/headline-redlines";
 import GridCellHighlight from "@/components/home/grid-cell-highlight";
 import ColorStylesPanel from "@/components/home/color-styles-panel";
@@ -52,7 +53,7 @@ const CHIP =
   "flex items-center gap-2.5 rounded-full border border-rule-strong bg-ink/70 px-5 py-3 font-sans text-[0.9375rem] font-medium text-cream backdrop-blur-sm";
 
 // matchMedia store for pointer-fine gating (server snapshot: coarse) —
-// same pattern as pen-tool-curve.
+// same pattern as headline-redlines.
 function subscribeFine(onChange: () => void) {
   const mql = window.matchMedia("(pointer: fine)");
   mql.addEventListener("change", onChange);
@@ -60,6 +61,19 @@ function subscribeFine(onChange: () => void) {
 }
 const getFine = () => window.matchMedia("(pointer: fine)").matches;
 const getFineServer = () => false;
+
+/**
+ * Ultrawide tether — the absolute hero toys hang off this capped band
+ * instead of the section, so their percentage offsets track a centered
+ * max-w-[1600px] column rather than the viewport edges. Below 1600px the
+ * band equals the section (inset-0), so nothing moves; the cap only bites
+ * above it. pointer-events-none so the full-bleed band never eats clicks —
+ * each toy mount restores pointer-events-auto where needed.
+ * Used twice (auto-layout toy before .shell, toys after) purely to
+ * preserve the original paint and tab order; both bands share identical
+ * geometry.
+ */
+const HERO_BAND = "pointer-events-none absolute inset-0 mx-auto max-w-[1600px]";
 
 /** Return-home spring — soft and bouncy, so pieces wobble back into place. */
 const HOME_SPRING = { type: "spring", stiffness: 90, damping: 11 } as const;
@@ -196,10 +210,18 @@ export default function HomeHero() {
         taglineRef={taglineRef}
       />
 
-      {/* Draggable pen-tool bezier — a compact selected shape parked in the
-          hero's empty left margin, above the line grid. Its grab circles
-          ride on their own z-10 hit layer. */}
-      <PenToolCurve />
+      {/* Auto-layout toy — a compact scattered-shapes demo parked in the
+          hero's empty left margin; its chip button snaps them into an
+          auto-layout row with Figma spacing badges. lg+ only: below lg
+          the hero shows no absolute toys. Hangs off the capped band so
+          at ultrawide it stays tethered to the centered content; sits
+          BEFORE .shell like the old curve, so its shapes keep painting
+          below the headline (its button carries its own z-10). */}
+      <div className={HERO_BAND}>
+        <div className="hidden lg:block">
+          <AutoLayoutToy />
+        </div>
+      </div>
 
       <div className="shell relative text-center">
         <MotionReveal>
@@ -235,10 +257,18 @@ export default function HomeHero() {
                       backgroundImage: `linear-gradient(100deg, color-mix(in srgb, ${hex} 45%, white) 0%, ${hex} 100%)`,
                     }
                   : { color: hex };
+              // Last line only: nudge "Dev" down 0.01em so the third
+              // measured ink gap matches the first two — the "&" of the
+              // line above descends ~0.01em below the baseline, which
+              // reads as a 1px-smaller redline gap at 1280/1440. Em-based
+              // so it scales with the clamp font.
+              const last = i === hero.lines.length - 1;
               return (
                 <span
                   key={line.text}
                   className={`block transition-colors duration-300 ${
+                    last ? "mt-[0.01em] " : ""
+                  }${
                     (line.gradient && gradientText[line.accent]) ||
                     accentText[line.accent]
                   }`}
@@ -408,21 +438,42 @@ export default function HomeHero() {
             )}
           </p>
         </MotionReveal>
+
+        {/* Mobile toys — below lg the absolute margins don't exist, so the
+            two touch-friendly toys (both real buttons) move IN-FLOW under
+            the tagline. Same heroAccent state/handlers as the lg+ panel
+            mount, so mobile swatches re-theme the mobile hero. Rendered
+            directly — NOT Throwable — since throw physics is pointer-fine
+            only. */}
+        <MotionReveal delay={240} className="lg:hidden">
+          <div className="mt-10 flex flex-wrap items-start justify-center gap-4">
+            <ColorStylesPanel
+              active={heroAccent}
+              onPick={setHeroAccent}
+              onReset={() => setHeroAccent(null)}
+            />
+            <ClickMe />
+          </div>
+        </MotionReveal>
       </div>
 
+      {/* Toy band — same capped geometry as the curve's band above; sits
+          AFTER .shell so the toys keep their original tab order (content
+          first, toys last). */}
+      <div className={HERO_BAND}>
       {/* Color-styles panel — a real control (buttons re-theme the hero),
           parked in the empty right margin to mirror the pen-tool object on
           the left. Throwable like the annotations; the capture-phase click
           handler swallows the click that follows a real drag so a clean
           click on a swatch always lands. Hidden below lg, where the margin
-          doesn't exist. */}
+          doesn't exist (an in-flow copy renders under the tagline instead). */}
       {/* top: at lg (1024–1279) the "Let's Connect" chip pokes to ~x823 and
           the panel starts at ~x813, so the panel drops to the bottom of the
           30–58% band, below the chip (measured clear at 1024); from xl the
           margin is wide enough to sit at 34%, mirroring the curve's band. */}
       <div
         data-hero-panel
-        className="absolute right-[2%] top-[58%] z-10 hidden lg:block xl:right-[4%] xl:top-[34%]"
+        className="pointer-events-auto absolute right-[2%] top-[58%] z-10 hidden lg:block xl:right-[4%] xl:top-[34%]"
       >
         <MotionReveal delay={380}>
           <Throwable
@@ -455,17 +506,18 @@ export default function HomeHero() {
       </div>
 
       {/* Bottom-left: compact typing test (contains an input — not throwable). */}
-      <div className="absolute bottom-6 left-[3%] z-10 hidden lg:block">
+      <div className="pointer-events-auto absolute bottom-6 left-[3%] z-10 hidden lg:block">
         <MotionReveal delay={440}>
           <TypeTest />
         </MotionReveal>
       </div>
 
       {/* Bottom-right: the "click me" microinteraction toy. */}
-      <div className="absolute bottom-8 right-[4%] z-10 hidden lg:block">
+      <div className="pointer-events-auto absolute bottom-8 right-[4%] z-10 hidden lg:block">
         <MotionReveal delay={500}>
           <ClickMe />
         </MotionReveal>
+      </div>
       </div>
     </section>
   );

@@ -17,6 +17,7 @@ import { about, education, site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About",
   description: `${site.fullName} — ${site.role}. Based in ${site.location}.`,
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -52,7 +53,7 @@ export default function AboutPage() {
               {about.note}
             </p>
             <p className="label mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1">
-              <span className="whitespace-nowrap">{site.email}</span>
+              <span className="whitespace-nowrap normal-case">{site.email}</span>
               <span aria-hidden="true">·</span>
               <span className="whitespace-nowrap">{site.phone}</span>
               <span aria-hidden="true">·</span>
@@ -148,3 +149,4 @@ export default function AboutPage() {
     </>
   );
 }
+
