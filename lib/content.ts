@@ -295,7 +295,7 @@ export const caseStudies: CaseStudy[] = [
     stats: [
       { value: "3", label: "Home → Restaurant → Checkout" },
       { value: "5 Wks", label: "Jan 21 — Feb 25, 2026" },
-      { value: "KPI", label: "Decrease time on task" },
+      { value: "KPI", label: "Decrease Time on Task" },
     ],
     meta: { role: "UX Designer", platform: "Mobile · Figma, Miro, Mobbin", duration: "5 Weeks · 2026" },
     accent: "cyan",
@@ -387,7 +387,7 @@ export const projects: Project[] = [
     imageAlt: "Agile Advice website",
   },
   {
-    title: "OSTOUL Product Design",
+    title: "OSTOUL ELM Product Design",
     year: "Completed",
     category: "Product Design",
     stack: "Figma, Wireframing, User Research, Design Thinking",
@@ -401,7 +401,7 @@ export const projects: Project[] = [
   },
   {
     title: "Keeta Redesign",
-    year: "Finalizing",
+    year: "Completed",
     category: "Mobile Design",
     stack: "Figma, UI/UX Design",
     accent: "cyan",
@@ -586,7 +586,7 @@ export const education: Role[] = [
     details: ["Bachelor of Marketing and Communication"],
     tags: ["Marketing", "Communication", "Business", "Strategy"],
     image: "/work/imam-university.png",
-    imageAlt: "Imam Mohammad Ibn Saud Islamic University",
+    imageAlt: "Imam Mohammed Ibn Saud University",
     imageFit: "contain",
   },
   {
@@ -631,27 +631,19 @@ export const certifications: Certification[] = [
   {
     title: "UX/UI",
     issuer: "SATR - Tuwaiq Academy",
-    year: "2026",
-    href: "https://satr.tuwaiq.edu.sa",
-  },
+    year: "2026",  },
   {
     title: "UX Research and Planning",
     issuer: "SATR - Tuwaiq Academy",
-    year: "2026",
-    href: "https://satr.tuwaiq.edu.sa",
-  },
+    year: "2026",  },
   {
     title: "Applied UX/UI Project",
     issuer: "SATR - Tuwaiq Academy",
-    year: "2026",
-    href: "https://satr.tuwaiq.edu.sa",
-  },
+    year: "2026",  },
   {
     title: "UI Prototyping",
     issuer: "SATR - Tuwaiq Academy",
-    year: "2026",
-    href: "https://satr.tuwaiq.edu.sa",
-  },
+    year: "2026",  },
   {
     title: "Introduction to Front-End Development",
     issuer: "Meta",

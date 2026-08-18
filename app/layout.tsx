@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     default: `${site.fullName} — ${site.role}`,
     template: `%s — ${site.name}`,
   },
-  description: `${site.fullName} designs interface systems and builds them in React and Next.js. Based in ${site.location}.`,
+  description: `${site.fullName} — ${site.role}, designing and building user-centered digital interfaces. Based in ${site.location}.`,
   // No og title/description/url here: pages don't declare their own openGraph
   // blocks (shallow merge would drop siteName), so og:* must fall back to each
   // page's resolved title/description instead of freezing the homepage's.

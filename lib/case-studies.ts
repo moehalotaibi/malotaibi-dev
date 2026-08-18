@@ -233,7 +233,7 @@ export const caseStudyDetails: CaseStudyDetail[] = [
           },
           {
             "title": "Typography",
-            "body": "Font hierarchy standardized (H1, Body, Caption) to improve scan-ability and readability for visually impaired users."
+            "body": "Font hierarchy standardized (H1, Body, Caption) to improve scannability and readability for visually impaired users."
           },
           {
             "title": "Assistive technology",
