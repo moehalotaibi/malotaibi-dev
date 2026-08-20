@@ -92,13 +92,14 @@ function MethodCard({
   );
 }
 
-export default function MethodCards() {
+export default function MethodCards({
+  className = "grid gap-4 sm:grid-cols-3",
+}: {
+  /** Grid classes — the contact page's left rail stacks to one column. */
+  className?: string;
+}) {
   return (
-    <StaggerGroup
-      as="ul"
-      className="grid gap-4 sm:grid-cols-3"
-      stagger={0.08}
-    >
+    <StaggerGroup as="ul" className={className} stagger={0.08}>
       <StaggerItem as="li" className="h-full">
         <MethodCard
           accent="violet"

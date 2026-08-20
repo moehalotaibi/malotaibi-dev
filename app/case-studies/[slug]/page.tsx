@@ -5,6 +5,7 @@ import MotionReveal from "@/components/motion/motion-reveal";
 import CountUp from "@/components/motion/count-up";
 import CaseSection from "@/components/work/case-section";
 import ReadingProgress from "@/components/work/reading-progress";
+import VisitPill from "@/components/work/visit-pill";
 import { caseStudies } from "@/lib/content";
 import { getCaseStudyDetail } from "@/lib/case-studies";
 import { ACCENT_HEX, accentText } from "@/lib/accents";
@@ -41,6 +42,9 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
   return (
     <>
       <ReadingProgress colorHex={ACCENT_HEX[study.accent]} />
+      {study.link ? (
+        <VisitPill href={study.link} title={study.title} accent={study.accent} />
+      ) : null}
 
       {/* Hero */}
       <section className="shell pb-16 pt-24 md:pt-28">

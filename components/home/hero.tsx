@@ -466,7 +466,9 @@ export default function HomeHero() {
           the left. Throwable like the annotations; the capture-phase click
           handler swallows the click that follows a real drag so a clean
           click on a swatch always lands. Hidden below lg, where the margin
-          doesn't exist (an in-flow copy renders under the tagline instead). */}
+          doesn't exist (an in-flow copy renders under the tagline instead).
+          resizable: this instance's selection-frame corners are live Figma
+          resize grips (the panel scales itself; grips never reach Throwable). */}
       {/* top: at lg (1024–1279) the "Let's Connect" chip pokes to ~x823 and
           the panel starts at ~x813, so the panel drops to the bottom of the
           30–58% band, below the chip (measured clear at 1024); from xl the
@@ -500,6 +502,7 @@ export default function HomeHero() {
               active={heroAccent}
               onPick={setHeroAccent}
               onReset={() => setHeroAccent(null)}
+              resizable
             />
           </Throwable>
         </MotionReveal>

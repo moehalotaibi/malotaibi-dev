@@ -32,7 +32,11 @@ const BRANDS: Record<BrandSlug, { title: string; path: string; hex: string }> = 
   nextdotjs: { title: siNextdotjs.title, path: siNextdotjs.path, hex: siNextdotjs.hex },
   typescript: { title: siTypescript.title, path: siTypescript.path, hex: siTypescript.hex },
   tailwindcss: { title: siTailwindcss.title, path: siTailwindcss.path, hex: siTailwindcss.hex },
-  framer: { title: siFramer.title, path: siFramer.path, hex: siFramer.hex },
+  // Framer's logo mark is pure black — simple-icons' 0055FF is their web
+  // accent, which would defeat the luminance rule and paint the glyph
+  // link-blue. Treat it as black so brandFill() lightens it to cream like
+  // the other dark marquee glyphs.
+  framer: { title: siFramer.title, path: siFramer.path, hex: "000000" },
   cursor: { title: siCursor.title, path: siCursor.path, hex: siCursor.hex },
   claude: { title: siClaude.title, path: siClaude.path, hex: siClaude.hex },
   vercel: { title: siVercel.title, path: siVercel.path, hex: siVercel.hex },
