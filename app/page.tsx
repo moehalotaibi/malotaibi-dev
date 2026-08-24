@@ -12,6 +12,7 @@ import SkillsRows from "@/components/home/skills";
 import CaseStudiesSection from "@/components/home/case-studies";
 import ProjectsIndex from "@/components/home/projects";
 import TechStack from "@/components/home/tech-stack";
+import Guestbook from "@/components/home/guestbook";
 import SpineContainer from "@/components/home/path-spine";
 
 export const metadata: Metadata = {
@@ -29,6 +30,10 @@ export default function Home() {
       <CaseStudiesSection />
       <ProjectsIndex />
       <TechStack />
+      {/* Key is public-by-design (domain-locked at Web3Forms); baked into
+          the static page at build time from the server env — same pattern
+          as app/contact/page.tsx. */}
+      <Guestbook web3formsKey={process.env.WEB3FORMS_ACCESS_KEY ?? ""} />
     </SpineContainer>
   );
 }

@@ -20,6 +20,9 @@
 # production
 /build
 
+# local data (visitor comments JSON store — dev/trial only)
+/.data
+
 # misc
 .DS_Store
 *.pem
