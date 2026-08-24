@@ -585,7 +585,7 @@ export const education: Role[] = [
     accent: "violet",
     details: ["Bachelor of Marketing and Communication"],
     tags: ["Marketing", "Communication", "Business", "Strategy"],
-    image: "/work/imam-university.png",
+    image: "/work/imam-university-logo.png",
     imageAlt: "Imam Mohammed Ibn Saud University",
     imageFit: "contain",
   },
