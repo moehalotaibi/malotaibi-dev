@@ -435,7 +435,7 @@ export default function Guestbook({ web3formsKey }: { web3formsKey: string }) {
           message,
           x: compose.x,
           y: compose.y,
-          company: companyRef.current?.value ?? "",
+          botcheck: companyRef.current?.value ?? "",
         }),
       });
       const data = (await res.json().catch(() => null)) as {
@@ -445,12 +445,14 @@ export default function Guestbook({ web3formsKey }: { web3formsKey: string }) {
 
       if (res.ok && data?.comment) {
         // Held for review — keep an author-only pending marker, tell Moe.
+        // The honeypot's fake-success echo (id "echo") stays quiet: nothing
+        // was saved, so an email about it would only mislead.
         const saved = data.comment;
         setPendings((prev) => [
           ...prev,
           { id: saved.id, name: saved.name, x: saved.x, y: saved.y },
         ]);
-        notifyMoe(name, email, message);
+        if (saved.id !== "echo") notifyMoe(name, email, message);
         closeCompose();
         return;
       }
@@ -722,16 +724,19 @@ export default function Guestbook({ web3formsKey }: { web3formsKey: string }) {
                     </div>
                   </div>
 
-                  {/* Honeypot — invisible to people, tempting to bots. */}
+                  {/* Honeypot — invisible to people, tempting to bots. The
+                      name/label must never match autofill vocabulary: a real
+                      visitor's Chrome autofilled the old "Company" field and
+                      their pin was silently dropped as a bot. */}
                   <div
                     aria-hidden="true"
                     className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
                   >
-                    <label htmlFor="gb-company">Company</label>
+                    <label htmlFor="gb-botcheck">Leave this field empty</label>
                     <input
                       ref={companyRef}
-                      id="gb-company"
-                      name="company"
+                      id="gb-botcheck"
+                      name="botcheck"
                       type="text"
                       tabIndex={-1}
                       autoComplete="off"

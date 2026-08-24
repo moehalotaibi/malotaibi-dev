@@ -3,10 +3,10 @@
 // GET  /api/comments  → { comments: PublicComment[] } — APPROVED pins only,
 //      WITHOUT email. Hard privacy rule: emails never leave the server, so
 //      the strip happens here, server-side, not in the client.
-// POST /api/comments  → validates { name, email, message, x, y, company },
+// POST /api/comments  → validates { name, email, message, x, y, botcheck },
 //      saves via the store as approved: false (held for review in /admin),
 //      returns { comment: PublicComment } (sans email).
-//      - "company" is a honeypot: non-empty → 200 with an unsaved echo, so
+//      - "botcheck" is a honeypot: non-empty → 200 with an unsaved echo, so
 //        bots can't tell they were caught.
 //      - Naive in-memory per-IP throttle: max 5 posts / 10 min (dev-grade;
 //        resets on reload/redeploy — a production build would use a shared
@@ -92,7 +92,9 @@ export async function POST(request: NextRequest) {
   const name = typeof raw.name === "string" ? raw.name.trim() : "";
   const email = typeof raw.email === "string" ? raw.email.trim() : "";
   const message = typeof raw.message === "string" ? raw.message.trim() : "";
-  const company = typeof raw.company === "string" ? raw.company.trim() : "";
+  // Renamed from "company" — Chrome autofilled that name for a real visitor
+  // and their pin was silently dropped. "botcheck" matches no autofill vocab.
+  const botcheck = typeof raw.botcheck === "string" ? raw.botcheck.trim() : "";
   const x = validPercent(raw.x) ? raw.x : null;
   const y = validPercent(raw.y) ? raw.y : null;
 
@@ -112,7 +114,7 @@ export async function POST(request: NextRequest) {
   const comment: NewComment = { name, email, message, x, y };
 
   // Honeypot filled → pretend it worked, save nothing.
-  if (company !== "") {
+  if (botcheck !== "") {
     return Response.json({ comment: toPublic(comment) });
   }
 
