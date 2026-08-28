@@ -9,7 +9,7 @@ import MotionReveal from "@/components/motion/motion-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import SectionHeader from "@/components/section-header";
 import { accentText } from "@/lib/accents";
-import { projects } from "@/lib/content";
+import { projects, sideProjects } from "@/lib/content";
 import { MotionLink, PillLink, SPRING } from "./motion-kit";
 
 export default function ProjectsIndex() {
@@ -49,6 +49,41 @@ export default function ProjectsIndex() {
                 </span>
               </span>
             </MotionLink>
+          </StaggerItem>
+        ))}
+        {/* Side project — same compact row under a quiet label, mirroring
+            the dedicated page's "Side Project" section. */}
+        {sideProjects.map((p) => (
+          <StaggerItem key={p.title}>
+            <div className="border-t border-rule pt-6">
+              <p className="label">{"// side project"}</p>
+              <MotionLink
+                href={p.detailHref ?? "/projects"}
+                className="flex items-baseline justify-between gap-6 py-6 transition-colors duration-300 hover:bg-white/[0.02]"
+                initial={reduced ? undefined : "rest"}
+                whileHover={reduced ? undefined : "hover"}
+                whileTap={reduced ? undefined : { scale: 0.99 }}
+              >
+                <span className="min-w-0">
+                  <motion.span
+                    className="block font-display text-h3 font-medium"
+                    variants={{ rest: { x: 0 }, hover: { x: 4 } }}
+                    transition={SPRING}
+                  >
+                    {p.title}
+                  </motion.span>
+                  <span className="label mt-1 block">{p.year}</span>
+                </span>
+                <span className="min-w-0 text-right">
+                  <span className={`label block ${accentText[p.accent]}`}>
+                    {p.category}
+                  </span>
+                  <span className="label mt-1 hidden normal-case tracking-normal text-paper-dim sm:block">
+                    {p.stack}
+                  </span>
+                </span>
+              </MotionLink>
+            </div>
           </StaggerItem>
         ))}
       </StaggerGroup>

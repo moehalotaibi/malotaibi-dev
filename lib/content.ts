@@ -347,6 +347,8 @@ export type Project = {
   accent: Accent;
   bullets: string[];
   href?: string;
+  /** Internal detail page — makes the row's title and shot link through. */
+  detailHref?: string;
   image?: string;
   imageAlt?: string;
 };
@@ -423,6 +425,29 @@ export const projects: Project[] = [
     ],
     image: "/work/snb-mobile.jpg",
     imageAlt: "SNB Mobile banking design",
+  },
+];
+
+// --------------------------------------------------------- side project
+// NYX — personal macOS build, runs locally. No external link exists.
+// Bullets are Moe-approved wording — do not reword.
+
+export const sideProjects: Project[] = [
+  {
+    title: "NYX",
+    year: "Daily Driver",
+    category: "AI Voice Assistant",
+    stack: "Tauri, React, TypeScript, Python, Claude Agent SDK",
+    accent: "amber",
+    detailHref: "/projects/nyx",
+    bullets: [
+      "A voice-first personal AI assistant for macOS — wake word, streaming replies, barge-in interruption, and speech recognition that runs fully on-device.",
+      "The orb is the status: rest, listening, thinking, and speaking states driven by live audio data, not canned animation.",
+      "One tokens file holds every color, font, and radius — the interface's entire personality reskins by editing CSS variables.",
+      "Safety as architecture: messages are drafted, never auto-sent, and destructive actions require spoken confirmation.",
+    ],
+    image: "/work/nyx-canvas.png",
+    imageAlt: "NYX HUD — paper theme with the status orb and conversation panel",
   },
 ];
 

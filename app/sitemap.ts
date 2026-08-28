@@ -18,5 +18,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...studyRoutes];
+  const projectRoutes = [
+    {
+      url: `${site.url}/projects/nyx`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    },
+  ];
+
+  return [...staticRoutes, ...studyRoutes, ...projectRoutes];
 }

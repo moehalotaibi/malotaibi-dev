@@ -4,8 +4,11 @@
 // { project, flipped }. Subtle 3D tilt on the whole card, the shot half
 // zooms slightly while the card is hovered, bullets stagger in with a
 // one-time marker pulse, and the Visit pill (when present) is magnetic.
-// Static under reduced motion.
+// A `detailHref` on the project data makes the title and shot internal
+// links (with a Details pill when there's no external href) — rows
+// without one are unchanged. Static under reduced motion.
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import type { Project } from "@/lib/content";
 import { accentText } from "@/lib/accents";
@@ -48,8 +51,25 @@ function BulletMarker() {
   );
 }
 
+const MotionLink = motion.create(Link);
+
 export default function ProjectRow({ project, flipped = false }: Props) {
   const reduced = useReducedMotion();
+
+  const shot = (
+    <motion.div
+      variants={
+        reduced ? undefined : { rest: { scale: 1 }, hover: { scale: 1.04 } }
+      }
+      transition={SPRING}
+    >
+      <ShotFrame
+        title={project.title}
+        image={project.image}
+        imageAlt={project.imageAlt}
+      />
+    </motion.div>
+  );
 
   return (
     <TiltCard max={4}>
@@ -62,7 +82,32 @@ export default function ProjectRow({ project, flipped = false }: Props) {
         <div className={flipped ? "md:order-2" : ""}>
           <div className="flex items-baseline justify-between gap-4">
             <h3 className="font-display text-h2 font-medium text-cream">
-              {project.title}
+              {project.detailHref ? (
+                <Link
+                  href={project.detailHref}
+                  className="inline-flex items-center gap-3"
+                >
+                  {project.title}
+                  {/* Decorative affordance only — hidden until card hover. */}
+                  <motion.span
+                    className="shrink-0 text-paper-mid opacity-0"
+                    aria-hidden="true"
+                    variants={
+                      reduced
+                        ? undefined
+                        : {
+                            rest: { opacity: 0, x: -8 },
+                            hover: { opacity: 1, x: 0 },
+                          }
+                    }
+                    transition={SPRING}
+                  >
+                    <UI name="arrow-right" className="h-5 w-5" />
+                  </motion.span>
+                </Link>
+              ) : (
+                project.title
+              )}
             </h3>
             <span className="label tabular-nums">{project.year}</span>
           </div>
@@ -104,25 +149,33 @@ export default function ProjectRow({ project, flipped = false }: Props) {
                 <UI name="arrow-right" className="h-3.5 w-3.5" />
               </motion.a>
             </Magnetic>
+          ) : project.detailHref ? (
+            <Magnetic className="mt-8 block w-full" strength={0.2}>
+              <MotionLink
+                href={project.detailHref}
+                aria-label={`${project.title} details`}
+                className="pill w-full justify-center"
+                whileHover={reduced ? undefined : { scale: 1.03 }}
+                whileTap={reduced ? undefined : { scale: 0.97 }}
+                transition={SPRING}
+              >
+                Details
+                <UI name="arrow-right" className="h-3.5 w-3.5" />
+              </MotionLink>
+            </Magnetic>
           ) : null}
         </div>
 
         {/* Shot half — zooms slightly while the card is hovered */}
         <div className={flipped ? "md:order-1" : ""}>
-          <motion.div
-            variants={
-              reduced
-                ? undefined
-                : { rest: { scale: 1 }, hover: { scale: 1.04 } }
-            }
-            transition={SPRING}
-          >
-            <ShotFrame
-              title={project.title}
-              image={project.image}
-              imageAlt={project.imageAlt}
-            />
-          </motion.div>
+          {project.detailHref ? (
+            // Duplicate of the title link — skipped by AT and tab order.
+            <Link href={project.detailHref} tabIndex={-1} aria-hidden="true">
+              {shot}
+            </Link>
+          ) : (
+            shot
+          )}
         </div>
       </motion.article>
     </TiltCard>
