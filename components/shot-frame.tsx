@@ -4,12 +4,18 @@ import { site } from "@/lib/content";
 type Props = {
   /** Shown in the fake browser chrome's address strip. */
   title?: string;
-  ratio?: "video" | "square" | "tall" | "phone" | "wide";
+  ratio?: "video" | "square" | "tall" | "phone" | "wide" | "board";
   /** Real screenshot (public/ path). Falls back to the monogram grid. */
   image?: string;
   imageAlt?: string;
   /** "contain" centers the image on a white ground — for logos. */
   fit?: "cover" | "contain";
+  /**
+   * next/image `sizes` — how wide the frame renders, so the right rendition
+   * is fetched. Default fits the two-column project cards; the case-study
+   * column passes its own (its full-span figures are ~864px, not 50vw).
+   */
+  sizes?: string;
 };
 
 const RATIOS: Record<NonNullable<Props["ratio"]>, string> = {
@@ -18,6 +24,8 @@ const RATIOS: Record<NonNullable<Props["ratio"]>, string> = {
   tall: "aspect-[4/5]",
   phone: "aspect-[9/19.5]",
   wide: "aspect-[5/2]",
+  // Figma design boards (multi-screen mockup sheets) — near 4:3.
+  board: "aspect-[4/3]",
 };
 
 /**
@@ -31,6 +39,7 @@ export default function ShotFrame({
   image,
   imageAlt,
   fit = "cover",
+  sizes = "(min-width: 768px) 50vw, 100vw",
 }: Props) {
   return (
     <div className="overflow-hidden rounded-xl border border-rule bg-raised">
@@ -59,7 +68,7 @@ export default function ShotFrame({
             src={image}
             alt={imageAlt ?? title ?? ""}
             fill
-            sizes="(min-width: 768px) 50vw, 100vw"
+            sizes={sizes}
             className={
               fit === "contain"
                 ? "object-contain p-10"

@@ -173,7 +173,9 @@ export default function CaseSection({ section, index, accent }: Props) {
                 <StaggerItem
                   key={img.src}
                   className={
-                    img.ratio === "wide" || img.ratio === "video"
+                    img.ratio === "wide" ||
+                    img.ratio === "video" ||
+                    img.ratio === "board"
                       ? "sm:col-span-2 lg:col-span-3"
                       : undefined
                   }
@@ -183,6 +185,17 @@ export default function CaseSection({ section, index, accent }: Props) {
                     title={img.alt}
                     image={img.src}
                     imageAlt={img.alt}
+                    // Full-span figures fill the reading column (shell 1200
+                    // − gutters − 200px rail − gap ≈ 864px); tiles sit in
+                    // the 3-up grid. Without this, next/image assumes 50vw
+                    // and serves a soft 640w rendition to 1x desktops.
+                    sizes={
+                      img.ratio === "wide" ||
+                      img.ratio === "video" ||
+                      img.ratio === "board"
+                        ? "(min-width: 1200px) 864px, (min-width: 1024px) calc(100vw - 340px), calc(100vw - 2.5rem)"
+                        : "(min-width: 1024px) 280px, (min-width: 640px) 50vw, calc(100vw - 2.5rem)"
+                    }
                   />
                 </StaggerItem>
               ))}

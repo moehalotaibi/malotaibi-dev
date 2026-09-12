@@ -285,6 +285,28 @@ export type CaseStudy = {
 // Real work only: Moe's Udacity capstone + nanodegree portfolio projects.
 export const caseStudies: CaseStudy[] = [
   {
+    // Self-initiated concept project — content verbatim from Moe's own
+    // case study (birr-case-study.md). Newest work leads the list.
+    slug: "birr",
+    tag: "UX Case Study · Family Health",
+    title: "Birr — Medication Companion",
+    description:
+      "Adult children in Saudi Arabia increasingly manage a parent's chronic medications — often 4–8 drugs from several doctors — using WhatsApp groups and memory.",
+    heroStat: { value: "84", label: "System Usability Scale (n = 5)" },
+    stats: [
+      { value: "2", label: "Households, both sides" },
+      { value: "21", label: "Screens per language" },
+      { value: "2", label: "Modes, one source of truth" },
+    ],
+    meta: {
+      role: "Product Design · Research · Design System — Solo",
+      platform: "iOS · Figma",
+      duration: "September 2026 · Concept",
+    },
+    accent: "green",
+    link: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project",
+  },
+  {
     // Real project — Moe's Udacity capstone, content from his case-study PDF.
     slug: "keeta-redesign",
     tag: "UX Case Study · Food Delivery",
@@ -400,6 +422,27 @@ export const projects: Project[] = [
     href: "https://www.figma.com/design/KrMgwhqKHqUAdwn9NqS1ly/Untitled?node-id=0-21311&t=6xInwYovn7QhM64e-1",
     image: "/work/ostoul.png",
     imageAlt: "Ostoul car marketplace page",
+  },
+  {
+    // Concept project — also a case study (like Keeta). Bullets are drawn
+    // from Moe's own case study (birr-case-study.md). Sits above Keeta by
+    // Moe's call.
+    title: "Birr",
+    year: "Concept",
+    category: "Mobile Design",
+    stack: "Figma, UX Research, Design Systems, Arabic RTL",
+    accent: "green",
+    bullets: [
+      "Reminders anchored to prayer times instead of clock times — the schedule stores the prayer slot and offset, not the time, and each slot resolves to a real time every day from the device's location.",
+      "Parent mode opens from a text-message link with no account — one card on screen, 30pt Arabic titles, a 60pt button that says I took it, and it keeps working without internet.",
+      "A family circle with attribution — every dose carries a name, confirmed by herself or confirmed by Mohammed, so the shared status answers “did anyone do it?” and quietly discourages double-dosing.",
+      "Arabic-first and bilingual (RTL/LTR) — Arabic is the design source and the English layout is derived from it: 21 screens per language, explicit mirroring rules, and direction-isolated drug names.",
+    ],
+    href: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project",
+    detailHref: "/case-studies/birr",
+    image: "/work/birr-cover.jpg",
+    imageAlt:
+      "Birr cover — the Parent-mode dose card, the Caregiver Today screen and onboarding on three phones, with the بِرّ wordmark, Arabic UI",
   },
   {
     title: "Keeta Redesign",

@@ -7,7 +7,8 @@
 // page passes the key in from env. Same card chrome as the old mailto form,
 // with name / email / phone fields, inline validation, and idle → sending →
 // success/error states. On failure a mailto link keeps a way out. The
-// hidden "company" input is a bot honeypot: filled in → fake success,
+// hidden "botcheck" input is a bot honeypot (never name it anything a
+// browser might autofill — "company" once swallowed a real message): filled in → fake success,
 // nothing sent. Static under reduced motion.
 
 import { useRef, useState } from "react";
@@ -127,7 +128,7 @@ export default function ContactForm({ accessKey }: { accessKey: string }) {
     }
 
     const company =
-      formRef.current?.querySelector<HTMLInputElement>("#contact-company")
+      formRef.current?.querySelector<HTMLInputElement>("#contact-botcheck")
         ?.value ?? "";
     if (company !== "") {
       // Bot filled the honeypot: pretend it worked, send nothing.
@@ -304,10 +305,10 @@ export default function ContactForm({ accessKey }: { accessKey: string }) {
         aria-hidden="true"
         className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
       >
-        <label htmlFor="contact-company">Company</label>
+        <label htmlFor="contact-botcheck">Leave this field empty</label>
         <input
-          id="contact-company"
-          name="company"
+          id="contact-botcheck"
+          name="botcheck"
           type="text"
           tabIndex={-1}
           autoComplete="off"
