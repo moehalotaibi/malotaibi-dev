@@ -304,7 +304,7 @@ export const caseStudies: CaseStudy[] = [
       duration: "September 2026 · Concept",
     },
     accent: "green",
-    link: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project",
+    link: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project?node-id=25-152&t=PL5gHRs6OOKjQHzx-1",
   },
   {
     // Real project — Moe's Udacity capstone, content from his case-study PDF.
@@ -438,7 +438,7 @@ export const projects: Project[] = [
       "A family circle with attribution — every dose carries a name, confirmed by herself or confirmed by Mohammed, so the shared status answers “did anyone do it?” and quietly discourages double-dosing.",
       "Arabic-first and bilingual (RTL/LTR) — Arabic is the design source and the English layout is derived from it: 21 screens per language, explicit mirroring rules, and direction-isolated drug names.",
     ],
-    href: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project",
+    href: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project?node-id=25-152&t=PL5gHRs6OOKjQHzx-1",
     detailHref: "/case-studies/birr",
     image: "/work/birr-cover.jpg",
     imageAlt:
