@@ -35,7 +35,7 @@ function CertRow({ cert, reduced }: { cert: Certification; reduced: boolean | nu
       ) : (
         <span className="text-meta font-medium text-paper">{cert.title}</span>
       )}
-      <span className="label shrink-0 text-right">
+      <span className="label text-right sm:shrink-0">
         {cert.issuer} · {cert.year}
       </span>
     </motion.div>
@@ -77,7 +77,7 @@ function GroupRow({
             {open ? "// hide" : "// show"}
           </span>
         </span>
-        <span className="label shrink-0 text-right">
+        <span className="label text-right sm:shrink-0">
           {members.length} certificates · {yearSpan(members)}
         </span>
       </motion.button>
