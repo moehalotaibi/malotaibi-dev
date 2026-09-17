@@ -712,6 +712,12 @@ export const certifications: Certification[] = [
     href: "https://www.coursera.org/account/accomplishments/verify/250PTQ3MFU7Z",
   },
   {
+    // In progress — no verification link until it's earned.
+    title: "AI for Designers",
+    issuer: "IxDF",
+    year: "In progress",
+  },
+  {
     title: "Full Stack Web Development Bootcamp",
     issuer: "Udemy",
     year: "2025",
