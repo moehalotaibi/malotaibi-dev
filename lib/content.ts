@@ -685,6 +685,12 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    // In progress — exam scheduled; no verification link until it's earned.
+    title: "UX Certification (UXC)",
+    issuer: "Nielsen Norman Group",
+    year: "In progress",
+  },
+  {
     title: "User Experience Nanodegree Program",
     issuer: "Udacity",
     year: "2026",
