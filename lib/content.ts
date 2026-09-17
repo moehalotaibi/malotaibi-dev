@@ -681,12 +681,15 @@ export type Certification = {
   issuer: string;
   year: string;
   href?: string;
+  /** Entries sharing a group fold into ONE collapsed row (the group name)
+   *  that expands on click — placed where the first member sits. */
+  group?: string;
 };
 
 export const certifications: Certification[] = [
   {
     // In progress — exam scheduled; no verification link until it's earned.
-    title: "UX Certification (UXC)",
+    title: "NN/G UX Certification (UXC)",
     issuer: "Nielsen Norman Group",
     year: "In progress",
   },
@@ -703,22 +706,6 @@ export const certifications: Certification[] = [
     href: "https://www.coursera.org/account/accomplishments/professional-cert/SUYWKSU26FFQ",
   },
   {
-    title: "UX/UI",
-    issuer: "SATR - Tuwaiq Academy",
-    year: "2026",  },
-  {
-    title: "UX Research and Planning",
-    issuer: "SATR - Tuwaiq Academy",
-    year: "2026",  },
-  {
-    title: "Applied UX/UI Project",
-    issuer: "SATR - Tuwaiq Academy",
-    year: "2026",  },
-  {
-    title: "UI Prototyping",
-    issuer: "SATR - Tuwaiq Academy",
-    year: "2026",  },
-  {
     title: "Introduction to Front-End Development",
     issuer: "Meta",
     year: "2025",
@@ -729,10 +716,34 @@ export const certifications: Certification[] = [
     issuer: "Udemy",
     year: "2025",
   },
-  { title: "Graphic Design Diploma", issuer: "gd-workshop", year: "2023" },
-  { title: "Adobe Creative Cloud", issuer: "gd-workshop", year: "2023" },
-  { title: "UI/UX MasterClass", issuer: "gd-workshop", year: "2023" },
-  { title: "Introduction to Blender", issuer: "gd-workshop", year: "2023" },
+  {
+    title: "UX/UI",
+    issuer: "SATR - Tuwaiq Academy",
+    year: "2026",
+    group: "Tuwaiq",
+  },
+  {
+    title: "UX Research and Planning",
+    issuer: "SATR - Tuwaiq Academy",
+    year: "2026",
+    group: "Tuwaiq",
+  },
+  {
+    title: "Applied UX/UI Project",
+    issuer: "SATR - Tuwaiq Academy",
+    year: "2026",
+    group: "Tuwaiq",
+  },
+  {
+    title: "UI Prototyping",
+    issuer: "SATR - Tuwaiq Academy",
+    year: "2026",
+    group: "Tuwaiq",
+  },
+  { title: "Graphic Design Diploma", issuer: "gd-workshop", year: "2023", group: "Other" },
+  { title: "Adobe Creative Cloud", issuer: "gd-workshop", year: "2023", group: "Other" },
+  { title: "UI/UX MasterClass", issuer: "gd-workshop", year: "2023", group: "Other" },
+  { title: "Introduction to Blender", issuer: "gd-workshop", year: "2023", group: "Other" },
 ];
 
 // -------------------------------------------------------------- toolkit
