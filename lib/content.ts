@@ -580,6 +580,12 @@ export const about = {
   hello: "Hello! I'm Mohammed",
   subline: "UX Designer",
   roleTag: "UX Designer",
+  // Chip under the hero title — links to the certificate PDF on Drive.
+  certified: {
+    label: "NN/g UX Certified",
+    detail: "UXC# 2007111",
+    href: "https://drive.google.com/file/d/1WbbPWL0SyQ9Mf1R_eG8bOGH3a6oF4nyz/view?usp=sharing",
+  },
   headline: [
     { text: "UX Designer with hands-on experience in designing and building " },
     { text: "user-centered digital interfaces", accent: "violet" },
@@ -688,10 +694,12 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
-    // In progress — exam scheduled; no verification link until it's earned.
+    // Certificate in User Experience, UXC# 2007111, awarded Sept 25 2026.
+    // Links to the certificate PDF on Moe's Drive (his hosting choice).
     title: "NN/G UX Certification (UXC)",
     issuer: "Nielsen Norman Group",
-    year: "In progress",
+    year: "2026",
+    href: "https://drive.google.com/file/d/1WbbPWL0SyQ9Mf1R_eG8bOGH3a6oF4nyz/view?usp=sharing",
   },
   {
     title: "User Experience Nanodegree Program",
