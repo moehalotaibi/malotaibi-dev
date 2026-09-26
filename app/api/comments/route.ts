@@ -122,7 +122,7 @@ export async function POST(request: NextRequest) {
     request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
   if (throttled(ip)) {
     return Response.json(
-      { errors: { form: "Too many pins — try again later." } },
+      { errors: { form: "Too many pins. Try again later." } },
       { status: 429 },
     );
   }

@@ -338,7 +338,7 @@ export default function AdminRoom() {
 
   return (
     <section className="shell pb-section pt-24 md:pt-28">
-      <p className="label">{"// guestbook — review room"}</p>
+      <p className="label">{"// guestbook · review room"}</p>
       <h1 className="mt-6 font-display text-h2 font-semibold text-cream">
         Guestbook admin.
       </h1>

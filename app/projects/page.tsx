@@ -8,7 +8,7 @@ import { projects, projectsIntro, sideProjects } from "@/lib/content";
 export const metadata: Metadata = {
   title: "UX Projects",
   description:
-    "Featured UX design work — brand identity, product design, and live platforms.",
+    "Featured UX design work: brand identity, product design, and live platforms.",
   alternates: { canonical: "/projects" },
 };
 

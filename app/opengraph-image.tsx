@@ -4,7 +4,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/content";
 
-export const alt = `${site.fullName} — ${site.role}`;
+export const alt = `${site.fullName} · ${site.role}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -39,7 +39,7 @@ export default function OpenGraphImage() {
             {site.fullName}
           </div>
           <div style={{ display: "flex", fontSize: 28, color: "#a09f97", marginTop: 10 }}>
-            {site.role} — {site.location}
+            {site.role} · {site.location}
           </div>
         </div>
 

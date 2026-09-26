@@ -103,7 +103,7 @@ export default function ClickMe() {
         type="button"
         onClick={burst}
         aria-pressed={showTag}
-        aria-label="Click me — i love microinteractions"
+        aria-label="Click me, i love microinteractions"
         className="rounded-full border border-rule-strong bg-ink/70 px-4 py-2.5 font-mono text-micro uppercase tracking-[0.14em] text-paper-mid backdrop-blur-sm transition-colors hover:border-paper hover:text-paper"
         whileHover={reduced ? undefined : { scale: 1.06 }}
         whileTap={reduced ? undefined : { scale: 0.9, rotate: -3 }}

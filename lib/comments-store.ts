@@ -58,7 +58,7 @@ const SEED: StoredComment[] = [
     id: "seed-moe",
     name: "moe.",
     email: "moe.halotaibi@gmail.com",
-    message: "drop a pin anywhere — welcome to my canvas",
+    message: "drop a pin anywhere, welcome to my canvas",
     x: 18,
     y: 35,
     createdAt: "2026-08-24T09:00:00.000Z",

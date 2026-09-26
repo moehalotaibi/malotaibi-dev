@@ -468,7 +468,7 @@ export default function Guestbook({ web3formsKey }: { web3formsKey: string }) {
       }
       setFormError(
         res.status === 429
-          ? "Too many pins — try again later."
+          ? "Too many pins. Try again later."
           : "Couldn't post. Try again.",
       );
       setSending(false);
@@ -524,7 +524,7 @@ export default function Guestbook({ web3formsKey }: { web3formsKey: string }) {
       </MotionReveal>
 
       <MotionReveal delay={80}>
-        <p className="label mb-5">{"// drop a pin — say hi"}</p>
+        <p className="label mb-5">{"// drop a pin · say hi"}</p>
       </MotionReveal>
 
       <MotionReveal delay={160}>
@@ -780,7 +780,7 @@ export default function Guestbook({ web3formsKey }: { web3formsKey: string }) {
             pendings.length === 0 &&
             !compose ? (
               <p className="label pointer-events-none absolute inset-0 flex items-center justify-center text-center">
-                {"// no pins yet — drop the first one"}
+                {"// no pins yet · drop the first one"}
               </p>
             ) : null}
 

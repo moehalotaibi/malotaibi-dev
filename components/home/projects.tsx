@@ -7,6 +7,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import MotionReveal from "@/components/motion/motion-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
+import ProjectStatus from "@/components/project-status";
 import SectionHeader from "@/components/section-header";
 import { accentText } from "@/lib/accents";
 import { projects, sideProjects } from "@/lib/content";
@@ -38,7 +39,7 @@ export default function ProjectsIndex() {
                 >
                   {p.title}
                 </motion.span>
-                <span className="label mt-1 block">{p.year}</span>
+                <ProjectStatus status={p.year} className="mt-1" />
               </span>
               <span className="min-w-0 text-right">
                 <span className={`label block ${accentText[p.accent]}`}>
@@ -72,7 +73,7 @@ export default function ProjectsIndex() {
                   >
                     {p.title}
                   </motion.span>
-                  <span className="label mt-1 block">{p.year}</span>
+                  <ProjectStatus status={p.year} className="mt-1" />
                 </span>
                 <span className="min-w-0 text-right">
                   <span className={`label block ${accentText[p.accent]}`}>

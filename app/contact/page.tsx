@@ -7,7 +7,7 @@ import { contact, site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `Get in touch with ${site.fullName} — ${site.role}, ${site.location}.`,
+  description: `Get in touch with ${site.fullName}, ${site.role}, ${site.location}.`,
   alternates: { canonical: "/contact" },
 };
 

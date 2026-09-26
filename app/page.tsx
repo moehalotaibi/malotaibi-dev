@@ -7,7 +7,6 @@ import type { Metadata } from "next";
 import HomeHero from "@/components/home/hero";
 import DividerBand from "@/components/home/divider-band";
 import IntroSection from "@/components/home/intro";
-import ServicesGrid from "@/components/home/services";
 import SkillsRows from "@/components/home/skills";
 import CaseStudiesSection from "@/components/home/case-studies";
 import ProjectsIndex from "@/components/home/projects";
@@ -25,7 +24,9 @@ export default function Home() {
       <HomeHero />
       <DividerBand />
       <IntroSection />
-      <ServicesGrid />
+      {/* "What you get" (components/home/services.tsx) was pulled 2026-09-26:
+          it repeated the Experience & Skills pillars card-for-card. The
+          component and its content in lib/content.ts are kept for now. */}
       <SkillsRows />
       <CaseStudiesSection />
       <ProjectsIndex />

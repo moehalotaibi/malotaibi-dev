@@ -37,6 +37,7 @@ import { CursorArrow } from "@/components/icons";
 import AutoLayoutToy from "@/components/home/auto-layout-toy";
 import HeadlineRedlines from "@/components/home/headline-redlines";
 import GridCellHighlight from "@/components/home/grid-cell-highlight";
+import CertifiedChip from "@/components/certified-chip";
 import ColorStylesPanel from "@/components/home/color-styles-panel";
 import TypeTest from "@/components/home/type-test";
 import ClickMe from "@/components/home/click-me";
@@ -437,6 +438,15 @@ export default function HomeHero() {
               ),
             )}
           </p>
+        </MotionReveal>
+
+        {/* NN/g UX Certification — in-flow under the tagline so it reads on
+            every breakpoint (the floating chips are lg+ only and decorative).
+            Real link, so it is neither throwable nor inside the inert layer. */}
+        <MotionReveal delay={220} y={8}>
+          <div className="mt-7 flex justify-center">
+            <CertifiedChip />
+          </div>
         </MotionReveal>
 
         {/* Mobile toys — below lg the absolute margins don't exist, so the

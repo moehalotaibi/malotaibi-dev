@@ -30,14 +30,18 @@ type Point = { x: number; y: number };
  * after the first carries an anchor square — placed by the same numbers,
  * so anchors always sit ON the path.
  */
+// Re-measured 2026-09-26 after the "What you get" cards were pulled and the
+// certification chip joined the hero (section tops at 1280px: intro 1008 ·
+// skills 1688 · case studies 2535 · projects 3465 · tech stack 4518 ·
+// guestbook 4853, page 5596 → ×4000/5596). The divider→intro anchor went:
+// with the taller hero it sat too close to the start for a clean curve.
 const WAYPOINTS: Point[] = [
-  { x: 500, y: 620 }, // start — below the hero tagline
-  { x: 108, y: 1060 }, // divider → intro
-  { x: 892, y: 1620 }, // intro → services
-  { x: 108, y: 2180 }, // services → skills
-  { x: 892, y: 2760 }, // skills → case studies
-  { x: 108, y: 3360 }, // case studies → projects
-  { x: 500, y: 3920 }, // end — at the tech-stack marquee
+  { x: 500, y: 640 }, // start — just under the certification chip
+  { x: 892, y: 1207 }, // intro → skills
+  { x: 108, y: 1812 }, // skills → case studies
+  { x: 892, y: 2477 }, // case studies → projects
+  { x: 108, y: 3229 }, // projects → tech stack
+  { x: 500, y: 3470 }, // end — top of the guestbook
 ];
 
 const ANCHORS = WAYPOINTS.slice(1);

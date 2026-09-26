@@ -228,7 +228,7 @@ export default function TypeTest() {
           </p>
         ) : paused ? (
           <span className="font-mono text-[0.6875rem] uppercase tracking-[0.1em] text-accent-amber">
-            paused — keep typing
+            paused · keep typing
           </span>
         ) : (
           <motion.span className="font-mono text-[0.6875rem] tabular-nums text-paper-mid">

@@ -13,6 +13,7 @@ import { motion, useReducedMotion } from "motion/react";
 import type { Project } from "@/lib/content";
 import { accentText } from "@/lib/accents";
 import { UI } from "@/components/icons";
+import ProjectStatus from "@/components/project-status";
 import ShotFrame from "@/components/shot-frame";
 import TiltCard from "@/components/motion/tilt-card";
 import Magnetic from "@/components/motion/magnetic";
@@ -109,7 +110,7 @@ export default function ProjectRow({ project, flipped = false }: Props) {
                 project.title
               )}
             </h3>
-            <span className="label tabular-nums">{project.year}</span>
+            <ProjectStatus status={project.year} chip className="shrink-0" />
           </div>
 
           <p className="label mt-1 normal-case tracking-normal">

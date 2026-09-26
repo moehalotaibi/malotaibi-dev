@@ -16,7 +16,7 @@ import { about, education, site } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${site.fullName} — ${site.role}. Based in ${site.location}.`,
+  description: `${site.fullName}, ${site.role}. Based in ${site.location}.`,
   alternates: { canonical: "/about" },
 };
 

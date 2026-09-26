@@ -104,7 +104,7 @@ export default function NotFoundPlayground() {
 
       <div className="shell relative flex flex-col items-center text-center">
         <h1 id="nf-title" className="sr-only">
-          404 &mdash; page not found
+          404 · page not found
         </h1>
 
         {/* The 404 as a selected Figma object — throwable as one piece.

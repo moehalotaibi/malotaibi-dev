@@ -34,10 +34,10 @@ const wordmark = Archivo_Black({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.fullName} — ${site.role}`,
-    template: `%s — ${site.name}`,
+    default: `${site.fullName} · ${site.role}`,
+    template: `%s · ${site.name}`,
   },
-  description: `${site.fullName} — ${site.role}, designing and building user-centered digital interfaces. Based in ${site.location}.`,
+  description: `${site.fullName}, ${site.role}, designing and building user-centered digital interfaces. Based in ${site.location}.`,
   // No og title/description/url here: pages don't declare their own openGraph
   // blocks (shallow merge would drop siteName), so og:* must fall back to each
   // page's resolved title/description instead of freezing the homepage's.

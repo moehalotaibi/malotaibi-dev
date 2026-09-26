@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import MotionReveal from "@/components/motion/motion-reveal";
 import CountUp from "@/components/motion/count-up";
 import CaseSection from "@/components/work/case-section";
+import CaseVideo from "@/components/work/case-video";
 import ReadingProgress from "@/components/work/reading-progress";
 import VisitPill from "@/components/work/visit-pill";
 import { caseStudies } from "@/lib/content";
@@ -125,6 +126,15 @@ export default async function CaseStudyPage({ params }: { params: Params }) {
           </div>
         </MotionReveal>
       </section>
+
+      {/* Walkthrough loop — only studies that ship one (SNB). */}
+      {detail.video ? (
+        <section className="shell pb-20" aria-label="Walkthrough video">
+          <MotionReveal y={14}>
+            <CaseVideo {...detail.video} />
+          </MotionReveal>
+        </section>
+      ) : null}
 
       {/* Sections — editorial two-column shells, treatment inferred from
           the data shape (quotes / numbered steps / feature rows). */}

@@ -66,7 +66,7 @@ export const hero = {
     { text: "visual design", accent: "amber" },
     { text: " and " },
     { text: "ux research", accent: "cyan" },
-    { text: " — designing and building user-centered digital interfaces." },
+    { text: ". Designing and building user-centered digital interfaces." },
   ] as Segment[],
   // Layout copied from the reference hero: cursor cluster hanging off the
   // greeting chip, comment at the top-right edge, status chip beside line 3,
@@ -285,13 +285,36 @@ export type CaseStudy = {
 // Real work only: Moe's Udacity capstone + nanodegree portfolio projects.
 export const caseStudies: CaseStudy[] = [
   {
+    // Self-initiated concept — content verbatim from Moe's own brief
+    // (SNB, reimagined.md). Newest work leads the list. Unofficial: not
+    // affiliated with Saudi National Bank.
+    slug: "snb",
+    tag: "UX Case Study · Mobile Banking",
+    title: "SNB, reimagined",
+    description:
+      "A concept redesign of the SNB mobile banking app, designed around Nafath, sarie and SADAD: 59 screens in English and Arabic, a design system, and a clickable prototype.",
+    heroStat: { value: "59", label: "Screens, English and Arabic" },
+    stats: [
+      { value: "12", label: "Flows" },
+      { value: "199", label: "Prototype links" },
+      { value: "10", label: "Arabic screens" },
+    ],
+    meta: {
+      role: "Product designer, solo concept",
+      platform: "iOS · English and Arabic",
+      duration: "September 2026",
+    },
+    accent: "amber",
+    link: "https://www.figma.com/design/HD1IveeApm8xkEzwEN0qbo/SNB-Redesign?node-id=21-837&t=WjLZXEQcpNqHzDBX-1",
+  },
+  {
     // Self-initiated concept project — content verbatim from Moe's own
-    // case study (birr-case-study.md). Newest work leads the list.
+    // case study (birr-case-study.md).
     slug: "birr",
     tag: "UX Case Study · Family Health",
-    title: "Birr — Medication Companion",
+    title: "Birr: Medication Companion",
     description:
-      "Adult children in Saudi Arabia increasingly manage a parent's chronic medications — often 4–8 drugs from several doctors — using WhatsApp groups and memory.",
+      "Adult children in Saudi Arabia manage a parent's chronic medications, often four to eight drugs from several doctors, with a WhatsApp group and memory.",
     heroStat: { value: "84", label: "System Usability Scale (n = 5)" },
     stats: [
       { value: "2", label: "Households, both sides" },
@@ -299,7 +322,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "2", label: "Modes, one source of truth" },
     ],
     meta: {
-      role: "Product Design · Research · Design System — Solo",
+      role: "Product design · Research · Design system · Solo",
       platform: "iOS · Figma",
       duration: "September 2026 · Concept",
     },
@@ -316,7 +339,7 @@ export const caseStudies: CaseStudy[] = [
     heroStat: { value: "5", label: "Usability test participants" },
     stats: [
       { value: "3", label: "Home → Restaurant → Checkout" },
-      { value: "5 Wks", label: "Jan 21 — Feb 25, 2026" },
+      { value: "5 Wks", label: "Jan 21 to Feb 25, 2026" },
       { value: "KPI", label: "Decrease Time on Task" },
     ],
     meta: { role: "UX Designer", platform: "Mobile · Figma, Miro, Mobbin", duration: "5 Weeks · 2026" },
@@ -328,9 +351,9 @@ export const caseStudies: CaseStudy[] = [
     // plan, UX research report, and design-iteration documents.
     slug: "learning-app-onboarding",
     tag: "UX Case Study · Research & Iteration",
-    title: "Mobile Learning App — Onboarding Redesign",
+    title: "Mobile Learning App: Onboarding Redesign",
     description:
-      "Understanding why users drop off during the onboarding of a mobile learning app — then redesigning the flow around the findings, from five steps to two.",
+      "Understanding why users drop off during the onboarding of a mobile learning app, then redesigning the flow around the findings, from five steps to two.",
     heroStat: { value: "5 → 2", label: "Onboarding steps" },
     stats: [
       { value: "6", label: "User interviews" },
@@ -343,7 +366,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "ux-nanodegree",
     tag: "UX Case Study · Udacity Nanodegree",
-    title: "UX Nanodegree — Capstone & Portfolio Projects",
+    title: "UX Nanodegree: Capstone & Portfolio Projects",
     description:
       "End-to-end UX case studies completed as part of the Udacity User Experience Nanodegree Program.",
     heroStat: { value: "E2E", label: "UX case studies" },
@@ -376,14 +399,56 @@ export type Project = {
 };
 
 export const workIntro =
-  "End-to-end UX and product design work — from research to shipped product.";
+  "End-to-end UX and product design work, from research to shipped product.";
 
 export const projectsIntro =
-  "Featured UX design work — brand identity, product design, and live platforms.";
+  "Featured UX design work: brand identity, product design, and live platforms.";
 
 // UX Projects — the old site's featured work, descriptions verbatim.
 // `year` carries the project status word from the old site.
 export const projects: Project[] = [
+  {
+    // Concept project — also a case study. Replaces the old site's
+    // "SNB Mobile · Building" placeholder row; bullets are drawn from Moe's
+    // own brief (SNB, reimagined.md). Leads the list, Birr under it — Moe's call.
+    title: "SNB, reimagined",
+    year: "Concept",
+    category: "Mobile Banking",
+    stack: "Figma, Design Systems, Prototyping, Arabic RTL",
+    accent: "amber",
+    bullets: [
+      "Local rails first: Nafath sign-in, IBAN-first sarie transfers and SADAD bills are the core of the experience, not add-ons.",
+      "Money never moves on one tap: review, then slide or tap the handle, then Face ID. Every error says what happened, that no money moved, and what to do next.",
+      "Arabic from day one: ten mirrored right-to-left screens built from the same components, with numbers kept left to right and the currency on the left.",
+      "One system drives all 59 screens: 16 colour variables named by role, Readex Pro for Latin and Arabic, and components with Direction = RTL variants.",
+    ],
+    href: "https://www.figma.com/design/HD1IveeApm8xkEzwEN0qbo/SNB-Redesign?node-id=21-837&t=WjLZXEQcpNqHzDBX-1",
+    detailHref: "/case-studies/snb",
+    image: "/work/snb-cover.jpg",
+    imageAlt:
+      "SNB, reimagined cover: the title on a Sadu-textured green panel beside the Home, Send money and Transfer sent screens on three phones",
+  },
+  {
+    // Concept project — also a case study (like Keeta). Bullets are drawn
+    // from Moe's own case study (birr-case-study.md). Sits above Keeta by
+    // Moe's call.
+    title: "Birr",
+    year: "Concept",
+    category: "Mobile Design",
+    stack: "Figma, UX Research, Design Systems, Arabic RTL",
+    accent: "green",
+    bullets: [
+      "Reminders anchored to prayer times, not the clock. The schedule stores the prayer slot and an offset, and each slot resolves to a real time every day from the device's location.",
+      "Parent mode opens from a text-message link, no account needed: one card on screen, 30pt Arabic titles, a 60pt button that says I took it, and it works without internet.",
+      "A family circle with attribution. Every dose carries a name, confirmed by herself or confirmed by Mohammed, so the shared status answers “did anyone do it?” and nobody double-doses.",
+      "Arabic-first and bilingual (RTL/LTR). Arabic is the design source and the English layout is derived from it: 21 screens per language, explicit mirroring rules, and direction-isolated drug names.",
+    ],
+    href: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project?node-id=25-152&t=PL5gHRs6OOKjQHzx-1",
+    detailHref: "/case-studies/birr",
+    image: "/work/birr-cover.jpg",
+    imageAlt:
+      "Birr cover: the Parent-mode dose card, the Caregiver Today screen and onboarding on three phones, with the بِرّ wordmark, Arabic UI",
+  },
   {
     title: "LABvision Academy",
     year: "Live",
@@ -424,27 +489,6 @@ export const projects: Project[] = [
     imageAlt: "Ostoul car marketplace page",
   },
   {
-    // Concept project — also a case study (like Keeta). Bullets are drawn
-    // from Moe's own case study (birr-case-study.md). Sits above Keeta by
-    // Moe's call.
-    title: "Birr",
-    year: "Concept",
-    category: "Mobile Design",
-    stack: "Figma, UX Research, Design Systems, Arabic RTL",
-    accent: "green",
-    bullets: [
-      "Reminders anchored to prayer times instead of clock times — the schedule stores the prayer slot and offset, not the time, and each slot resolves to a real time every day from the device's location.",
-      "Parent mode opens from a text-message link with no account — one card on screen, 30pt Arabic titles, a 60pt button that says I took it, and it keeps working without internet.",
-      "A family circle with attribution — every dose carries a name, confirmed by herself or confirmed by Mohammed, so the shared status answers “did anyone do it?” and quietly discourages double-dosing.",
-      "Arabic-first and bilingual (RTL/LTR) — Arabic is the design source and the English layout is derived from it: 21 screens per language, explicit mirroring rules, and direction-isolated drug names.",
-    ],
-    href: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project?node-id=25-152&t=PL5gHRs6OOKjQHzx-1",
-    detailHref: "/case-studies/birr",
-    image: "/work/birr-cover.jpg",
-    imageAlt:
-      "Birr cover — the Parent-mode dose card, the Caregiver Today screen and onboarding on three phones, with the بِرّ wordmark, Arabic UI",
-  },
-  {
     title: "Keeta Redesign",
     year: "Completed",
     category: "Mobile Design",
@@ -456,18 +500,6 @@ export const projects: Project[] = [
     href: "https://www.figma.com/design/wAHgbCdJWZPm9n5V3Zr1rj/Untitled?node-id=0-1&t=UFMSMIZnHj3d69J2-1",
     image: "/work/keeta.png",
     imageAlt: "Keeta home screen redesign",
-  },
-  {
-    title: "SNB Mobile",
-    year: "Building",
-    category: "Financial UX",
-    stack: "Figma, Mobile Design",
-    accent: "pink",
-    bullets: [
-      "Mobile banking application design project focusing on user-friendly financial interfaces and secure, accessible digital banking experience.",
-    ],
-    image: "/work/snb-mobile.jpg",
-    imageAlt: "SNB Mobile banking design",
   },
 ];
 
@@ -484,13 +516,13 @@ export const sideProjects: Project[] = [
     accent: "amber",
     detailHref: "/projects/nyx",
     bullets: [
-      "A voice-first personal AI assistant for macOS — wake word, streaming replies, barge-in interruption, and speech recognition that runs fully on-device.",
+      "A voice-first personal AI assistant for macOS: wake word, streaming replies, barge-in interruption, and speech recognition that runs fully on-device.",
       "The orb is the status: rest, listening, thinking, and speaking states driven by live audio data, not canned animation.",
-      "One tokens file holds every color, font, and radius — the interface's entire personality reskins by editing CSS variables.",
+      "One tokens file holds every color, font, and radius. The interface's entire personality reskins by editing CSS variables.",
       "Safety as architecture: messages are drafted, never auto-sent, and destructive actions require spoken confirmation.",
     ],
     image: "/work/nyx-canvas.png",
-    imageAlt: "NYX HUD — paper theme with the status orb and conversation panel",
+    imageAlt: "NYX HUD: paper theme with the status orb and conversation panel",
   },
 ];
 
@@ -550,7 +582,7 @@ export const techStack = {
     { text: "Figma", accent: "violet" },
     { text: ", " },
     { text: "Framer", accent: "amber" },
-    { text: " and the Adobe suite on the design side — " },
+    { text: " and the Adobe suite on the design side. " },
     { text: "HTML, CSS, JavaScript and TypeScript", accent: "cyan" },
     { text: " on the build side." },
   ] as Segment[],
@@ -614,7 +646,7 @@ export type Role = {
 
 export const roles: Role[] = [
   {
-    period: "03.2026 — Now",
+    period: "03.2026 – Now",
     title: "UX Designer",
     org: "Agile Advice",
     accent: "green",
@@ -630,7 +662,7 @@ export const roles: Role[] = [
     imageFit: "contain",
   },
   {
-    period: "08.2024 — 04.2025",
+    period: "08.2024 – 04.2025",
     title: "COOP Trainee, Internship",
     org: "Elm Company",
     accent: "cyan",
@@ -653,7 +685,7 @@ export const roles: Role[] = [
 
 export const education: Role[] = [
   {
-    period: "08.2021 — 11.2024",
+    period: "08.2021 – 11.2024",
     title: "Imam Mohammed Ibn Saud University",
     org: "",
     accent: "violet",
@@ -665,7 +697,7 @@ export const education: Role[] = [
   },
   {
     period: "2026",
-    title: "Udacity — User Experience Nanodegree Program",
+    title: "Udacity · User Experience Nanodegree Program",
     org: "",
     accent: "amber",
     details: [
@@ -840,7 +872,7 @@ export const contact = {
     },
     success: {
       chip: "Message sent",
-      body: "Thanks for reaching out — I'll get back to you soon.",
+      body: "Thanks for reaching out. I'll get back to you soon.",
       again: "Send another",
     },
     error: {

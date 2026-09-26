@@ -53,7 +53,7 @@ export default function CommentPin() {
           >
             <p className="label">{"// 404"}</p>
             <p className="mt-2 text-paper">
-              This frame doesn&apos;t exist. &mdash; Moe
+              This frame doesn&apos;t exist. · Moe
             </p>
           </motion.div>
         )}

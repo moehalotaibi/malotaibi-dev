@@ -8,7 +8,7 @@ import { caseStudies, workIntro } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "End-to-end UX and product design work — from research to shipped product.",
+    "End-to-end UX and product design work, from research to shipped product.",
   alternates: { canonical: "/case-studies" },
 };
 

@@ -23,9 +23,9 @@ export const nyx: NyxDetail = {
   tag: "Side Project",
   title: "NYX",
   headline:
-    "Designing and building a voice assistant that lives on my Mac — on-device speech, a real memory, and hands on the machine",
+    "Designing and building a voice assistant that lives on my Mac: on-device speech, a real memory, and hands on the machine",
   description:
-    "A voice-first AI assistant for macOS — designed, art-directed, and shipped end-to-end with an agentic AI backend.",
+    "A voice-first AI assistant for macOS, designed, art-directed, and shipped end-to-end with an agentic AI backend.",
   heroStat: { value: "100%", label: "Speech recognition on-device" },
   stats: [
     { value: "~25", label: "Typed MCP tools" },
@@ -39,7 +39,7 @@ export const nyx: NyxDetail = {
   },
   hud: {
     src: "/work/nyx-canvas.png",
-    alt: "NYX HUD — paper theme with the status orb and conversation panel",
+    alt: "NYX HUD: paper theme with the status orb and conversation panel",
   },
   sections: [
     {
@@ -47,7 +47,7 @@ export const nyx: NyxDetail = {
       title: "Voice, end to end",
       kicker: "Speech",
       intro:
-        "Say her name, talk, get an answer out loud. The full spoken loop — recognition, reply, interruption — was built as one system.",
+        "Say her name, talk, get an answer out loud. The full spoken loop (recognition, reply, interruption) was built as one system.",
       items: [
         {
           title: "Recognition, fully on-device",
@@ -63,7 +63,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Wake-word mode",
-          body: "An optional toggle: say the wake phrase and a hands-free conversation opens — the mic re-arms after each answer until a closing phrase ends it, and silence auto-stops each turn. Push-to-talk stays the default. A custom wake model is the one piece still pending; she currently listens through a stand-in.",
+          body: "An optional toggle: say the wake phrase and a hands-free conversation opens. The mic re-arms after each answer until a closing phrase ends it, and silence auto-stops each turn. Push-to-talk stays the default. A custom wake model is the one piece still pending; she currently listens through a stand-in.",
         },
       ],
     },
@@ -72,7 +72,7 @@ export const nyx: NyxDetail = {
       title: "A real memory",
       kicker: "Memory",
       intro:
-        "Every conversation turn and every durable fact persists between sessions — “what do you know about me?” gets a real answer.",
+        "Every conversation turn and every durable fact persists between sessions, so “what do you know about me?” gets a real answer.",
       items: [
         {
           title: "SQLite, crash-safe",
@@ -80,7 +80,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Background fact extraction",
-          body: "After each exchange, a background task extracts new facts about me — never delaying the spoken reply.",
+          body: "After each exchange, a background task extracts new facts about me, never delaying the spoken reply.",
         },
         {
           title: "Injected at boot",
@@ -88,7 +88,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "remember / forget",
-          body: "Both are first-class tools she chooses to use herself — not keyword triggers.",
+          body: "Both are first-class tools she chooses to use herself, not keyword triggers.",
         },
       ],
     },
@@ -105,11 +105,11 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Browser autopilot",
-          body: "Her own Playwright browser window with a persistent profile, so logins survive. Navigate, read, click, and fill by voice — anything that submits is hard-gated behind my verbal confirmation.",
+          body: "Her own Playwright browser window with a persistent profile, so logins survive. Navigate, read, click, and fill by voice. Anything that submits is hard-gated behind my verbal confirmation.",
         },
         {
           title: "Screen capture vision",
-          body: "“Look at my screen” captures, downscales, and feeds her vision — she answers the question asked instead of inventorying the pixels.",
+          body: "“Look at my screen” captures, downscales, and feeds her vision. She answers the question asked instead of inventorying the pixels.",
         },
         {
           title: "Frontmost-app awareness",
@@ -121,7 +121,7 @@ export const nyx: NyxDetail = {
       id: "files",
       title: "Files, both directions",
       kicker: "Documents",
-      intro: "She reads documents and creates them — both from a voice request.",
+      intro: "She reads documents and creates them, both from a voice request.",
       items: [
         {
           title: "Reads",
@@ -129,7 +129,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Creates",
-          body: "PDF, Word, Excel, and text files on the Desktop from a voice request — structured headings and tables, filenames derived from the content, and existing files never overwritten.",
+          body: "PDF, Word, Excel, and text files on the Desktop from a voice request: structured headings and tables, filenames derived from the content, and existing files never overwritten.",
         },
         {
           title: "Upload handoff",
@@ -145,7 +145,7 @@ export const nyx: NyxDetail = {
       items: [
         {
           title: "WhatsApp drafts",
-          body: "She drafts messages to my saved contacts with the text pre-filled. She cannot press send — only I can.",
+          body: "She drafts messages to my saved contacts with the text pre-filled. She cannot press send. Only I can.",
         },
         {
           title: "Architectural, not prompted",
@@ -169,7 +169,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Timers",
-          body: "“Set a timer for ten minutes” — she announces when it's up, waiting for a quiet moment instead of cutting in.",
+          body: "“Set a timer for ten minutes”: she announces when it's up, waiting for a quiet moment instead of cutting in.",
         },
         {
           title: "Replay and greeting",
@@ -182,11 +182,11 @@ export const nyx: NyxDetail = {
       title: "The interface",
       kicker: "Design",
       intro:
-        "The HUD is a Tauri 2 desktop app in React, TypeScript, Tailwind v4, and Motion — the same stack as this portfolio. The current theme is paper: warm off-white, ink text, hairline borders, JetBrains Mono throughout, and a single quiet terracotta accent.",
+        "The HUD is a Tauri 2 desktop app in React, TypeScript, Tailwind v4, and Motion, the same stack as this portfolio. The current theme is paper: warm off-white, ink text, hairline borders, JetBrains Mono throughout, and a single quiet terracotta accent.",
       items: [
         {
           title: "The orb is the status",
-          body: "Slow rotation at rest, rings pulsing to my mic level while listening, a fast sweep while thinking, and a core that throbs to the actual speech amplitude while she talks — driven by live audio data over WebSocket, not canned animation.",
+          body: "Slow rotation at rest, rings pulsing to my mic level while listening, a fast sweep while thinking, and a core that throbs to the actual speech amplitude while she talks, driven by live audio data over WebSocket, not canned animation.",
         },
         {
           title: "Three zones",
@@ -194,7 +194,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "One tokens file",
-          body: "Every color, glow, radius, font, column width — even the layout's max-width — lives in a single tokens file. The interface's entire personality reskins by editing CSS variables; the previous theme, near-black with cyan glows, is preserved in a comment.",
+          body: "Every color, glow, radius, font, column width (even the layout's max-width) lives in a single tokens file. The interface's entire personality reskins by editing CSS variables; the previous theme, near-black with cyan glows, is preserved in a comment.",
         },
         {
           title: "The disconnect state",
@@ -202,7 +202,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Boot sequence",
-          body: "A typed-line startup animation with a two-tone chime synthesized in WebAudio — no audio assets — then her spoken greeting.",
+          body: "A typed-line startup animation with a two-tone chime synthesized in WebAudio (no audio assets), then her spoken greeting.",
         },
         {
           title: "Keyboard first",
@@ -216,11 +216,11 @@ export const nyx: NyxDetail = {
       kicker: "System",
       numbered: true,
       intro:
-        "Three layers on one machine. Every capability is a typed tool registered with the Agent SDK's MCP server — no string-matched intent routing anywhere — and the mission log shows every call with its arguments.",
+        "Three layers on one machine. Every capability is a typed tool registered with the Agent SDK's MCP server, with no string-matched intent routing anywhere, and the mission log shows every call with its arguments.",
       items: [
         {
           title: "The HUD",
-          body: "Tauri 2 with React, TypeScript, Tailwind, and Motion — orb, panels, conversation, mission log. It talks to the backend over a local WebSocket (127.0.0.1, JSON events).",
+          body: "Tauri 2 with React, TypeScript, Tailwind, and Motion: orb, panels, conversation, mission log. It talks to the backend over a local WebSocket (127.0.0.1, JSON events).",
         },
         {
           title: "The Python sidecar",
@@ -232,7 +232,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Underneath",
-          body: "SQLite (WAL) for memory, .env for secrets, and macOS TCC permissions — mic, screen recording, automation, camera — each an explicit, expected step.",
+          body: "SQLite (WAL) for memory, .env for secrets, and macOS TCC permissions (mic, screen recording, automation, camera), each an explicit, expected step.",
         },
       ],
     },
@@ -242,7 +242,7 @@ export const nyx: NyxDetail = {
       kicker: "Process",
       numbered: true,
       intro:
-        "Ten planned milestones from one brief, built in order and tested live before advancing — a designer's product rules as hard constraints from day one, with Claude Code as the engineering partner.",
+        "Ten planned milestones from one brief, built in order and tested live before advancing. A designer's product rules were hard constraints from day one, with Claude Code as the engineering partner.",
       items: [
         {
           title: "Voice loop",
@@ -258,7 +258,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Mac control",
-          body: "Apps, browser, AppleScript — with existence checks and readable errors instead of crashes.",
+          body: "Apps, browser, AppleScript, with existence checks and readable errors instead of crashes.",
         },
         {
           title: "Screen analysis",
@@ -274,7 +274,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "Message drafts",
-          body: "WhatsApp drafts — send withheld by design.",
+          body: "WhatsApp drafts. Send is withheld by design.",
         },
         {
           title: "Files",
@@ -294,7 +294,7 @@ export const nyx: NyxDetail = {
       items: [
         {
           title: "Raw-PCM streaming",
-          body: "The TTS SDK's audio helpers needed system dependencies that didn't exist on the machine — solved by streaming raw PCM straight to the audio device.",
+          body: "The TTS SDK's audio helpers needed system dependencies that didn't exist on the machine. Solved by streaming raw PCM straight to the audio device.",
         },
         {
           title: "Echo calibration",
@@ -306,7 +306,7 @@ export const nyx: NyxDetail = {
         },
         {
           title: "The machine itself",
-          body: "No package manager, an ancient system Python, thread-unsafe UI frameworks, zombie processes — handled one at a time.",
+          body: "No package manager, an ancient system Python, thread-unsafe UI frameworks, zombie processes, handled one at a time.",
         },
       ],
     },
@@ -322,11 +322,11 @@ export const nyx: NyxDetail = {
         },
         {
           title: "No API key",
-          body: "The AI backend authenticates through my existing Claude sign-in — no API key exists in the project.",
+          body: "The AI backend authenticates through my existing Claude sign-in. No API key exists in the project.",
         },
         {
           title: "Unreadable secrets",
-          body: "Secrets live in .env and are deny-listed from her file access — she refuses to read them even when asked.",
+          body: "Secrets live in .env and are deny-listed from her file access. She refuses to read them even when asked.",
         },
         {
           title: "Camera off by default",
