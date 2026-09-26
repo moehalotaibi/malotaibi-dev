@@ -26,7 +26,7 @@ export const site = {
   phone: "+966 553 012 825",
   url: "https://www.malotaibi.dev",
   bio: "Creating with code. Small details matter.",
-  cv: "https://drive.google.com/file/d/1lXGy0_hEWylLB9oisFzKitd_Xc_keCbj/view?usp=sharing",
+  cv: "https://drive.google.com/file/d/1di3SlRDPiwd1zbMFIFk85PaMRh0UmmZ1/view?usp=sharing",
 } as const;
 
 // ---------------------------------------------------------------- hero
