@@ -285,14 +285,14 @@ export type CaseStudy = {
 // Real work only: Moe's Udacity capstone + nanodegree portfolio projects.
 export const caseStudies: CaseStudy[] = [
   {
-    // Self-initiated concept — content verbatim from Moe's own brief
-    // (SNB, reimagined.md). Newest work leads the list. Unofficial: not
-    // affiliated with Saudi National Bank.
-    slug: "snb",
-    tag: "UX Case Study · Mobile Banking",
-    title: "SNB, reimagined",
+    // Self-initiated concept — content verbatim from Moe's brief
+    // (Desktop/SNB, reimagined.md, now titled "Meet Sadu"). Newest work
+    // leads the list. Sadu is an e-wallet concept, not affiliated with any bank.
+    slug: "sadu",
+    tag: "UX Case Study · E-wallet Concept",
+    title: "Meet Sadu",
     description:
-      "A concept redesign of the SNB mobile banking app, designed around Nafath, sarie and SADAD: 59 screens in English and Arabic, a design system, and a clickable prototype.",
+      "Sadu is an e-wallet concept for Saudi Arabia, designed around Nafath, sarie and SADAD: 59 screens in English and Arabic, a design system, and a clickable prototype.",
     heroStat: { value: "59", label: "Screens, English and Arabic" },
     stats: [
       { value: "12", label: "Flows" },
@@ -305,7 +305,7 @@ export const caseStudies: CaseStudy[] = [
       duration: "September 2026",
     },
     accent: "amber",
-    link: "https://www.figma.com/design/HD1IveeApm8xkEzwEN0qbo/SNB-Redesign?node-id=21-837&t=WjLZXEQcpNqHzDBX-1",
+    link: "https://www.figma.com/design/HD1IveeApm8xkEzwEN0qbo/Sadu?node-id=21-837&t=WjLZXEQcpNqHzDBX-1",
   },
   {
     // Self-initiated concept project — content verbatim from Moe's own
@@ -408,12 +408,12 @@ export const projectsIntro =
 // `year` carries the project status word from the old site.
 export const projects: Project[] = [
   {
-    // Concept project — also a case study. Replaces the old site's
+    // Concept project — also a case study. Replaced the old site's
     // "SNB Mobile · Building" placeholder row; bullets are drawn from Moe's
-    // own brief (SNB, reimagined.md). Leads the list, Birr under it — Moe's call.
-    title: "SNB, reimagined",
+    // brief (now "Meet Sadu"). Leads the list, Birr under it — Moe's call.
+    title: "Meet Sadu",
     year: "Concept",
-    category: "Mobile Banking",
+    category: "E-wallet Design",
     stack: "Figma, Design Systems, Prototyping, Arabic RTL",
     accent: "amber",
     bullets: [
@@ -422,11 +422,11 @@ export const projects: Project[] = [
       "Arabic from day one: ten mirrored right-to-left screens built from the same components, with numbers kept left to right and the currency on the left.",
       "One system drives all 59 screens: 16 colour variables named by role, Readex Pro for Latin and Arabic, and components with Direction = RTL variants.",
     ],
-    href: "https://www.figma.com/design/HD1IveeApm8xkEzwEN0qbo/SNB-Redesign?node-id=21-837&t=WjLZXEQcpNqHzDBX-1",
-    detailHref: "/case-studies/snb",
-    image: "/work/snb-cover.jpg",
+    href: "https://www.figma.com/design/HD1IveeApm8xkEzwEN0qbo/Sadu?node-id=21-837&t=WjLZXEQcpNqHzDBX-1",
+    detailHref: "/case-studies/sadu",
+    image: "/work/sadu-cover.jpg",
     imageAlt:
-      "SNB, reimagined cover: the title on a Sadu-textured green panel beside the Home, Send money and Transfer sent screens on three phones",
+      "Meet Sadu cover: the title on a Sadu-textured green panel beside the Home, Send money and Transfer sent screens on three phones",
   },
   {
     // Concept project — also a case study (like Keeta). Bullets are drawn

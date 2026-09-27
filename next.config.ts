@@ -5,6 +5,13 @@ const nextConfig: NextConfig = {
     // The old combined /work page split into /case-studies and /projects.
     return [
       { source: "/work", destination: "/case-studies", permanent: true },
+      // The SNB case study shipped for a day under this slug before it was
+      // rebranded as Meet Sadu (2026-09-27); keep the old link working.
+      {
+        source: "/case-studies/snb",
+        destination: "/case-studies/sadu",
+        permanent: true,
+      },
       {
         // Redirects run BEFORE the /public filesystem, and the project
         // images live under public/work/ — so the slug must exclude dots

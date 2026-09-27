@@ -1317,18 +1317,18 @@ export const caseStudyDetails: CaseStudyDetail[] = [
     ],
   },
 
-  // ------------------------------------------------------------------ snb
+  // ----------------------------------------------------------------- sadu
   // Self-initiated concept. Copy is verbatim from Moe's brief (SNB,
   // reimagined.md); images are exports from his Figma file; the walkthrough
   // is his 31 s Figma Motion export, re-encoded muted at 1080p (~1.8 MB).
-  // Unofficial concept: not affiliated with Saudi National Bank.
+  // Sadu is an e-wallet concept, not a real product and not affiliated with any bank.
   {
-    slug: "snb",
+    slug: "sadu",
     headline:
-      "SNB, reimagined: an everyday banking app designed around Nafath, sarie and SADAD, with the woven Sadu pattern as its signature",
+      "Meet Sadu: an e-wallet concept designed around Nafath, sarie and SADAD, named after the woven Sadu pattern that runs through it",
     video: {
-      src: "/work/snb/walkthrough.mp4",
-      poster: "/work/snb/walkthrough-poster.jpg",
+      src: "/work/sadu/walkthrough.mp4",
+      poster: "/work/sadu/walkthrough-poster.jpg",
       title: "walkthrough.mp4 · 1920 × 1080 · 31 s · muted loop",
       // Short on purpose: it shares the bottom row with the Pause pill on phones.
       label: "// walkthrough",
@@ -1337,9 +1337,9 @@ export const caseStudyDetails: CaseStudyDetail[] = [
       {
         id: "challenge",
         title: "The challenge",
-        kicker: "Unofficial concept · iOS · English and Arabic",
+        kicker: "E-wallet concept · iOS · English and Arabic",
         intro:
-          "Saudi banking runs on local rails: Nafath for identity, sarie for instant transfers, SADAD for bills. I wanted an app where those are the core of the experience, not add-ons, and where Arabic is designed rather than translated at the end. Five principles guided every screen.",
+          "Payments in Saudi Arabia run on local rails: Nafath for identity, sarie for instant transfers, SADAD for bills. I wanted an app where those are the core of the experience, not add-ons, and where Arabic is designed rather than translated at the end. Sadu is an e-wallet concept, not a real product and not affiliated with any bank. Five principles guided every screen.",
         numbered: true,
         items: [
           {
@@ -1365,7 +1365,7 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/hero-mockup.jpg",
+            src: "/work/sadu/hero-mockup.jpg",
             alt: "Hero mockup: the Send money, Home and Cards screens on three phones over the Sadu-textured green",
             ratio: "video",
           },
@@ -1388,7 +1388,7 @@ export const caseStudyDetails: CaseStudyDetail[] = [
           },
           {
             title: "Light, warm, and local",
-            body: "I rebuilt it on a warm canvas with SNB green and gold accents. The green hero with a faint Sadu zigzag started on the Send Money screen and became the signature across the app.",
+            body: "I rebuilt it on a warm canvas with deep green and gold accents. The green hero with a faint Sadu zigzag started on the Send Money screen and became the signature across the app.",
           },
           {
             title: "A Home that says something",
@@ -1405,15 +1405,15 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/home.jpg",
+            src: "/work/sadu/home.jpg",
             alt: "Home: balance chart with the salary marker, quick actions, Send again row and the Coming up bill card",
           },
           {
-            src: "/work/snb/send-money.jpg",
+            src: "/work/sadu/send-money.jpg",
             alt: "Send money: recipients, SAR 500 amount over the Sadu green hero, purpose row and keypad",
           },
           {
-            src: "/work/snb/transfer-sent.jpg",
+            src: "/work/sadu/transfer-sent.jpg",
             alt: "Transfer sent: confetti, “Arrived instantly via sarie”, and a tear-off receipt",
           },
         ],
@@ -1434,15 +1434,15 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/sign-in.jpg",
-            alt: "Sign in: SNB card art over the green hero, “Send, pay and save in seconds”, Sign in and Open an account",
+            src: "/work/sadu/sign-in.jpg",
+            alt: "Sign in: Sadu card art over the green hero, “Send, pay and save in seconds”, Sign in and Open an account",
           },
           {
-            src: "/work/snb/nafath-verify.jpg",
+            src: "/work/sadu/nafath-verify.jpg",
             alt: "Nafath verify: the number to match in the Nafath app, with the timer and a resend option",
           },
           {
-            src: "/work/snb/account-ready.jpg",
+            src: "/work/sadu/account-ready.jpg",
             alt: "Account ready: the confirmation screen at the end of the four-step onboarding",
           },
         ],
@@ -1455,15 +1455,15 @@ export const caseStudyDetails: CaseStudyDetail[] = [
           "Balance chart, send again, coming up. The chart explains why the balance changed (a salary marker), not just that it did.",
         images: [
           {
-            src: "/work/snb/home.jpg",
+            src: "/work/sadu/home.jpg",
             alt: "Home: the balance chart marks when the salary landed",
           },
           {
-            src: "/work/snb/insights.jpg",
+            src: "/work/sadu/insights.jpg",
             alt: "Insights: spending by category on the green chart palette, always paired with labels",
           },
           {
-            src: "/work/snb/transaction-detail.jpg",
+            src: "/work/sadu/transaction-detail.jpg",
             alt: "Transaction detail: merchant mark, amount, and the split-bill and report-a-problem actions",
           },
         ],
@@ -1484,7 +1484,7 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/money-moves.jpg",
+            src: "/work/sadu/money-moves.jpg",
             alt: "Money moves: Send money, Review transfer, Transfer sent, Send abroad and Sent abroad on five phones",
             ratio: "video",
           },
@@ -1506,27 +1506,27 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/cards.jpg",
+            src: "/work/sadu/cards.jpg",
             alt: "Cards: the Platinum card, freeze, limits, PIN and details actions, and card controls",
           },
           {
-            src: "/work/snb/freeze-card.jpg",
+            src: "/work/sadu/freeze-card.jpg",
             alt: "Freeze card: the sheet lists what stops and what keeps working before you confirm",
           },
           {
-            src: "/work/snb/card-frozen.jpg",
+            src: "/work/sadu/card-frozen.jpg",
             alt: "Card frozen: the frozen state with a one-tap Undo",
           },
           {
-            src: "/work/snb/sadad-bills.jpg",
+            src: "/work/sadu/sadad-bills.jpg",
             alt: "SADAD bills: billers with amounts due and auto-pay status",
           },
           {
-            src: "/work/snb/bill-detail.jpg",
+            src: "/work/sadu/bill-detail.jpg",
             alt: "Bill detail: Saudi Electricity with usage history explaining why this month costs more",
           },
           {
-            src: "/work/snb/bill-paid.jpg",
+            src: "/work/sadu/bill-paid.jpg",
             alt: "Bill paid: confirmation with the SADAD reference",
           },
         ],
@@ -1539,15 +1539,15 @@ export const caseStudyDetails: CaseStudyDetail[] = [
           "Loading, empty, offline, over limit, failed transfer. Every error says what happened, that no money moved, and what to do next.",
         images: [
           {
-            src: "/work/snb/no-connection.jpg",
+            src: "/work/sadu/no-connection.jpg",
             alt: "No connection: the offline state in the simpler line illustration style",
           },
           {
-            src: "/work/snb/over-limit.jpg",
+            src: "/work/sadu/over-limit.jpg",
             alt: "Over limit: the amount exceeds the daily limit, with the remaining limit and what to do next",
           },
           {
-            src: "/work/snb/transfer-failed.jpg",
+            src: "/work/sadu/transfer-failed.jpg",
             alt: "Transfer failed: what happened, that no money moved, and a retry",
           },
         ],
@@ -1586,20 +1586,20 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/english-arabic.jpg",
+            src: "/work/sadu/english-arabic.jpg",
             alt: "English and Arabic: the Home screen in both directions, side by side",
             ratio: "video",
           },
           {
-            src: "/work/snb/ar-home.jpg",
+            src: "/work/sadu/ar-home.jpg",
             alt: "Arabic Home: mirrored layout, Home tab on the right, numbers left to right",
           },
           {
-            src: "/work/snb/ar-send-money.jpg",
+            src: "/work/sadu/ar-send-money.jpg",
             alt: "Arabic Send money: ر.س to the left of the amount, the slide handle flipped",
           },
           {
-            src: "/work/snb/ar-sadad-bills.jpg",
+            src: "/work/sadu/ar-sadad-bills.jpg",
             alt: "Arabic SADAD bills: the bills list, right to left",
           },
         ],
@@ -1650,8 +1650,8 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/color.jpg",
-            alt: "Colour board: every swatch bound to the SNB Light variables, with its measured contrast ratio",
+            src: "/work/sadu/color.jpg",
+            alt: "Colour board: every swatch bound to the Sadu colour variables, with its measured contrast ratio",
             ratio: "board",
           },
         ],
@@ -1664,7 +1664,7 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         items: [
           {
             title: "Colour",
-            body: "16 variables in “SNB · Color”, named by role: bg/canvas, text/secondary, brand/primary, status/negative.",
+            body: "16 variables in “Sadu · Color”, named by role: bg/canvas, text/secondary, brand/primary, status/negative.",
           },
           {
             title: "Type",
@@ -1685,22 +1685,22 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         ],
         images: [
           {
-            src: "/work/snb/brand-elements.jpg",
+            src: "/work/sadu/brand-elements.jpg",
             alt: "Brand elements: Sadu zigzag, Najdi triangle band, success confetti, illustration style, illustrated avatars and card art",
             ratio: "video",
           },
           {
-            src: "/work/snb/type-specimen.jpg",
+            src: "/work/sadu/type-specimen.jpg",
             alt: "Typeface specimen: Readex Pro for Latin and Arabic",
             ratio: "wide",
           },
           {
-            src: "/work/snb/components.jpg",
+            src: "/work/sadu/components.jpg",
             alt: "Components: status bars, buttons, merchant mark, avatars and the two cards",
             ratio: "board",
           },
           {
-            src: "/work/snb/patterns.jpg",
+            src: "/work/sadu/patterns.jpg",
             alt: "Patterns: bottom sheet, toast, stepper, skeleton and empty state with usage rules",
             ratio: "board",
           },
@@ -1711,7 +1711,7 @@ export const caseStudyDetails: CaseStudyDetail[] = [
         title: "Outcome and next steps",
         kicker: "Closing",
         intro:
-          "The result is 59 screens across 12 flows, 10 of them in Arabic, with 199 prototype links and a design system that builds both languages. Unofficial concept: not affiliated with Saudi National Bank.",
+          "The result is 59 screens across 12 flows, 10 of them in Arabic, with 199 prototype links and a design system that builds both languages. Sadu is an e-wallet concept, not a real product and not affiliated with any bank.",
         numbered: true,
         items: [
           {
@@ -1723,8 +1723,8 @@ export const caseStudyDetails: CaseStudyDetail[] = [
             body: "For activating new beneficiaries and for daily limits. The limits in the design are placeholders.",
           },
           {
-            title: "Add a before-and-after",
-            body: "Two or three screenshots of the current SNB app next to the redesign.",
+            title: "Show the pain points it answers",
+            body: "Show two or three pain points from the banking and wallet apps people use today, and how Sadu answers each.",
           },
           {
             title: "Large text and dark mode",
