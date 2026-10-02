@@ -429,6 +429,25 @@ export const projects: Project[] = [
       "Meet Sadu cover: the title on a Sadu-textured green panel beside the Home, Send money and Transfer sent screens on three phones",
   },
   {
+    // Real client work (Moe: "its a real company"). Bullets describe what is
+    // in his Figma file (page list, EN/AR heroes, design system, sections).
+    // Sits under Meet Sadu by Moe's call. No case study yet.
+    title: "Grid Nova",
+    year: "Completed",
+    category: "Website Design",
+    stack: "Figma, Web Design, Design Systems, Arabic RTL",
+    accent: "blue",
+    bullets: [
+      "Website design for Grid Nova Energy, a Saudi company in energy infrastructure, power generation and equipment manufacturing: 13 pages from Home and Services to Projects, Careers and FAQ, plus an Arabic home.",
+      "English and Arabic from the same system. The hero, navigation and sections mirror right to left instead of being translated after the fact.",
+      "A small design system holds it together: colour tokens, a type ramp, buttons and nav states, and reusable sections like the CEO message, vision band, featured project card and partner marquee.",
+    ],
+    href: "https://www.figma.com/design/6DTvt2eIU5AQaFlVIl6jGC/grid-nova-website-design-project?node-id=72-1396&t=DCSKQPBL4vFjrqWN-1",
+    image: "/work/grid-nova-cover.jpg",
+    imageAlt:
+      "Grid Nova cover: the Grid Nova Energy wordmark and title beside the website hero in a browser frame, on a deep blue backdrop",
+  },
+  {
     // Concept project — also a case study (like Keeta). Bullets are drawn
     // from Moe's own case study (birr-case-study.md). Sits above Keeta by
     // Moe's call.
