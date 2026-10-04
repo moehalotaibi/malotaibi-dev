@@ -771,10 +771,12 @@ export const certifications: Certification[] = [
     href: "https://www.coursera.org/account/accomplishments/verify/250PTQ3MFU7Z",
   },
   {
-    // In progress — no verification link until it's earned.
+    // Earned 2026-10-04, top 10% of the class. The row label reads
+    // "issuer · year", so the standing goes in the issuer slot.
     title: "AI for Designers",
-    issuer: "IxDF",
-    year: "In progress",
+    issuer: "IxDF · Top 10% in class",
+    year: "2026",
+    href: "https://ixdf.org/members/mohammed-alotaibi/certificate/course/dd9cd505-affe-49c4-bb5d-2a800798129a",
   },
   {
     title: "Full Stack Web Development Bootcamp",
