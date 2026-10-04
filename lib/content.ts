@@ -129,7 +129,7 @@ export const socials: Social[] = [
   { label: "GitHub", href: "https://github.com/moehalotaibi", icon: "github" },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/mohammed-alotaibi-1aa047311/",
+    href: "https://www.linkedin.com/in/mohammed--alotaibi/",
     icon: "linkedin",
   },
 ];
