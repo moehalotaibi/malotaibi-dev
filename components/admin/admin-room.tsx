@@ -37,7 +37,7 @@ type KeyCheck =
 
 // Mini canvas thumbnail — same dot grid at map scale, marker at x/y%.
 const MINI_GRID: CSSProperties = {
-  backgroundImage: "radial-gradient(#262723 1px, transparent 1px)",
+  backgroundImage: "radial-gradient(rgb(var(--c-rule)) 1px, transparent 1px)",
   backgroundSize: "8px 8px",
 };
 

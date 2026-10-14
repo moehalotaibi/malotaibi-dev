@@ -24,6 +24,7 @@ import type {
   RefObject,
 } from "react";
 import {
+  AnimatePresence,
   animate,
   motion,
   useMotionValue,
@@ -169,6 +170,48 @@ export default function HomeHero() {
   const headlineBlockRef = useRef<HTMLDivElement>(null);
   const taglineRef = useRef<HTMLParagraphElement>(null);
 
+  // Tagline briefs: which accent word's comment tag is open, and where it
+  // sits (px, relative to the tagline wrapper). Esc or a click anywhere
+  // outside the wrapper closes it; clicking another word switches.
+  const taglineWrapRef = useRef<HTMLDivElement>(null);
+  const [openBrief, setOpenBrief] = useState<number | null>(null);
+  const [briefPos, setBriefPos] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    if (openBrief === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpenBrief(null);
+    };
+    const onPointer = (e: PointerEvent) => {
+      if (!taglineWrapRef.current?.contains(e.target as Node)) {
+        setOpenBrief(null);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [openBrief]);
+  const toggleBrief = (index: number, word: HTMLElement) => {
+    if (openBrief === index) {
+      setOpenBrief(null);
+      return;
+    }
+    const wrap = taglineWrapRef.current;
+    if (!wrap) return;
+    const w = wrap.getBoundingClientRect();
+    const r = word.getBoundingClientRect();
+    // Keep the (max 20rem) tag inside the tagline column.
+    const half = Math.min(160, w.width / 2);
+    const x = Math.min(
+      Math.max(r.left - w.left + r.width / 2, half),
+      w.width - half,
+    );
+    setBriefPos({ x, y: r.top - w.top });
+    setOpenBrief(index);
+  };
+
   // "Let's Connect" is draggable AND a link: a real drag sets this flag so
   // the click fired on release is vetoed; a clean click still navigates.
   const chipDragged = useRef(false);
@@ -255,7 +298,7 @@ export default function HomeHero() {
                 ? undefined
                 : line.gradient
                   ? {
-                      backgroundImage: `linear-gradient(100deg, color-mix(in srgb, ${hex} 45%, white) 0%, ${hex} 100%)`,
+                      backgroundImage: `linear-gradient(100deg, color-mix(in srgb, ${hex} 45%, rgb(var(--c-cream))) 0%, ${hex} 100%)`,
                     }
                   : { color: hex };
               // Last line only: nudge "Dev" down 0.01em so the third
@@ -415,29 +458,85 @@ export default function HomeHero() {
         </div>
 
         <MotionReveal delay={160}>
-          <p
-            ref={taglineRef}
-            className="mx-auto mt-8 max-w-[42ch] text-lead font-medium text-paper"
+          <div
+            ref={taglineWrapRef}
+            className="relative mx-auto mt-8 max-w-[42ch]"
           >
-            {hero.tagline.map((seg, i) =>
-              seg.accent ? (
-                <motion.span
-                  key={i}
-                  className={`inline-block font-medium underline-offset-4 transition-colors duration-300 hover:underline ${accentText[seg.accent]}`}
-                  // Panel theme: every accent word takes the picked color.
-                  style={
-                    heroAccent ? { color: ACCENT_HEX[heroAccent] } : undefined
+            <p ref={taglineRef} className="text-lead font-medium text-paper">
+              {hero.tagline.map((seg, i) => {
+                if (!seg.accent) return <span key={i}>{seg.text}</span>;
+                const wordClass = `inline-block font-medium underline-offset-4 transition-colors duration-300 hover:underline ${accentText[seg.accent]}`;
+                // Panel theme: every accent word takes the picked color.
+                const wordStyle = heroAccent
+                  ? { color: ACCENT_HEX[heroAccent] }
+                  : undefined;
+                if (!seg.brief) {
+                  return (
+                    <motion.span
+                      key={i}
+                      className={wordClass}
+                      style={wordStyle}
+                      whileHover={reduced ? undefined : { y: -2 }}
+                      transition={SPRING}
+                    >
+                      {seg.text}
+                    </motion.span>
+                  );
+                }
+                const open = openBrief === i;
+                return (
+                  <motion.button
+                    key={i}
+                    type="button"
+                    onClick={(e) => toggleBrief(i, e.currentTarget)}
+                    aria-expanded={open}
+                    aria-controls={open ? "tagline-brief" : undefined}
+                    className={`${wordClass} ${open ? "underline" : ""}`}
+                    style={wordStyle}
+                    whileHover={reduced ? undefined : { y: -2 }}
+                    whileTap={reduced ? undefined : { scale: 0.96 }}
+                    transition={SPRING}
+                  >
+                    {seg.text}
+                  </motion.button>
+                );
+              })}
+            </p>
+
+            {/* Brief — a Figma comment tag above the clicked word, same
+                chrome as the "click me" toy: accent fill, white text, cursor
+                arrow pointing back at the word. Clamped to the column. */}
+            <AnimatePresence>
+              {openBrief !== null && hero.tagline[openBrief]?.brief ? (
+                <motion.div
+                  key={openBrief}
+                  id="tagline-brief"
+                  role="status"
+                  className="pointer-events-none absolute z-20 flex w-max max-w-[min(20rem,90vw)] flex-col items-end"
+                  style={{
+                    left: briefPos.x,
+                    top: briefPos.y,
+                    translate: "-50% calc(-100% - 10px)",
+                  }}
+                  initial={
+                    reduced ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.85 }
                   }
-                  whileHover={reduced ? undefined : { y: -2 }}
-                  transition={SPRING}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -6, scale: 0.9 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 22 }}
                 >
-                  {seg.text}
-                </motion.span>
-              ) : (
-                <span key={i}>{seg.text}</span>
-              ),
-            )}
-          </p>
+                  <span
+                    className={`rounded-2xl rounded-br-[4px] px-3.5 py-2 text-left font-sans text-[0.8125rem] font-medium leading-snug text-white ${accentBg[hero.tagline[openBrief].accent ?? "violet"]}`}
+                  >
+                    {hero.tagline[openBrief].brief}
+                  </span>
+                  <CursorArrow
+                    className={`-mt-0.5 mr-3 h-4 w-4 -scale-y-100 ${accentText[hero.tagline[openBrief].accent ?? "violet"]}`}
+                  />
+                </motion.div>
+              ) : null}
+            </AnimatePresence>
+          </div>
         </MotionReveal>
 
         {/* NN/g UX Certification — in-flow under the tagline so it reads on

@@ -15,6 +15,8 @@ export type Accent =
 export type Segment = {
   text: string;
   accent?: Accent;
+  /** Hero tagline only: a one-line brief that pops up when the word is clicked. */
+  brief?: string;
 };
 
 export const site = {
@@ -60,12 +62,30 @@ export const hero = {
     { text: "Dev", accent: "cyan" },
   ] as HeroLine[],
   // The old site's flip sentences, joined: ui/ux designer · visual design · ux research
+  // Each accent word is a button: click it and a Figma comment tag pops up
+  // with the brief (same chrome as the "click me" toy). Briefs name real
+  // work only.
   tagline: [
-    { text: "ui/ux designer", accent: "violet" },
+    {
+      text: "ui/ux designer",
+      accent: "violet",
+      brief:
+        "Flows, wireframes, prototypes and design systems, from the first interview to the handoff file. Birr and Sadu, end to end.",
+    },
     { text: ", " },
-    { text: "visual design", accent: "amber" },
+    {
+      text: "visual design",
+      accent: "amber",
+      brief:
+        "Brand identity, motion and visual storytelling across the Adobe suite. Grid Nova and Agile Advice carry it.",
+    },
     { text: " and " },
-    { text: "ux research", accent: "cyan" },
+    {
+      text: "ux research",
+      accent: "cyan",
+      brief:
+        "Interviews, usability tests, competitive audits and SUS scores. Birr was built on two households and five testers.",
+    },
     { text: ". Designing and building user-centered digital interfaces." },
   ] as Segment[],
   // Layout copied from the reference hero: cursor cluster hanging off the
@@ -143,6 +163,9 @@ export const intro = {
   body: "Strong ability to translate UX research, wireframes, and prototypes into responsive and accessible front-end experiences. Experienced in working on enterprise and government digital platforms, with a solid foundation in design thinking, usability, and modern UI development.",
   aside:
     "Combined my UX design background with front-end engineering for a fast, minimalist experience.",
+  // Fact chips on the profile card (location sits in the role line).
+  // Keep every one true today.
+  chips: ["NN/g UX Certified", "Arabic · English", "Design systems"],
 } as const;
 
 // -------------------------------------------------------- capabilities
@@ -330,23 +353,6 @@ export const caseStudies: CaseStudy[] = [
     link: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project?node-id=25-152&t=PL5gHRs6OOKjQHzx-1",
   },
   {
-    // Real project — Moe's Udacity capstone, content from his case-study PDF.
-    slug: "keeta-redesign",
-    tag: "UX Case Study · Food Delivery",
-    title: "Keeta Redesign",
-    description:
-      "Modern redesign of the Keeta application, focusing on improved user experience, intuitive navigation, and contemporary visual design.",
-    heroStat: { value: "5", label: "Usability test participants" },
-    stats: [
-      { value: "3", label: "Home → Restaurant → Checkout" },
-      { value: "5 Wks", label: "Jan 21 to Feb 25, 2026" },
-      { value: "KPI", label: "Decrease Time on Task" },
-    ],
-    meta: { role: "UX Designer", platform: "Mobile · Figma, Miro, Mobbin", duration: "5 Weeks · 2026" },
-    accent: "cyan",
-    link: "https://www.figma.com/design/wAHgbCdJWZPm9n5V3Zr1rj/Untitled?node-id=0-1&t=UFMSMIZnHj3d69J2-1",
-  },
-  {
     // Real project — Udacity research project, content from his research
     // plan, UX research report, and design-iteration documents.
     slug: "learning-app-onboarding",
@@ -448,9 +454,8 @@ export const projects: Project[] = [
       "Grid Nova cover: the Grid Nova Energy wordmark and title beside the website hero in a browser frame, on a deep blue backdrop",
   },
   {
-    // Concept project — also a case study (like Keeta). Bullets are drawn
-    // from Moe's own case study (birr-case-study.md). Sits above Keeta by
-    // Moe's call.
+    // Concept project — also a case study. Bullets are drawn from Moe's
+    // own case study (birr-case-study.md). Sits under Grid Nova.
     title: "Birr",
     year: "Concept",
     category: "Mobile Design",
@@ -506,19 +511,6 @@ export const projects: Project[] = [
     href: "https://www.figma.com/design/KrMgwhqKHqUAdwn9NqS1ly/Untitled?node-id=0-21311&t=6xInwYovn7QhM64e-1",
     image: "/work/ostoul.png",
     imageAlt: "Ostoul car marketplace page",
-  },
-  {
-    title: "Keeta Redesign",
-    year: "Completed",
-    category: "Mobile Design",
-    stack: "Figma, UI/UX Design",
-    accent: "cyan",
-    bullets: [
-      "Modern redesign of the Keeta application, focusing on improved user experience, intuitive navigation, and contemporary visual design.",
-    ],
-    href: "https://www.figma.com/design/wAHgbCdJWZPm9n5V3Zr1rj/Untitled?node-id=0-1&t=UFMSMIZnHj3d69J2-1",
-    image: "/work/keeta.png",
-    imageAlt: "Keeta home screen redesign",
   },
 ];
 

@@ -7,6 +7,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { nav, site } from "@/lib/content";
 import { UI } from "@/components/icons";
 import Magnetic from "@/components/motion/magnetic";
+import ThemeToggle from "@/components/theme-toggle";
 
 const MotionLink = motion.create(Link);
 
@@ -49,13 +50,13 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-40 py-3">
-      <div className="shell flex items-center justify-between gap-3">
+      <div className="shell flex items-center justify-between gap-2 sm:gap-3">
         {/* Logo pill */}
         <Magnetic strength={0.2}>
           <MotionLink
             href="/"
             aria-label={`${site.name} home`}
-            className="flex items-center gap-2 rounded-full border border-rule bg-ink/80 px-4 py-2.5 backdrop-blur-md transition-colors hover:border-rule-strong"
+            className="flex items-center gap-2 rounded-full border border-rule bg-ink/80 px-3 py-2.5 backdrop-blur-md transition-colors hover:border-rule-strong sm:px-4"
             {...tap}
           >
             <motion.span
@@ -72,7 +73,7 @@ export default function Nav() {
                     },
                   })}
             />
-            <span className="font-mono text-[0.875rem] font-bold tracking-tight text-cream">
+            <span className="hidden font-mono text-[0.875rem] font-bold tracking-tight text-cream sm:inline">
               {site.name}
             </span>
           </MotionLink>
@@ -97,7 +98,7 @@ export default function Nav() {
                           : "",
                       )
                     }
-                    className={`relative flex items-center gap-2 rounded-full px-3 py-2 font-mono text-micro uppercase tracking-[0.1em] transition-colors max-lg:min-h-[44px] max-lg:min-w-[44px] max-lg:justify-center sm:px-4 ${
+                    className={`relative flex items-center gap-2 rounded-full px-3 py-2 font-mono text-micro uppercase tracking-[0.1em] transition-colors max-lg:min-h-[44px] max-lg:min-w-[40px] max-lg:justify-center sm:min-w-[44px] sm:px-4 ${
                       active
                         ? "text-accent-blue"
                         : "text-paper-mid hover:text-paper"
@@ -109,13 +110,13 @@ export default function Nav() {
                     {active &&
                       (reduced ? (
                         <span
-                          className="absolute inset-0 rounded-full bg-white/[0.06]"
+                          className="absolute inset-0 rounded-full bg-tint/[0.06]"
                           aria-hidden="true"
                         />
                       ) : (
                         <motion.span
                           layoutId="nav-active-pill"
-                          className="absolute inset-0 rounded-full bg-white/[0.06]"
+                          className="absolute inset-0 rounded-full bg-tint/[0.06]"
                           transition={PILL_SPRING}
                           aria-hidden="true"
                         />
@@ -131,20 +132,23 @@ export default function Nav() {
           </ul>
         </nav>
 
-        {/* Contact pill */}
-        <Magnetic strength={0.2}>
-          <MotionLink
-            href="/contact"
-            aria-label="Contact Me"
-            className="flex items-center justify-center gap-2 rounded-full border border-rule bg-ink/80 px-4 py-2.5 font-mono text-micro uppercase tracking-[0.1em] text-paper-mid backdrop-blur-md transition-colors hover:border-rule-strong hover:text-paper max-lg:min-h-[44px]"
-            {...(reduced
-              ? {}
-              : { whileHover: { y: -1 }, whileTap: { scale: 0.97 } })}
-          >
-            <UI name="mail" className="h-3.5 w-3.5" />
-            <span className="hidden whitespace-nowrap lg:inline">Contact Me</span>
-          </MotionLink>
-        </Magnetic>
+        {/* Contact pill + theme toggle */}
+        <div className="flex items-center gap-2">
+          <Magnetic strength={0.2}>
+            <MotionLink
+              href="/contact"
+              aria-label="Contact Me"
+              className="flex items-center justify-center gap-2 rounded-full border border-rule bg-ink/80 px-4 py-2.5 font-mono text-micro uppercase tracking-[0.1em] text-paper-mid backdrop-blur-md transition-colors hover:border-rule-strong hover:text-paper max-lg:min-h-[44px]"
+              {...(reduced
+                ? {}
+                : { whileHover: { y: -1 }, whileTap: { scale: 0.97 } })}
+            >
+              <UI name="mail" className="h-3.5 w-3.5" />
+              <span className="hidden whitespace-nowrap lg:inline">Contact Me</span>
+            </MotionLink>
+          </Magnetic>
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );

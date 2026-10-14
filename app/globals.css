@@ -6,11 +6,68 @@
   :root {
     --gutter: clamp(1.25rem, 4vw, 3rem);
     --measure: 1200px;
+
+    /* ------------------------------------------------------------------
+       Palette — RGB channels (so Tailwind alpha modifiers work) plus a few
+       whole colours. Light is the default; html[data-theme="dark"] swaps
+       in the dark set below. Tailwind reads these via tailwind.config.ts.
+       ------------------------------------------------------------------ */
+    color-scheme: light;
+    --c-ink: 244 242 236; /* #f4f2ec */
+    --c-raised: 251 250 247; /* #fbfaf7 */
+    --c-paper: 31 32 27; /* #1f201b */
+    --c-paper-mid: 92 93 86; /* #5c5d56 */
+    --c-paper-dim: 134 134 126; /* #86867e */
+    --c-cream: 20 21 17; /* #141511 */
+    --c-rule: 226 223 214; /* #e2dfd6 */
+    --c-rule-strong: 200 196 186; /* #c8c4ba */
+    --c-tint: 0 0 0;
+    --c-violet: 124 58 237; /* #7c3aed */
+    --c-violet-deep: 91 33 182; /* #5b21b6 */
+    --c-amber: 200 76 10; /* #c84c0a */
+    --c-cyan: 10 130 120; /* #0a8278 */
+    --c-green: 18 134 63; /* #12863f */
+    --c-pink: 214 31 105; /* #d61f69 */
+    --c-blue: 37 99 235; /* #2563eb */
+    --grad-violet-a: #8b5cf6;
+    --grad-violet-b: #5b21b6;
+    --grad-amber-a: #f59e0b;
+    --grad-amber-b: #c84c0a;
+    --brand-dark-fill: #111210;
+    --glow-blend: multiply;
+  }
+
+  /* Dark theme — the original warm charcoal canvas and pale accents. */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --c-ink: 17 18 16; /* #111210 canvas */
+    --c-raised: 25 26 23; /* #191a17 cards */
+    --c-paper: 236 234 226; /* #eceae2 body text */
+    --c-paper-mid: 160 159 151; /* #a09f97 */
+    --c-paper-dim: 107 106 98; /* #6b6a62 */
+    --c-cream: 242 239 225; /* #f2efe1 headlines, solid pills */
+    --c-rule: 38 39 35; /* #262723 hairlines */
+    --c-rule-strong: 54 55 51; /* #363733 */
+    --c-tint: 255 255 255; /* overlay washes: white on dark */
+    --c-violet: 167 139 250; /* #a78bfa */
+    --c-violet-deep: 139 92 246; /* #8b5cf6 */
+    --c-amber: 247 195 76; /* #f7c34c */
+    --c-cyan: 47 226 168; /* #2fe2a8 */
+    --c-green: 74 222 128; /* #4ade80 */
+    --c-pink: 244 114 182; /* #f472b6 */
+    --c-blue: 96 165 250; /* #60a5fa */
+    --grad-violet-a: #c9b8fd;
+    --grad-violet-b: #8b5cf6;
+    --grad-amber-a: #fce29b;
+    --grad-amber-b: #f0a92e;
+    /* Dark brand glyphs (Framer, Next.js…) read as cream on the charcoal */
+    --brand-dark-fill: #f2efe1;
+    --glow-blend: screen;
   }
 
   html {
-    background: #111210;
-    color: #eceae2;
+    background: rgb(var(--c-ink));
+    color: rgb(var(--c-paper));
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     /* Figma's cursor, site-wide — dark fill + white outline (visible on the
@@ -30,12 +87,12 @@
   }
 
   ::selection {
-    background: #a78bfa;
-    color: #111210;
+    background: rgb(var(--c-violet));
+    color: rgb(var(--c-ink));
   }
 
   :focus-visible {
-    outline: 1px solid #eceae2;
+    outline: 1px solid rgb(var(--c-paper));
     outline-offset: 3px;
   }
 
@@ -48,7 +105,7 @@
   @supports (-moz-appearance: none) {
     html {
       scrollbar-width: thin;
-      scrollbar-color: #363733 #111210;
+      scrollbar-color: rgb(var(--c-rule-strong)) rgb(var(--c-ink));
     }
   }
 
@@ -58,15 +115,15 @@
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #111210;
+    background-color: rgb(var(--c-ink));
   }
 
   ::-webkit-scrollbar-track:vertical {
     background-image: linear-gradient(
       to right,
       transparent calc(50% - 0.5px),
-      #262723 calc(50% - 0.5px),
-      #262723 calc(50% + 0.5px),
+      rgb(var(--c-rule)) calc(50% - 0.5px),
+      rgb(var(--c-rule)) calc(50% + 0.5px),
       transparent calc(50% + 0.5px)
     );
   }
@@ -75,8 +132,8 @@
     background-image: linear-gradient(
       to bottom,
       transparent calc(50% - 0.5px),
-      #262723 calc(50% - 0.5px),
-      #262723 calc(50% + 0.5px),
+      rgb(var(--c-rule)) calc(50% - 0.5px),
+      rgb(var(--c-rule)) calc(50% + 0.5px),
       transparent calc(50% + 0.5px)
     );
   }
@@ -94,8 +151,8 @@
       linear-gradient(
         to right,
         transparent calc(50% - 1px),
-        #60a5fa calc(50% - 1px),
-        #60a5fa calc(50% + 1px),
+        rgb(var(--c-blue)) calc(50% - 1px),
+        rgb(var(--c-blue)) calc(50% + 1px),
         transparent calc(50% + 1px)
       );
     background-position:
@@ -114,8 +171,8 @@
       linear-gradient(
         to bottom,
         transparent calc(50% - 1px),
-        #60a5fa calc(50% - 1px),
-        #60a5fa calc(50% + 1px),
+        rgb(var(--c-blue)) calc(50% - 1px),
+        rgb(var(--c-blue)) calc(50% + 1px),
         transparent calc(50% + 1px)
       );
     background-position:
@@ -135,8 +192,8 @@
       linear-gradient(
         to right,
         transparent calc(50% - 1px),
-        #a78bfa calc(50% - 1px),
-        #a78bfa calc(50% + 1px),
+        rgb(var(--c-violet)) calc(50% - 1px),
+        rgb(var(--c-violet)) calc(50% + 1px),
         transparent calc(50% + 1px)
       );
   }
@@ -147,14 +204,14 @@
       linear-gradient(
         to bottom,
         transparent calc(50% - 1px),
-        #a78bfa calc(50% - 1px),
-        #a78bfa calc(50% + 1px),
+        rgb(var(--c-violet)) calc(50% - 1px),
+        rgb(var(--c-violet)) calc(50% + 1px),
         transparent calc(50% + 1px)
       );
   }
 
   ::-webkit-scrollbar-corner {
-    background: #111210;
+    background: rgb(var(--c-ink));
   }
 }
 
@@ -172,7 +229,7 @@
     font-size: 0.6875rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #a09f97;
+    color: rgb(var(--c-paper-mid));
   }
 
   /* Rounded-pill button — outline by default */
@@ -181,31 +238,31 @@
     align-items: center;
     gap: 0.5rem;
     border-radius: 9999px;
-    border: 1px solid #363733;
+    border: 1px solid rgb(var(--c-rule-strong));
     padding: 0.7rem 1.3rem;
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: #eceae2;
+    color: rgb(var(--c-paper));
     white-space: nowrap;
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
   }
 
   .pill:hover {
-    border-color: #eceae2;
+    border-color: rgb(var(--c-paper));
   }
 
   .pill-solid {
-    background: #f2efe1;
-    border-color: #f2efe1;
-    color: #111210;
+    background: rgb(var(--c-cream));
+    border-color: rgb(var(--c-cream));
+    color: rgb(var(--c-ink));
   }
 
   .pill-solid:hover {
     background: transparent;
-    border-color: #eceae2;
-    color: #eceae2;
+    border-color: rgb(var(--c-paper));
+    color: rgb(var(--c-paper));
   }
 
   /* Small bordered chip for skills / stacks */
@@ -213,20 +270,20 @@
     display: inline-flex;
     align-items: center;
     border-radius: 0.5rem;
-    border: 1px solid #262723;
-    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgb(var(--c-rule));
+    background: rgb(var(--c-tint) / 0.03);
     padding: 0.35rem 0.75rem;
     font-family: var(--font-mono);
     font-size: 0.6875rem;
     letter-spacing: 0.02em;
-    color: #a09f97;
+    color: rgb(var(--c-paper-mid));
     white-space: nowrap;
   }
 
   .card {
     border-radius: 1rem;
-    border: 1px solid #262723;
-    background: #191a17;
+    border: 1px solid rgb(var(--c-rule));
+    background: rgb(var(--c-raised));
   }
 
   /* Circular cream badge that sits on section rules */
@@ -236,13 +293,13 @@
     width: 3rem;
     height: 3rem;
     border-radius: 9999px;
-    background: #f2efe1;
-    color: #111210;
+    background: rgb(var(--c-cream));
+    color: rgb(var(--c-ink));
   }
 
   .rule {
     height: 1px;
-    background: #262723;
+    background: rgb(var(--c-rule));
     border: 0;
   }
 }
@@ -250,14 +307,14 @@
 @layer utilities {
   /* Hero backdrop — faint square grid, like a design canvas */
   .line-grid {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-image: linear-gradient(rgb(var(--c-tint) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--c-tint) / 0.05) 1px, transparent 1px);
     background-size: 88px 88px;
   }
 
   /* Placeholder-frame backdrop */
   .dot-grid {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-image: radial-gradient(rgb(var(--c-tint) / 0.09) 1px, transparent 1px);
     background-size: 26px 26px;
   }
 
@@ -297,14 +354,14 @@
 
   /* Gradient text — hero words and the About subline */
   .text-gradient-violet {
-    background: linear-gradient(100deg, #c9b8fd 0%, #8b5cf6 100%);
+    background: linear-gradient(100deg, var(--grad-violet-a) 0%, var(--grad-violet-b) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .text-gradient-amber {
-    background: linear-gradient(100deg, #fce29b 0%, #f0a92e 100%);
+    background: linear-gradient(100deg, var(--grad-amber-a) 0%, var(--grad-amber-b) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -402,11 +459,11 @@
     border-radius: 9999px;
     background: radial-gradient(
       circle,
-      rgba(167, 139, 250, 0.9) 0%,
-      rgba(167, 139, 250, 0.3) 45%,
+      rgb(var(--c-violet) / 0.9) 0%,
+      rgb(var(--c-violet) / 0.3) 45%,
       transparent 72%
     );
-    mix-blend-mode: screen;
+    mix-blend-mode: var(--glow-blend);
     opacity: 0.5;
   }
 }

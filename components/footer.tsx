@@ -8,6 +8,7 @@ import type { Social } from "@/lib/content";
 import { accentText } from "@/lib/accents";
 import { Brand, UI } from "@/components/icons";
 import MotionReveal from "@/components/motion/motion-reveal";
+import VisitCounter from "@/components/visit-counter";
 
 const MotionLink = motion.create(Link);
 
@@ -216,10 +217,12 @@ export default function Footer() {
 
       <div className="border-t border-rule">
         {/* lg:pb-16 clears the fixed layers-breadcrumb chip (lg+ only). */}
-        <div className="shell flex items-center justify-between py-4 lg:pb-16">
+        <div className="shell flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-4 lg:pb-16">
           <p className="label">
             {site.fullName} © {new Date().getFullYear()}
           </p>
+          {/* Live visit count (Redis); renders nothing until a number exists. */}
+          <VisitCounter />
           <p className="label">{site.location}</p>
         </div>
       </div>

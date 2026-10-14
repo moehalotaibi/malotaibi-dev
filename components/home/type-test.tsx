@@ -47,24 +47,24 @@ function PeekingCat({ reduced }: { reduced: boolean }) {
       aria-hidden="true"
     >
       <svg viewBox="0 0 96 52" className="h-full w-full">
-        <path d="M22 18 L28 2 L38 14 Z" fill="#f2efe1" />
-        <path d="M74 18 L68 2 L58 14 Z" fill="#f2efe1" />
+        <path d="M22 18 L28 2 L38 14 Z" className="fill-cream" />
+        <path d="M74 18 L68 2 L58 14 Z" className="fill-cream" />
         <path d="M25 15 L28 7 L33 13 Z" fill="#f4b8c4" />
         <path d="M71 15 L68 7 L63 13 Z" fill="#f4b8c4" />
-        <ellipse cx="48" cy="34" rx="34" ry="26" fill="#f2efe1" />
-        <path d="M34 30 q4 4 8 0" stroke="#111210" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M54 30 q4 4 8 0" stroke="#111210" strokeWidth="2" fill="none" strokeLinecap="round" />
-        <path d="M45 38 q3 3 6 0" stroke="#111210" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+        <ellipse cx="48" cy="34" rx="34" ry="26" className="fill-cream" />
+        <path d="M34 30 q4 4 8 0" className="stroke-ink" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M54 30 q4 4 8 0" className="stroke-ink" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M45 38 q3 3 6 0" className="stroke-ink" strokeWidth="1.8" fill="none" strokeLinecap="round" />
         <circle cx="28" cy="37" r="3.5" fill="#f4b8c4" opacity="0.8" />
         <circle cx="68" cy="37" r="3.5" fill="#f4b8c4" opacity="0.8" />
       </svg>
       <motion.span
         animate={left}
-        className="absolute -bottom-1 left-2.5 h-2.5 w-4 rounded-b-full bg-[#f2efe1]"
+        className="absolute -bottom-1 left-2.5 h-2.5 w-4 rounded-b-full bg-cream"
       />
       <motion.span
         animate={right}
-        className="absolute -bottom-1 right-2.5 h-2.5 w-4 rounded-b-full bg-[#f2efe1]"
+        className="absolute -bottom-1 right-2.5 h-2.5 w-4 rounded-b-full bg-cream"
       />
     </div>
   );

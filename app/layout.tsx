@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Hanken_Grotesk, Space_Mono } from "next/font/google";
+import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import SmoothScroll from "@/components/smooth-scroll";
@@ -51,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#111210",
+  themeColor: "#f4f2ec",
 };
 
 export default function RootLayout({
@@ -63,8 +65,21 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${mono.variable} ${sans.variable} ${wordmark.variable}`}
+      // The theme script below may add data-theme before React hydrates.
+      suppressHydrationWarning
     >
       <body className="bg-ink font-sans text-paper antialiased">
+        {/* Theme, before first paint: light is the default (no attribute);
+            a stored "dark" choice flips html[data-theme] so the palette
+            in globals.css applies with no flash. Mirrors theme-toggle.tsx.
+            beforeInteractive = injected into the initial HTML ahead of
+            hydration, the supported way to run a blocking inline script. */}
+        <Script id="theme-init" strategy="beforeInteractive">
+          {"(function(){try{if(localStorage.getItem('theme')==='dark'){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();"}
+        </Script>
+        {/* Vercel Web Analytics — only sends anything once Analytics is
+            enabled on the Vercel project; cookie-free, no personal data. */}
+        <Analytics />
         <EntrySplash />
         <SmoothScroll />
         <CursorGlow />

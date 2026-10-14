@@ -45,15 +45,21 @@ export const accentBorder: Record<Accent, string> = {
   cream: "border-cream",
 };
 
-/** Raw hex values, for inline SVG fills (constellation art, cursor tags). */
+/**
+ * Accent colours as CSS strings for inline styles (progress bar, cursor
+ * tags, confetti, the spine gradient). They read the theme variables from
+ * globals.css, so they follow the light/dark toggle like the classes do.
+ * Only valid where CSS is parsed — `style={{…}}`, not SVG presentation
+ * attributes (use `style={{ stopColor }}` / `style={{ fill }}` there).
+ */
 export const ACCENT_HEX: Record<Accent, string> = {
-  violet: "#a78bfa",
-  amber: "#f7c34c",
-  cyan: "#2fe2a8",
-  green: "#4ade80",
-  pink: "#f472b6",
-  blue: "#60a5fa",
-  cream: "#f2efe1",
+  violet: "rgb(var(--c-violet))",
+  amber: "rgb(var(--c-amber))",
+  cyan: "rgb(var(--c-cyan))",
+  green: "rgb(var(--c-green))",
+  pink: "rgb(var(--c-pink))",
+  blue: "rgb(var(--c-blue))",
+  cream: "rgb(var(--c-cream))",
 };
 
 /** Gradient text classes for hero lines with a two-tone fill. */

@@ -381,7 +381,7 @@ export default function ColorStylesPanel({
               type="button"
               aria-pressed={selected}
               onClick={() => onPick(accent)}
-              className="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors hover:bg-white/[0.04] max-lg:min-h-[44px]"
+              className="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 transition-colors hover:bg-tint/[0.04] max-lg:min-h-[44px]"
             >
               <span
                 className={`h-3.5 w-3.5 shrink-0 rounded-full shadow-[inset_0_0_0_1px_rgba(255,255,255,0.2)] ${
@@ -424,7 +424,7 @@ export default function ColorStylesPanel({
               <button
                 type="button"
                 onClick={onReset}
-                className="label flex w-full items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-white/[0.04] hover:text-paper max-lg:min-h-[44px]"
+                className="label flex w-full items-center gap-2 rounded-md px-2 py-1.5 transition-colors hover:bg-tint/[0.04] hover:text-paper max-lg:min-h-[44px]"
               >
                 <UndoGlyph />
                 Reset

@@ -82,7 +82,7 @@ const PIN_CURSOR = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000
 // Figma dot grid — smaller pitch than the 88px .line-grid so the canvas
 // reads as zoomed-out Figma, not the hero backdrop.
 const DOT_GRID: CSSProperties = {
-  backgroundImage: "radial-gradient(#262723 1px, transparent 1px)",
+  backgroundImage: "radial-gradient(rgb(var(--c-rule)) 1px, transparent 1px)",
   backgroundSize: "22px 22px",
 };
 

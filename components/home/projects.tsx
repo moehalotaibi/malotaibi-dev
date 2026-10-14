@@ -26,7 +26,7 @@ export default function ProjectsIndex() {
           <StaggerItem key={p.title}>
             <MotionLink
               href="/projects"
-              className="flex items-baseline justify-between gap-6 border-t border-rule py-6 transition-colors duration-300 hover:bg-white/[0.02]"
+              className="flex items-baseline justify-between gap-6 border-t border-rule py-6 transition-colors duration-300 hover:bg-tint/[0.03]"
               initial={reduced ? undefined : "rest"}
               whileHover={reduced ? undefined : "hover"}
               whileTap={reduced ? undefined : { scale: 0.99 }}
@@ -60,7 +60,7 @@ export default function ProjectsIndex() {
               <p className="label">{"// side project"}</p>
               <MotionLink
                 href={p.detailHref ?? "/projects"}
-                className="flex items-baseline justify-between gap-6 py-6 transition-colors duration-300 hover:bg-white/[0.02]"
+                className="flex items-baseline justify-between gap-6 py-6 transition-colors duration-300 hover:bg-tint/[0.03]"
                 initial={reduced ? undefined : "rest"}
                 whileHover={reduced ? undefined : "hover"}
                 whileTap={reduced ? undefined : { scale: 0.99 }}

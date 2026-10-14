@@ -56,7 +56,9 @@ function brandFill(hex: string): string {
   const g = (n >> 8) & 255;
   const b = n & 255;
   const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-  return luminance < 0.16 ? "#f2efe1" : `#${hex}`;
+  // Near-black brands take the theme's "dark brand" fill: cream on the dark
+  // canvas, their own black on the light one (see globals.css).
+  return luminance < 0.16 ? "var(--brand-dark-fill)" : `#${hex}`;
 }
 
 export const BRAND_TITLES: Record<BrandSlug, string> = Object.fromEntries(
@@ -74,10 +76,12 @@ export function Brand({
   colored?: boolean;
 }) {
   const brand = BRANDS[slug];
+  // Fill goes through `style`, not the attribute: the dark-brand fill is a
+  // CSS variable, and var() is not allowed in SVG presentation attributes.
   return (
     <svg
       viewBox="0 0 24 24"
-      fill={colored ? brandFill(brand.hex) : "currentColor"}
+      style={{ fill: colored ? brandFill(brand.hex) : "currentColor" }}
       className={className}
       aria-hidden="true"
     >
@@ -100,7 +104,9 @@ export type UIIconName =
   | "pen"
   | "stack"
   | "code"
-  | "globe";
+  | "globe"
+  | "sun"
+  | "moon";
 
 const STROKE_PATHS: Record<UIIconName, React.ReactNode> = {
   home: (
@@ -174,6 +180,14 @@ const STROKE_PATHS: Record<UIIconName, React.ReactNode> = {
       <path d="M12 3c-3 3.4-3 14.6 0 18" />
     </>
   ),
+  // Theme toggle
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </>
+  ),
+  moon: <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />,
 };
 
 export function UI({

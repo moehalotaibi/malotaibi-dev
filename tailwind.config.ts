@@ -1,5 +1,11 @@
 import type { Config } from "tailwindcss";
 
+// Every colour reads an RGB-channel CSS variable defined in app/globals.css,
+// so the dark palette (default) and the light palette (html[data-theme=
+// "light"]) swap without touching a single class name. The `<alpha-value>`
+// placeholder keeps modifiers like bg-ink/70 working.
+const token = (name: string) => `rgb(var(${name}) / <alpha-value>)`;
+
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -9,26 +15,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Surfaces — dark warm charcoal, never pure black
-        ink: "#111210",
-        raised: "#191a17",
+        // Surfaces — dark warm charcoal (never pure black) / warm paper
+        ink: token("--c-ink"),
+        raised: token("--c-raised"),
         // Text
-        paper: "#eceae2",
-        "paper-mid": "#a09f97",
-        "paper-dim": "#6b6a62",
-        cream: "#f2efe1",
+        paper: token("--c-paper"),
+        "paper-mid": token("--c-paper-mid"),
+        "paper-dim": token("--c-paper-dim"),
+        cream: token("--c-cream"),
         // Hairlines
-        rule: "#262723",
-        "rule-strong": "#363733",
+        rule: token("--c-rule"),
+        "rule-strong": token("--c-rule-strong"),
+        // Overlay tint — white on the dark theme, black on the light one.
+        // Use it for hover washes and faint grids instead of bg-white/…
+        tint: token("--c-tint"),
         // Multi-accent palette — one accent per element, never mixed
         accent: {
-          violet: "#a78bfa",
-          "violet-deep": "#8b5cf6",
-          amber: "#f7c34c",
-          cyan: "#2fe2a8",
-          green: "#4ade80",
-          pink: "#f472b6",
-          blue: "#60a5fa",
+          violet: token("--c-violet"),
+          "violet-deep": token("--c-violet-deep"),
+          amber: token("--c-amber"),
+          cyan: token("--c-cyan"),
+          green: token("--c-green"),
+          pink: token("--c-pink"),
+          blue: token("--c-blue"),
         },
       },
       fontFamily: {

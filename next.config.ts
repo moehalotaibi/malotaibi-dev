@@ -12,10 +12,17 @@ const nextConfig: NextConfig = {
         destination: "/case-studies/sadu",
         permanent: true,
       },
+      // Keeta Redesign was removed from the site on 2026-10-14; old links
+      // land on the case-studies index instead of a 404.
+      {
+        source: "/case-studies/keeta-redesign",
+        destination: "/case-studies",
+        permanent: true,
+      },
       {
         // Redirects run BEFORE the /public filesystem, and the project
         // images live under public/work/ — so the slug must exclude dots
-        // (every asset filename has one) or /work/keeta.png etc. would be
+        // (every asset filename has one) or /work/birr-cover.jpg etc. would be
         // redirected to /case-studies/ and 404, breaking next/image.
         source: "/work/:slug([^./]+)",
         destination: "/case-studies/:slug",

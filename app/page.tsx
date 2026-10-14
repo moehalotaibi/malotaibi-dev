@@ -11,6 +11,7 @@ import SkillsRows from "@/components/home/skills";
 import CaseStudiesSection from "@/components/home/case-studies";
 import ProjectsIndex from "@/components/home/projects";
 import TechStack from "@/components/home/tech-stack";
+import GithubGraph from "@/components/home/github-graph";
 import Guestbook from "@/components/home/guestbook";
 import SpineContainer from "@/components/home/path-spine";
 
@@ -31,6 +32,9 @@ export default function Home() {
       <CaseStudiesSection />
       <ProjectsIndex />
       <TechStack />
+      {/* Live GitHub contribution calendar (server-fetched, hourly ISR).
+          Renders nothing if GitHub can't be read. */}
+      <GithubGraph />
       {/* Key is public-by-design (domain-locked at Web3Forms); baked into
           the static page at build time from the server env — same pattern
           as app/contact/page.tsx. */}

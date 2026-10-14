@@ -30,18 +30,20 @@ type Point = { x: number; y: number };
  * after the first carries an anchor square — placed by the same numbers,
  * so anchors always sit ON the path.
  */
-// Re-measured 2026-09-26 after the "What you get" cards were pulled and the
-// certification chip joined the hero (section tops at 1280px: intro 1008 ·
-// skills 1688 · case studies 2535 · projects 3465 · tech stack 4518 ·
-// guestbook 4853, page 5596 → ×4000/5596). The divider→intro anchor went:
-// with the taller hero it sat too close to the start for a clean curve.
+// Re-measured 2026-10-14 after the intro became a properties panel and the
+// GitHub commits graph joined the page (section tops at 1280px: intro 1008 ·
+// skills 1760 · case studies 2606 · projects 3537 · tech stack 4688 ·
+// commits 5022 · guestbook 5538, page 6281 → ×4000/6281). The spine now
+// ends at the commits graph; the guestbook below it stands alone.
+// (Compact profile-card intro, 2026-10-14: skills 1524 · case studies 2370 ·
+// projects 3179 · tech stack 4232 · commits 4566, page 5825.)
 const WAYPOINTS: Point[] = [
-  { x: 500, y: 640 }, // start — just under the certification chip
-  { x: 892, y: 1207 }, // intro → skills
-  { x: 108, y: 1812 }, // skills → case studies
-  { x: 892, y: 2477 }, // case studies → projects
-  { x: 108, y: 3229 }, // projects → tech stack
-  { x: 500, y: 3470 }, // end — top of the guestbook
+  { x: 500, y: 615 }, // start — just under the certification chip
+  { x: 892, y: 1046 }, // intro → skills
+  { x: 108, y: 1627 }, // skills → case studies
+  { x: 892, y: 2183 }, // case studies → projects
+  { x: 108, y: 2906 }, // projects → tech stack
+  { x: 500, y: 3135 }, // end — top of the commits graph
 ];
 
 const ANCHORS = WAYPOINTS.slice(1);
@@ -66,7 +68,7 @@ const GRADIENT_ID = "spine-stroke-grad";
 const ANCHOR_SIZE = {
   width: 7,
   height: 7,
-  backgroundColor: "#111210",
+  backgroundColor: "rgb(var(--c-ink))",
   border: `1.5px solid ${ACCENT_HEX.blue}`,
 } as const;
 
@@ -136,9 +138,9 @@ export default function SpineContainer({ children }: { children: ReactNode }) {
         >
           <defs>
             <linearGradient id={GRADIENT_ID} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor={ACCENT_HEX.violet} />
-              <stop offset="0.5" stopColor={ACCENT_HEX.cyan} />
-              <stop offset="1" stopColor={ACCENT_HEX.green} />
+              <stop offset="0" style={{ stopColor: ACCENT_HEX.violet }} />
+              <stop offset="0.5" style={{ stopColor: ACCENT_HEX.cyan }} />
+              <stop offset="1" style={{ stopColor: ACCENT_HEX.green }} />
             </linearGradient>
           </defs>
           {reduced ? (

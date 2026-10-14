@@ -133,7 +133,7 @@ export default function GridCellHighlight({
     // left/top of 1px seat the 87px square inside the cell's interior,
     // clear of the 1px grid lines; the transform carries the cell snap.
     <motion.div
-      className="pointer-events-none absolute left-px top-px h-[87px] w-[87px] border border-white/[0.06] bg-white/[0.04]"
+      className="pointer-events-none absolute left-px top-px h-[87px] w-[87px] border border-tint/[0.06] bg-tint/[0.04]"
       aria-hidden="true"
       style={{ x, y, opacity }}
     />
