@@ -1,16 +1,12 @@
 "use client";
 
 // Footer visit counter — posts one visit to /api/visits on every page load
-// and shows the running total as a "// n visits since …" label. The
-// total was seeded on 2026-10-14 with the 246 visitors Vercel Analytics
-// had recorded since the site launched (Nov 2025) plus 100 for the
-// August–October stretch the tracker was missing. Renders nothing until a
-// number exists (and never on failure), so the footer stays clean when
-// Redis is not configured.
+// and shows the running total as a "// n visits" label. The total was set
+// to 839 on 2026-10-14 (Moe's number) and counts up from there. Renders
+// nothing until a number exists (and never on failure), so the footer
+// stays clean when Redis is not configured.
 
 import { useEffect, useState } from "react";
-
-const SINCE = "Nov 2025";
 
 export default function VisitCounter() {
   const [visits, setVisits] = useState<number | null>(null);
@@ -31,8 +27,8 @@ export default function VisitCounter() {
   if (visits === null) return null;
 
   return (
-    <span className="label tabular-nums" title={`Page visits since ${SINCE}`}>
-      {`// ${visits.toLocaleString("en-US")} ${visits === 1 ? "visit" : "visits"} since ${SINCE}`}
+    <span className="label tabular-nums" title="Page visits">
+      {`// ${visits.toLocaleString("en-US")} ${visits === 1 ? "visit" : "visits"}`}
     </span>
   );
 }
