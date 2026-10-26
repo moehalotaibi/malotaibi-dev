@@ -414,9 +414,27 @@ export const projectsIntro =
 // `year` carries the project status word from the old site.
 export const projects: Project[] = [
   {
+    // Real client work: Moe's own company (see timeline). Bullets are drawn
+    // from the case-study page in his Figma file. Leads the list, above Sadu (Moe's call, 2026-10-26).
+    title: "Agile Advice Company OS",
+    year: "Completed",
+    category: "Dashboard Design",
+    stack: "Figma, UX Research, Design Systems, Prototyping, Arabic RTL",
+    accent: "violet",
+    bullets: [
+      "A company workspace for Agile Advice, a Riyadh consultancy that ran projects, payments and HR on shared Excel files, Outlook threads and WhatsApp. Every role, from the CEO to a new analyst, sees what matters to them, live.",
+      "More than 130 screens across desktop and phone on the same tokens and components: Home, one inbox for every request, a page per client with all its files, emails and invoices, tasks, working hours, leave, approvals, payments and payroll, plus an employee app and a client portal.",
+      "Made for Saudi workplaces: Arabic right to left with the whole layout mirrored, Hijri dates beside Gregorian, the Sunday to Thursday week, Ramadan hours and Labor Law leave types. AI handles the busywork (summaries, receipts read from a photo, leave clash checks) and always shows the result before saving.",
+    ],
+    href: "https://www.figma.com/design/k7VaZFKuYogds7pgZqx1j6/Agile-Advice-%E2%80%94-Company-Dashboard?node-id=9-643&t=efmu6scq9z5ymXhC-1",
+    image: "/work/agile-os-cover.jpg",
+    imageAlt:
+      "Agile Advice Company OS cover: the title and four chips (6 roles, desktop + mobile, English, AI built in) beside the admin Home screen in a browser frame with the phone app in front, on a pale lavender backdrop",
+  },
+  {
     // Concept project — also a case study. Replaced the old site's
     // "SNB Mobile · Building" placeholder row; bullets are drawn from Moe's
-    // brief (now "Meet Sadu"). Leads the list, Birr under it — Moe's call.
+    // brief (now "Meet Sadu"). Second, under Agile Advice Company OS.
     title: "Meet Sadu",
     year: "Concept",
     category: "E-wallet Design",
@@ -452,24 +470,6 @@ export const projects: Project[] = [
     image: "/work/grid-nova-cover.jpg",
     imageAlt:
       "Grid Nova cover: the Grid Nova Energy wordmark and title beside the website hero in a browser frame, on a deep blue backdrop",
-  },
-  {
-    // Real client work: Moe's own company (see timeline). Bullets are drawn
-    // from the case-study page in his Figma file. Sits under Grid Nova.
-    title: "Agile Advice Company OS",
-    year: "Completed",
-    category: "Dashboard Design",
-    stack: "Figma, UX Research, Design Systems, Prototyping, Arabic RTL",
-    accent: "violet",
-    bullets: [
-      "A company workspace for Agile Advice, a Riyadh consultancy that ran projects, payments and HR on shared Excel files, Outlook threads and WhatsApp. Every role, from the CEO to a new analyst, sees what matters to them, live.",
-      "More than 130 screens across desktop and phone on the same tokens and components: Home, one inbox for every request, a page per client with all its files, emails and invoices, tasks, working hours, leave, approvals, payments and payroll, plus an employee app and a client portal.",
-      "Made for Saudi workplaces: Arabic right to left with the whole layout mirrored, Hijri dates beside Gregorian, the Sunday to Thursday week, Ramadan hours and Labor Law leave types. AI handles the busywork (summaries, receipts read from a photo, leave clash checks) and always shows the result before saving.",
-    ],
-    href: "https://www.figma.com/design/k7VaZFKuYogds7pgZqx1j6/Agile-Advice-%E2%80%94-Company-Dashboard?node-id=9-643&t=efmu6scq9z5ymXhC-1",
-    image: "/work/agile-os-cover.jpg",
-    imageAlt:
-      "Agile Advice Company OS cover: the title and four chips (6 roles, desktop + mobile, English, AI built in) beside the admin Home screen in a browser frame with the phone app in front, on a pale lavender backdrop",
   },
   {
     // Concept project — also a case study. Bullets are drawn from Moe's
