@@ -432,9 +432,25 @@ export const projects: Project[] = [
       "Agile Advice Company OS cover: the title and four chips (6 roles, desktop + mobile, English, AI built in) beside the admin Home screen in a browser frame with the phone app in front, on a pale lavender backdrop",
   },
   {
+    // The live company website. Sits right under the Company OS (Moe's
+    // call, 2026-11-10) so the two Agile Advice rows read together.
+    title: "Agile Advice",
+    year: "Live",
+    category: "Brand Identity",
+    stack: "Figma, Logo Design, Web Design",
+    accent: "green",
+    bullets: [
+      "Complete brand identity and website design for Agile Advice, a business services company. Created a cohesive visual language and user-friendly digital experience.",
+    ],
+    href: "https://www.agileadvice.sa/",
+    image: "/work/agile-advice-site.jpg",
+    imageAlt:
+      "Agile Advice homepage in Arabic: the headline in dark and blue, a world map linking Riyadh to the US, Europe, China, India and Japan, and the blue band that follows",
+  },
+  {
     // Concept project — also a case study. Replaced the old site's
     // "SNB Mobile · Building" placeholder row; bullets are drawn from Moe's
-    // brief (now "Meet Sadu"). Second, under Agile Advice Company OS.
+    // brief (now "Meet Sadu"). Third, under the two Agile Advice rows.
     title: "Meet Sadu",
     year: "Concept",
     category: "E-wallet Design",
@@ -503,19 +519,6 @@ export const projects: Project[] = [
     href: "https://labvision-academy.vercel.app/",
     image: "/work/labvision.jpg",
     imageAlt: "LABvision Academy homepage",
-  },
-  {
-    title: "Agile Advice",
-    year: "Live",
-    category: "Brand Identity",
-    stack: "Figma, Logo Design, Web Design",
-    accent: "green",
-    bullets: [
-      "Complete brand identity and website design for Agile Advice, a business services company. Created a cohesive visual language and user-friendly digital experience.",
-    ],
-    href: "https://www.agileadvice.sa/",
-    image: "/work/agile-advice-hero.jpg",
-    imageAlt: "Agile Advice website",
   },
   {
     title: "OSTOUL ELM Product Design",
