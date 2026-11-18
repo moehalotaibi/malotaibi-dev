@@ -7,7 +7,7 @@
 // big project cards; the compact home rows use the bare dot + word. The
 // ring is static under reduced motion.
 
-import { useReducedMotion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 type Props = {
   status: string;
@@ -21,7 +21,7 @@ export default function ProjectStatus({
   chip = false,
   className = "",
 }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const live = status.trim().toLowerCase() === "live";
 
   if (!live) {

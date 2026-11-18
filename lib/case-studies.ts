@@ -5,6 +5,7 @@
 // metrics, clients, or outcomes — qualitative only.
 
 import type { Accent } from "./content";
+import { diwanDetail } from "./case-study-diwan";
 
 export type CaseSectionItem = {
   title: string;
@@ -12,6 +13,94 @@ export type CaseSectionItem = {
   /** Colors the card title; falls back to the study accent. */
   accent?: Accent;
 };
+
+/**
+ * A screenshot with its real pixel size, so the frame keeps the natural
+ * ratio (nothing is cropped) and the lightbox knows how large it can go.
+ */
+export type CaseImage = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** Short name for the frame's chrome bar; falls back to the alt text. */
+  name?: string;
+  /** Caption under the frame. `captionLead` renders bold before it. */
+  caption?: string;
+  captionLead?: string;
+  /**
+   * Frame ratio (width / height) when the tile should show only the TOP of
+   * a long image, e.g. a full-page website shot. The lightbox still opens
+   * the whole image.
+   */
+  crop?: number;
+  /**
+   * A small picture for the tile when `src` is a very long page. The tile
+   * shows `thumb`; the lightbox still opens `src`.
+   */
+  thumb?: string;
+};
+
+/** Status colour for a risk-table row. */
+export type CaseTone = "green" | "blue" | "amber" | "red";
+
+/**
+ * Ordered long-form content for studies that need more than
+ * intro + items + images (Diwan). Rendered by components/work/case-blocks.
+ */
+export type CaseBlock =
+  /** Paragraphs. With `lead`, the first one is set larger. */
+  | { type: "prose"; paragraphs: string[]; lead?: boolean }
+  /** Sub-heading inside a section, with an optional muted line under it. */
+  | { type: "heading"; text: string; note?: string }
+  /** Numbered, divided rows: index, title, body. */
+  | { type: "rows"; items: CaseSectionItem[] }
+  /** The framing question: small label over a large line. */
+  | { type: "question"; label: string; text: string }
+  /** One quoted line per role. */
+  | { type: "quotes"; items: { who: string; quote: string }[] }
+  /** One full-width screenshot. */
+  | { type: "figure"; image: CaseImage }
+  /** Screenshots two to a row. */
+  | { type: "figures"; images: CaseImage[] }
+  /** Boxed cards, two to a row, optionally numbered. */
+  | { type: "cards"; items: CaseSectionItem[]; numbered?: boolean }
+  /** Short notes, three to a row. */
+  | { type: "notes"; items: CaseSectionItem[] }
+  | { type: "swatches"; items: { name: string; hex: string; use: string }[] }
+  /** A screenshot followed by its label, title and description. */
+  | {
+      type: "screens";
+      items: { image: CaseImage; label: string; title: string; body: string }[];
+    }
+  /** A numbered flow, three steps to a row. */
+  | { type: "steps"; items: CaseSectionItem[] }
+  | {
+      type: "table";
+      columns: [string, string, string, string];
+      rows: {
+        name: string;
+        needs: string;
+        tone: CaseTone;
+        examples: string;
+        how: string;
+      }[];
+    }
+  /** Tinted box with a title and short points. */
+  | { type: "callout"; title: string; items: CaseSectionItem[] }
+  /** A wide screenshot beside a short note and/or phone screens. */
+  | {
+      type: "split";
+      image: CaseImage;
+      aside?: { title: string; body: string };
+      phones?: CaseImage[];
+    }
+  /** Three short labelled lines (tab bars per role). */
+  | { type: "tabs"; items: CaseSectionItem[] }
+  /** A set of phone screens. `label` names the group for screen readers. */
+  | { type: "phones"; label: string; images: CaseImage[]; columns?: 5 | 6 }
+  /** Numbered next steps, three to a row. */
+  | { type: "next"; items: CaseSectionItem[] };
 
 export type CaseSection = {
   id: string;
@@ -35,18 +124,31 @@ export type CaseSection = {
     before: { src: string; alt: string };
     after: { src: string; alt: string };
   };
+  /** Ordered long-form content, rendered after everything above. */
+  blocks?: CaseBlock[];
 };
 
 export type CaseStudyDetail = {
   slug: string;
   /** Expanded title line for the detail hero. */
   headline: string;
+  /** Arabic form of a one-word headline, set small beside it (Diwan). */
+  headlineAr?: string;
+  /**
+   * Replaces the default Role / Platform / Duration strip in the hero.
+   * The card on the index keeps using the short `meta` from lib/content.ts.
+   */
+  meta?: { label: string; value: string }[];
+  /** Cover shot under the hero, with an optional note below it. */
+  cover?: { image: CaseImage; note?: string };
   /** Muted walkthrough loop rendered under the hero (public/ paths). */
   video?: { src: string; poster: string; title: string; label: string };
   sections: CaseSection[];
 };
 
 export const caseStudyDetails: CaseStudyDetail[] = [
+  // Diwan lives in its own file (lib/case-study-diwan.ts): it is long.
+  diwanDetail,
   // ---------------------------------------------------- learning-app-onboarding
   {
     "slug": "learning-app-onboarding",

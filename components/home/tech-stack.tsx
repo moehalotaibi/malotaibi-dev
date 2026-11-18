@@ -15,12 +15,8 @@
 // shadcn tooltip and hover scale.
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import {
-  motion,
-  useAnimationFrame,
-  useMotionValue,
-  useReducedMotion,
-} from "motion/react";
+import { motion, useAnimationFrame, useMotionValue } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import {
   Tooltip,
@@ -58,7 +54,7 @@ const clampVelocity = (v: number) =>
   Math.max(-MAX_VELOCITY, Math.min(MAX_VELOCITY, v));
 
 function IconRun({ decorative = false }: { decorative?: boolean }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <div
@@ -98,7 +94,7 @@ function IconRun({ decorative = false }: { decorative?: boolean }) {
 }
 
 function Marquee() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const fine = useSyncExternalStore(subscribeFine, getFine, getFineServer);
 
   const trackRef = useRef<HTMLDivElement>(null);

@@ -3,10 +3,11 @@
 // A `.tag` chip with a small hover pop. Shared by the timeline and toolkit
 // sections. Static under reduced motion.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 export default function TagChip({ label }: { label: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   if (reduced) {
     return <span className="tag">{label}</span>;

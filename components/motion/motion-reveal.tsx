@@ -2,8 +2,12 @@
 
 // Drop-in motion upgrade of components/reveal.tsx (which stays for compat).
 // whileInView fade + rise with a spring; static under reduced motion.
+// Both modes render the same motion tag: the reduced-motion flag only turns
+// true after hydration, and keeping the element means that switch updates
+// props instead of remounting everything inside the reveal.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { ElementType, ReactNode } from "react";
 
 type TagName = "div" | "section" | "li" | "article";
@@ -35,12 +39,22 @@ export default function MotionReveal({
   as = "div",
   once = true,
 }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const MotionTag = MOTION_TAGS[as];
-  const StaticTag = as;
 
   if (reduced) {
-    return <StaticTag className={className}>{children}</StaticTag>;
+    // Fresh mount: renders visible, nothing animates. After hydration (where
+    // the server markup started hidden): jumps straight to visible.
+    return (
+      <MotionTag
+        className={className}
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0 }}
+      >
+        {children}
+      </MotionTag>
+    );
   }
 
   return (

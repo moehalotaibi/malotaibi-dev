@@ -32,12 +32,8 @@ import {
   useSyncExternalStore,
 } from "react";
 import type { CSSProperties, FormEvent, RefObject } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useInView,
-  useReducedMotion,
-} from "motion/react";
+import { AnimatePresence, motion, useInView } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import SectionHeader from "@/components/section-header";
 import { accentBg, accentText } from "@/lib/accents";
@@ -180,7 +176,7 @@ function Pin({
   animate: boolean;
   onClick: () => void;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const initial = comment.name.trim().charAt(0).toUpperCase() || "?";
 
   return (
@@ -228,7 +224,7 @@ function PendingMarker({
   canvasRef: RefObject<HTMLDivElement | null>;
   small: boolean;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const initial = pin.name.trim().charAt(0).toUpperCase() || "?";
   // The chip is a mini-card: same measured flip/clamp as the thread card,
   // always horizontally anchored (it's small enough even at 375).
@@ -273,7 +269,7 @@ type FieldName = "name" | "email" | "message";
 type Errors = Partial<Record<FieldName, string>>;
 
 export default function Guestbook({ web3formsKey }: { web3formsKey: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const small = useSyncExternalStore(subscribeSmall, getSmall, getSmallServer);
 
   const canvasRef = useRef<HTMLDivElement>(null);

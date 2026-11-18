@@ -5,7 +5,8 @@
 // does.
 
 import { useCallback, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { CursorArrow } from "@/components/icons";
 import { ACCENT_HEX } from "@/lib/accents";
 
@@ -29,7 +30,7 @@ type Particle = {
 let particleId = 0;
 
 export default function ClickMe() {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const [particles, setParticles] = useState<Particle[]>([]);
   const [showTag, setShowTag] = useState(false);
 

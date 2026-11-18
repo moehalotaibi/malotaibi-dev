@@ -5,7 +5,8 @@
 // (no permission, insecure context) are a graceful no-op.
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import {
   Tooltip,
   TooltipContent,
@@ -17,7 +18,7 @@ import { CheckIcon, CopyIcon } from "./contact-icons";
 const SPRING = { type: "spring", stiffness: 380, damping: 26 } as const;
 
 export default function CopyEmailButton() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [copied, setCopied] = useState(false);
   const timer = useRef<number | null>(null);
 

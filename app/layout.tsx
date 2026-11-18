@@ -1,20 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo_Black, Hanken_Grotesk, Space_Mono } from "next/font/google";
+import { Archivo_Black, Geist_Mono, Hanken_Grotesk } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import SmoothScroll from "@/components/smooth-scroll";
-import CursorGlow from "@/components/cursor-glow";
 import LayersBreadcrumb from "@/components/layers-breadcrumb";
 import EntrySplash from "@/components/system/entry-splash";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { site } from "@/lib/content";
 import "./globals.css";
 
-const mono = Space_Mono({
+// The "secondary" face: every label, pill, tag and big stat number.
+// Geist Mono replaced Space Mono on 2026-11-18 (Moe: it "looks off"): the
+// same technical voice with even, plain letterforms that hold up at 11px.
+// Variable font, so every weight is available without listing them.
+const mono = Geist_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -82,7 +84,6 @@ export default function RootLayout({
         <Analytics />
         <EntrySplash />
         <SmoothScroll />
-        <CursorGlow />
         <LayersBreadcrumb />
         <a
           href="#main"

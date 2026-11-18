@@ -1,95 +1,93 @@
 "use client";
 
-// My projects — compact index rows. Title x-slide is a motion spring
-// (upgraded from CSS); row tints on hover (CSS color transition) and
-// compresses slightly on tap.
+// My projects — a gallery of browser-frame previews instead of the old text
+// rows, so every cover shows on the home page. Order is the content order
+// (lib/content.ts); the side project closes the grid under its own label.
+//
+// Hover (pointer) or focus: the frame lifts, the Figma selection chrome
+// appears around it and the shot zooms a touch inside the frame. Each tile
+// links to the project's own page when it has one, else to /projects.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import ProjectStatus from "@/components/project-status";
 import SectionHeader from "@/components/section-header";
+import SelectionCorners from "@/components/selection-corners";
+import ShotFrame from "@/components/shot-frame";
 import { accentText } from "@/lib/accents";
 import { projects, sideProjects } from "@/lib/content";
 import { MotionLink, PillLink, SPRING } from "./motion-kit";
 
+const pad = (n: number) => String(n).padStart(2, "0");
+
+const tiles = [
+  ...projects.map((project, i) => ({ project, eyebrow: pad(i + 1) })),
+  ...sideProjects.map((project) => ({ project, eyebrow: "// side project" })),
+];
+
 export default function ProjectsIndex() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <section className="shell pb-section" aria-labelledby="projects">
       <MotionReveal>
         <SectionHeader id="projects" title="UX Projects" badge="briefcase" />
       </MotionReveal>
-      <StaggerGroup className="border-b border-rule">
-        {projects.map((p) => (
+      <StaggerGroup
+        // relative + page background: the decorative spine passes behind
+        // the whole gallery instead of cutting through the captions.
+        className="relative grid grid-cols-2 gap-x-4 gap-y-9 bg-ink lg:grid-cols-4 lg:gap-x-5 lg:gap-y-12"
+        stagger={0.05}
+      >
+        {tiles.map(({ project: p, eyebrow }) => (
           <StaggerItem key={p.title}>
             <MotionLink
-              href="/projects"
-              className="flex items-baseline justify-between gap-6 border-t border-rule py-6 transition-colors duration-300 hover:bg-tint/[0.03]"
+              href={p.detailHref ?? "/projects"}
+              className="group block"
               initial={reduced ? undefined : "rest"}
               whileHover={reduced ? undefined : "hover"}
-              whileTap={reduced ? undefined : { scale: 0.99 }}
+              whileTap={reduced ? undefined : { scale: 0.98 }}
             >
-              <span className="min-w-0">
-                <motion.span
-                  className="block font-display text-h3 font-medium"
-                  variants={{ rest: { x: 0 }, hover: { x: 4 } }}
-                  transition={SPRING}
-                >
-                  {p.title}
-                </motion.span>
-                <ProjectStatus status={p.year} className="mt-1" />
-              </span>
-              <span className="min-w-0 text-right">
-                <span className={`label block ${accentText[p.accent]}`}>
-                  {p.category}
-                </span>
-                <span className="label mt-1 hidden normal-case tracking-normal text-paper-dim sm:block">
-                  {p.stack}
-                </span>
-              </span>
-            </MotionLink>
-          </StaggerItem>
-        ))}
-        {/* Side project — same compact row under a quiet label, mirroring
-            the dedicated page's "Side Project" section. */}
-        {sideProjects.map((p) => (
-          <StaggerItem key={p.title}>
-            <div className="border-t border-rule pt-6">
-              <p className="label">{"// side project"}</p>
-              <MotionLink
-                href={p.detailHref ?? "/projects"}
-                className="flex items-baseline justify-between gap-6 py-6 transition-colors duration-300 hover:bg-tint/[0.03]"
-                initial={reduced ? undefined : "rest"}
-                whileHover={reduced ? undefined : "hover"}
-                whileTap={reduced ? undefined : { scale: 0.99 }}
+              <motion.div
+                className="relative [&_img]:transition-transform [&_img]:duration-500 [&_img]:ease-out group-hover:[&_img]:scale-[1.04]"
+                variants={
+                  reduced ? undefined : { rest: { y: 0 }, hover: { y: -4 } }
+                }
+                transition={SPRING}
               >
-                <span className="min-w-0">
-                  <motion.span
-                    className="block font-display text-h3 font-medium"
-                    variants={{ rest: { x: 0 }, hover: { x: 4 } }}
-                    transition={SPRING}
-                  >
-                    {p.title}
-                  </motion.span>
-                  <ProjectStatus status={p.year} className="mt-1" />
-                </span>
-                <span className="min-w-0 text-right">
-                  <span className={`label block ${accentText[p.accent]}`}>
+                <SelectionCorners accent={p.accent} />
+                {/* At this size the "// preview" corner label would sit on
+                    top of the artwork, so it moves up into the chrome bar;
+                    the project's name is the caption right below. */}
+                <ShotFrame
+                  title="// preview"
+                  image={p.image}
+                  imageAlt={p.imageAlt}
+                  sizes="(min-width: 1200px) 262px, (min-width: 1024px) 22vw, 46vw"
+                  cornerLabel={false}
+                />
+              </motion.div>
+
+              <div className="mt-4">
+                <p className="label tabular-nums text-paper-dim">{eyebrow}</p>
+                <h3 className="mt-1.5 font-display text-body font-medium text-cream sm:text-lead">
+                  {p.title}
+                </h3>
+                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                  <span className={`label ${accentText[p.accent]}`}>
                     {p.category}
                   </span>
-                  <span className="label mt-1 hidden normal-case tracking-normal text-paper-dim sm:block">
-                    {p.stack}
-                  </span>
-                </span>
-              </MotionLink>
-            </div>
+                  <ProjectStatus status={p.year} />
+                </div>
+              </div>
+            </MotionLink>
           </StaggerItem>
         ))}
       </StaggerGroup>
       <MotionReveal delay={160}>
-        <div className="mt-10 text-center">
+        <div className="mt-12 text-center">
           <PillLink href="/projects">All projects</PillLink>
         </div>
       </MotionReveal>

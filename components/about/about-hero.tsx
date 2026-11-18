@@ -5,7 +5,8 @@
 // certification chip (components/certified-chip.tsx) links to the
 // certificate. Static under reduced motion.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import CertifiedChip from "@/components/certified-chip";
 import MotionReveal from "@/components/motion/motion-reveal";
 import StaggerText from "@/components/motion/stagger-text";
@@ -14,7 +15,7 @@ import { about } from "@/lib/content";
 const SPRING = { type: "spring", stiffness: 340, damping: 24 } as const;
 
 export default function AboutHero() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <>

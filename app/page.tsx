@@ -29,8 +29,9 @@ export default function Home() {
           it repeated the Experience & Skills pillars card-for-card. The
           component and its content in lib/content.ts are kept for now. */}
       <SkillsRows />
-      <CaseStudiesSection />
+      {/* UX Projects leads, Case Studies follows (Moe's order, 2026-11-18). */}
       <ProjectsIndex />
+      <CaseStudiesSection />
       <TechStack />
       {/* Live GitHub contribution calendar (server-fetched, hourly ISR).
           Renders nothing if GitHub can't be read. */}

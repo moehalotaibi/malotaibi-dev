@@ -9,9 +9,9 @@ import {
   motion,
   useAnimationControls,
   useMotionValue,
-  useReducedMotion,
   useTransform,
 } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { site } from "@/lib/content";
 
 const SENTENCES = [
@@ -73,7 +73,7 @@ function PeekingCat({ reduced }: { reduced: boolean }) {
 type Result = { seconds: number; wpm: number; accuracy: number };
 
 export default function TypeTest() {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const [idx, setIdx] = useState(0);
   const [typed, setTyped] = useState("");
   const [result, setResult] = useState<Result | null>(null);

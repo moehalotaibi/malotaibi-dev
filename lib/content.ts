@@ -96,7 +96,11 @@ export const hero = {
       kind: "cursor",
       text: "Design",
       accent: "pink",
-      className: "left-[42%] -top-[5%]",
+      // Moe's placement (2026-11-18): right of "UX", its cursor pointing at
+      // the end of the Riyadh note, the pill hanging in the gap above
+      // "Designer". Anchored to the note (64% / 2%) plus a fixed offset,
+      // because the note keeps its size while the headline scales.
+      className: "left-[calc(64%+4.4rem)] top-[calc(2%+1.75rem)]",
     },
     {
       kind: "comment",
@@ -108,11 +112,6 @@ export const hero = {
       text: "Let's Connect",
       accent: "green",
       className: "-right-8 top-[88%] xl:-right-12",
-    },
-    {
-      kind: "comment",
-      text: "// Small details matter",
-      className: "right-[69%] top-[78%] w-[14ch] text-left",
     },
     {
       kind: "cursor",
@@ -163,9 +162,24 @@ export const intro = {
   body: "Strong ability to translate UX research, wireframes, and prototypes into responsive and accessible front-end experiences. Experienced in working on enterprise and government digital platforms, with a solid foundation in design thinking, usability, and modern UI development.",
   aside:
     "Combined my UX design background with front-end engineering for a fast, minimalist experience.",
-  // Fact chips on the profile card (location sits in the role line).
-  // Keep every one true today.
-  chips: ["NN/g UX Certified", "Arabic · English", "Design systems"],
+  // Shown as a quick fact on the profile card, beside the current role,
+  // the location and the NN/g certificate (those three are read from
+  // roles, site and about). Keep it true today.
+  languages: "Arabic · English",
+  // Certificates named on the profile card, in Moe's order (2026-11-18),
+  // each with a small logo. `issuer` must match an entry in
+  // `certifications` below: the link and full title come from there.
+  // NN/g uses his own badge image; the others use simple-icons glyphs.
+  certified: [
+    {
+      issuer: "Nielsen Norman Group",
+      label: "NN/g",
+      image: "/work/logos/nng-ux-certified.png",
+    },
+    { issuer: "Google", label: "Google", brand: "google" },
+    { issuer: "Udacity", label: "Udacity", brand: "udacity" },
+    { issuer: "Meta", label: "Meta", brand: "meta" },
+  ],
 } as const;
 
 // -------------------------------------------------------- capabilities
@@ -279,7 +293,7 @@ export const skills: SkillRow[] = [
     word: "Front-End Dev",
     accent: "green",
     body: "Developed reusable, accessible UI components with TypeScript and Tailwind CSS.",
-    tags: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Cursor"],
+    tags: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
   },
 ];
 
@@ -303,14 +317,52 @@ export type CaseStudy = {
   accent: Accent;
   /** External link, when the project is live. */
   link?: string;
+  /**
+   * Thumbnail for the study's card on the home page. Pick a picture from
+   * INSIDE the study, not the project's cover: the cover already shows in
+   * the UX Projects gallery right above, and the same image twice on one
+   * page reads as a mistake. `fit: "contain"` centres a logo on `bg`.
+   */
+  cover?: { src: string; alt: string; fit?: "contain"; bg?: string };
 };
 
 // Real work only: Moe's Udacity capstone + nanodegree portfolio projects.
 export const caseStudies: CaseStudy[] = [
   {
+    // Real work: the internal app Moe designed and built for Agile Advice.
+    // Copy is verbatim from his own case-study page (Desktop/Diwan-case-study,
+    // 2026-11-18); the long form lives in lib/case-study-diwan.ts. Newest
+    // work leads the list. The five numbers are the page's own.
+    slug: "diwan",
+    tag: "Case Study · Product Design · 2026",
+    title: "Diwan",
+    description:
+      "An internal app I designed for Agile Advice to manage projects, clients, payments, leave and HR. It runs on the Mac and the iPhone, in English and Arabic.",
+    heroStat: { value: "72", label: "Desktop screens" },
+    stats: [
+      { value: "76", label: "iPhone screens" },
+      { value: "6", label: "Roles, plus a view for clients" },
+      { value: "2", label: "Languages, English and Arabic" },
+      { value: "2", label: "Working apps, Mac and iPhone" },
+    ],
+    // Short forms for the index card; the detail page shows the full
+    // five-field strip from lib/case-study-diwan.ts.
+    meta: {
+      role: "Product designer",
+      platform: "macOS and iOS, plus a client portal",
+      duration: "October to November 2026",
+    },
+    accent: "blue",
+    link: "https://www.figma.com/design/k7VaZFKuYogds7pgZqx1j6/Agile-Advice-%E2%80%94-Company-Dashboard?node-id=9-643&t=efmu6scq9z5ymXhC-1",
+    cover: {
+      src: "/work/diwan/d-home.jpg",
+      alt: "Diwan Home screen on the Mac",
+    },
+  },
+  {
     // Self-initiated concept — content verbatim from Moe's brief
-    // (Desktop/SNB, reimagined.md, now titled "Meet Sadu"). Newest work
-    // leads the list. Sadu is an e-wallet concept, not affiliated with any bank.
+    // (Desktop/SNB, reimagined.md, now titled "Meet Sadu"). Second, under
+    // Diwan. Sadu is an e-wallet concept, not affiliated with any bank.
     slug: "sadu",
     tag: "UX Case Study · E-wallet Concept",
     title: "Meet Sadu",
@@ -329,6 +381,10 @@ export const caseStudies: CaseStudy[] = [
     },
     accent: "amber",
     link: "https://www.figma.com/design/HD1IveeApm8xkEzwEN0qbo/Sadu?node-id=21-837&t=WjLZXEQcpNqHzDBX-1",
+    cover: {
+      src: "/work/sadu/brand-elements.jpg",
+      alt: "Brand elements: Sadu zigzag, Najdi triangle band, success confetti, illustration style, illustrated avatars and card art",
+    },
   },
   {
     // Self-initiated concept project — content verbatim from Moe's own
@@ -351,6 +407,10 @@ export const caseStudies: CaseStudy[] = [
     },
     accent: "green",
     link: "https://www.figma.com/design/qMB0T3uEgax2PXYJuZ3BGy/Birr-app-project?node-id=25-152&t=PL5gHRs6OOKjQHzx-1",
+    cover: {
+      src: "/work/birr/parent.jpg",
+      alt: "Parent mode: dose due, confirmed and a little late",
+    },
   },
   {
     // Real project — Udacity research project, content from his research
@@ -368,6 +428,10 @@ export const caseStudies: CaseStudy[] = [
     ],
     meta: { role: "UX Researcher & Designer", platform: "Mobile · Figma, Miro", duration: "2026" },
     accent: "violet",
+    cover: {
+      src: "/work/udacity/onboarding-iteration.png",
+      alt: "Before and after: the onboarding redesign",
+    },
   },
   {
     slug: "ux-nanodegree",
@@ -383,6 +447,13 @@ export const caseStudies: CaseStudy[] = [
     ],
     meta: { role: "UX Research & Design", platform: "Figma", duration: "2026" },
     accent: "amber",
+    cover: {
+      src: "/work/udacity-logo.png",
+      alt: "Udacity logo",
+      fit: "contain",
+      // The logo file's own blue, so the square mark sits on a full tile.
+      bg: "rgb(32 21 255)",
+    },
     link: "https://drive.google.com/drive/folders/1kP5qEUUyCiyBTZKctVDlDMYdwTLuYzzu?usp=sharing",
   },
 ];
@@ -400,6 +471,11 @@ export type Project = {
   href?: string;
   /** Internal detail page — makes the row's title and shot link through. */
   detailHref?: string;
+  /**
+   * Gives the project its own page at /projects/[slug] (overview plus the
+   * screens in lib/project-shots.ts). Set `detailHref` to the same path.
+   */
+  slug?: string;
   image?: string;
   imageAlt?: string;
 };
@@ -414,26 +490,28 @@ export const projectsIntro =
 // `year` carries the project status word from the old site.
 export const projects: Project[] = [
   {
-    // Real client work: Moe's own company (see timeline). Bullets are drawn
-    // from the case-study page in his Figma file. Leads the list, above Sadu (Moe's call, 2026-10-26).
-    title: "Agile Advice Company OS",
+    // Diwan is the product this row used to call "Agile Advice Company OS"
+    // (added 2026-10-26 from his Figma file). Renamed when his case study
+    // arrived, 2026-11-18: title, cover and the one-line description are his
+    // spec (Diwan-case-study/README.md).
+    // Status is "Completed" on Moe's word (2026-11-18), like Sadu and Birr.
+    // Leads the list (Moe's call).
+    title: "Diwan",
     year: "Completed",
-    category: "Dashboard Design",
-    stack: "Figma, UX Research, Design Systems, Prototyping, Arabic RTL",
-    accent: "violet",
+    category: "Product Design",
+    stack: "Figma, SwiftUI, Xcode, Claude Code",
+    accent: "blue",
     bullets: [
-      "A company workspace for Agile Advice, a Riyadh consultancy that ran projects, payments and HR on shared Excel files, Outlook threads and WhatsApp. Every role, from the CEO to a new analyst, sees what matters to them, live.",
-      "More than 130 screens across desktop and phone on the same tokens and components: Home, one inbox for every request, a page per client with all its files, emails and invoices, tasks, working hours, leave, approvals, payments and payroll, plus an employee app and a client portal.",
-      "Made for Saudi workplaces: Arabic right to left with the whole layout mirrored, Hijri dates beside Gregorian, the Sunday to Thursday week, Ramadan hours and Labor Law leave types. AI handles the busywork (summaries, receipts read from a photo, leave clash checks) and always shows the result before saving.",
+      "An internal app I designed and built for Agile Advice, on the Mac and the iPhone, in English and Arabic.",
     ],
     href: "https://www.figma.com/design/k7VaZFKuYogds7pgZqx1j6/Agile-Advice-%E2%80%94-Company-Dashboard?node-id=9-643&t=efmu6scq9z5ymXhC-1",
-    image: "/work/agile-os-cover.jpg",
-    imageAlt:
-      "Agile Advice Company OS cover: the title and four chips (6 roles, desktop + mobile, English, AI built in) beside the admin Home screen in a browser frame with the phone app in front, on a pale lavender backdrop",
+    detailHref: "/case-studies/diwan",
+    image: "/work/diwan/cover.jpg",
+    imageAlt: "Diwan cover: the Home screen on a Mac next to the iPhone app",
   },
   {
-    // The live company website. Sits right under the Company OS (Moe's
-    // call, 2026-11-10) so the two Agile Advice rows read together.
+    // The live company website. Sits right under Diwan (Moe's call,
+    // 2026-11-10) so the two Agile Advice rows read together.
     title: "Agile Advice",
     year: "Live",
     category: "Brand Identity",
@@ -443,6 +521,8 @@ export const projects: Project[] = [
       "Complete brand identity and website design for Agile Advice, a business services company. Created a cohesive visual language and user-friendly digital experience.",
     ],
     href: "https://www.agileadvice.sa/",
+    slug: "agile-advice",
+    detailHref: "/projects/agile-advice",
     image: "/work/agile-advice-site.jpg",
     imageAlt:
       "Agile Advice homepage in Arabic: the headline in dark and blue, a world map linking Riyadh to the US, Europe, China, India and Japan, and the blue band that follows",
@@ -450,9 +530,9 @@ export const projects: Project[] = [
   {
     // Concept project — also a case study. Replaced the old site's
     // "SNB Mobile · Building" placeholder row; bullets are drawn from Moe's
-    // brief (now "Meet Sadu"). Third, under the two Agile Advice rows.
+    // brief (now "Meet Sadu"). Third, under Diwan and Agile Advice.
     title: "Meet Sadu",
-    year: "Concept",
+    year: "Completed",
     category: "E-wallet Design",
     stack: "Figma, Design Systems, Prototyping, Arabic RTL",
     accent: "amber",
@@ -483,6 +563,8 @@ export const projects: Project[] = [
       "A small design system holds it together: colour tokens, a type ramp, buttons and nav states, and reusable sections like the CEO message, vision band, featured project card and partner marquee.",
     ],
     href: "https://www.figma.com/design/6DTvt2eIU5AQaFlVIl6jGC/grid-nova-website-design-project?node-id=72-1396&t=DCSKQPBL4vFjrqWN-1",
+    slug: "grid-nova",
+    detailHref: "/projects/grid-nova",
     image: "/work/grid-nova-cover.jpg",
     imageAlt:
       "Grid Nova cover: the Grid Nova Energy wordmark and title beside the website hero in a browser frame, on a deep blue backdrop",
@@ -491,7 +573,7 @@ export const projects: Project[] = [
     // Concept project — also a case study. Bullets are drawn from Moe's
     // own case study (birr-case-study.md). Sits under Grid Nova.
     title: "Birr",
-    year: "Concept",
+    year: "Completed",
     category: "Mobile Design",
     stack: "Figma, UX Research, Design Systems, Arabic RTL",
     accent: "green",
@@ -517,6 +599,8 @@ export const projects: Project[] = [
       "Arabic e-learning platform for medical laboratory sciences, helping students and professionals prepare for the Saudi laboratory licensing exam (SLLE) with specialized courses, a 200+ question bank, mock exams, and a dedicated lab job board.",
     ],
     href: "https://labvision-academy.vercel.app/",
+    slug: "labvision",
+    detailHref: "/projects/labvision",
     image: "/work/labvision.jpg",
     imageAlt: "LABvision Academy homepage",
   },
@@ -524,14 +608,21 @@ export const projects: Project[] = [
     title: "OSTOUL ELM Product Design",
     year: "Completed",
     category: "Product Design",
-    stack: "Figma, Wireframing, User Research, Design Thinking",
+    // Moe, 2026-11-18: he did NOT do research or wireframes on OSTOUL.
+    // The old site's line claimed both; do not bring them back.
+    stack: "Figma, Prototyping, Design Thinking",
     accent: "amber",
     bullets: [
-      "Full UI/UX design of Elm's product 'OSTOUL', from research and wireframes to interactive prototypes, emphasizing user-centric design.",
+      "Full UI/UX design of Elm's product 'OSTOUL', including interactive prototypes, emphasizing user-centric design.",
     ],
     href: "https://www.figma.com/design/KrMgwhqKHqUAdwn9NqS1ly/Untitled?node-id=0-21311&t=6xInwYovn7QhM64e-1",
-    image: "/work/ostoul.png",
-    imageAlt: "Ostoul car marketplace page",
+    slug: "ostoul",
+    detailHref: "/projects/ostoul",
+    // Cover is the top of the landing page, exported from his Figma file
+    // (2026-11-18). It replaced the dark Figma thumbnail, on his word.
+    image: "/work/ostoul-cover.jpg",
+    imageAlt:
+      "OSTOUL landing page in Arabic: the navigation and the hero, with its headline beside a city traffic illustration",
   },
 ];
 
@@ -599,7 +690,11 @@ export type BrandSlug =
   | "git"
   | "vercel"
   | "blender"
-  | "miro";
+  | "miro"
+  // Certificate issuers (profile card).
+  | "google"
+  | "meta"
+  | "udacity";
 
 export type TechIcon = {
   title: string;
@@ -702,7 +797,7 @@ export const roles: Role[] = [
       "Redesigned Elm Company's UI/UX using Figma and Spline, creating a modern, interactive interface with improved navigation and usability.",
       "Designed a landing page for the Ministry of Human Resources and Social Development, focusing on accessibility, clarity, and user-friendly layouts.",
       "Produced a motion graphic video for Elm Company, showcasing products, work culture, and challenges through engaging storytelling and animation.",
-      "Led the full UI/UX design of Elm's product \"OSTOUL\", from research and wireframes to interactive prototypes, emphasizing user-centric design.",
+      "Led the full UI/UX design of Elm's product \"OSTOUL\", including interactive prototypes, emphasizing user-centric design.",
       "Designed an AI application, simplifying human-AI interaction with intuitive flows and clean interface design.",
     ],
     tags: ["UI/UX Design", "Figma", "Spline", "Wireframing", "Prototyping", "User Research", "Motion Graphics", "Design Thinking"],
@@ -844,7 +939,7 @@ export const toolkit: ToolkitGroup[] = [
   {
     group: "Build",
     accent: "green",
-    items: ["HTML", "CSS", "JavaScript", "TypeScript", "Cursor"],
+    items: ["HTML", "CSS", "JavaScript", "TypeScript"],
   },
   {
     group: "Practice",
@@ -856,14 +951,6 @@ export const toolkit: ToolkitGroup[] = [
 // -------------------------------------------------------------- footer
 
 export const footerContent = {
-  // The old site's bio, verbatim, as the signature line.
-  slogan: [
-    { text: "Creating with " },
-    { text: "code", accent: "green" },
-    { text: ". Small " },
-    { text: "details", accent: "violet" },
-    { text: " matter." },
-  ] as Segment[],
   exploreHeading: { text: "Explore", accent: "amber" as Accent },
   followHeading: { text: "Follow Me", accent: "cyan" as Accent },
   ctas: [

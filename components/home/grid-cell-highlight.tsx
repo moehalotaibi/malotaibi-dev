@@ -19,7 +19,8 @@
 // and no listeners attach. aria-hidden + pointer-events-none throughout.
 
 import { useEffect, useRef, useSyncExternalStore, type RefObject } from "react";
-import { motion, useReducedMotion, useSpring } from "motion/react";
+import { motion, useSpring } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 const CELL = 88; // .line-grid tile size (px)
 
@@ -54,7 +55,7 @@ export default function GridCellHighlight({
   headlineRef,
   taglineRef,
 }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const fine = useSyncExternalStore(subscribeFine, getFine, getFineServer);
   const enabled = fine && !reduced;
 

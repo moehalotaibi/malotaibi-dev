@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { nav, site } from "@/lib/content";
 import { UI } from "@/components/icons";
 import Magnetic from "@/components/motion/magnetic";
@@ -16,7 +17,7 @@ const PILL_SPRING = { type: "spring", stiffness: 380, damping: 32 } as const;
 
 export default function Nav() {
   const pathname = usePathname();
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   // Two nav items anchor into /work, so the active pill needs the hash too.
   // usePathname drops it; track it manually (hashchange covers back/forward,
@@ -60,6 +61,10 @@ export default function Nav() {
             {...tap}
           >
             <motion.span
+              // Keyed on the motion mode: the reduced-motion flag only turns
+              // true after hydration, and a fresh dot stops the pulse at
+              // once instead of easing the old one back to rest.
+              key={reduced ? "static" : "pulse"}
               className="h-1.5 w-1.5 rounded-full bg-cream"
               aria-hidden="true"
               {...(reduced

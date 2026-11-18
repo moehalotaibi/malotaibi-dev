@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { caseStudies, site } from "@/lib/content";
+import { caseStudies, projects, site } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/case-studies", "/projects", "/about", "/contact"].map(
@@ -18,14 +18,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  // NYX has its own page; the others come from each project's `slug`.
   const projectRoutes = [
-    {
-      url: `${site.url}/projects/nyx`,
-      lastModified: new Date(),
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
-    },
-  ];
+    "nyx",
+    ...projects.flatMap((project) => (project.slug ? [project.slug] : [])),
+  ].map((slug) => ({
+    url: `${site.url}/projects/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   return [...staticRoutes, ...studyRoutes, ...projectRoutes];
 }

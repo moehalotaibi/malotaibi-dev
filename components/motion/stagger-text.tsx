@@ -7,7 +7,8 @@
 // spacing intact (non-collapsing). Static under reduced motion.
 
 import { Fragment } from "react";
-import { motion, stagger, useReducedMotion } from "motion/react";
+import { motion, stagger } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { Variants } from "motion/react";
 
 type Props = {
@@ -33,7 +34,7 @@ export default function StaggerText({
   per = "char",
   delay = 0,
 }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   if (reduced) {
     return <span className={className}>{text}</span>;

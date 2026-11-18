@@ -6,13 +6,14 @@
 // Hover/tap springs are dropped under reduced motion. Entrance animation is
 // the caller's job (both wrap it in MotionReveal).
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { about } from "@/lib/content";
 
 const SPRING = { type: "spring", stiffness: 340, damping: 24 } as const;
 
 export default function CertifiedChip({ className = "" }: { className?: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <motion.a

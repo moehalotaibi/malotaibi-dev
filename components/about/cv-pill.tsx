@@ -4,13 +4,14 @@
 // the CV in a new tab. Static under reduced motion (Magnetic no-ops;
 // gestures disabled).
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import Magnetic from "@/components/motion/magnetic";
 import { UI } from "@/components/icons";
 import { site } from "@/lib/content";
 
 export default function CvPill() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <Magnetic>

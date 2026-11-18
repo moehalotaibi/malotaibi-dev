@@ -8,7 +8,8 @@
 // snapshot shown before hydration — the first phrase renders statically.
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 const PHRASES = [
   "// waking the cursors",
@@ -19,7 +20,7 @@ const PHRASES = [
 const INTERVAL_MS = 1800;
 
 export default function LoadingPhrases() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

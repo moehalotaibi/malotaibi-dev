@@ -2,7 +2,8 @@
 
 // Divider band — label, magnetic social icons, mailto. Classes unchanged.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import Magnetic from "@/components/motion/magnetic";
 import { Brand } from "@/components/icons";
@@ -10,7 +11,7 @@ import { divider, site, socials } from "@/lib/content";
 import { SPRING } from "./motion-kit";
 
 export default function DividerBand() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <section className="border-y border-rule">

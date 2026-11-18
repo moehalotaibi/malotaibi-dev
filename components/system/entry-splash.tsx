@@ -9,14 +9,14 @@
 // and pointer-events-none throughout; it never traps focus or clicks.
 
 import { useEffect, useState } from "react";
-import { useReducedMotion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import OpeningFile from "@/components/system/opening-file";
 
 const MIN_DISPLAY_MS = 500;
 const FADE_MS = 450;
 
 export default function EntrySplash() {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
   const [hiding, setHiding] = useState(false);
   const [gone, setGone] = useState(false);
 

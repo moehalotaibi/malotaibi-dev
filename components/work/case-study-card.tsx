@@ -11,7 +11,8 @@
 
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { CaseStudy } from "@/lib/content";
 import { ACCENT_HEX, accentText } from "@/lib/accents";
 import { UI } from "@/components/icons";
@@ -32,7 +33,7 @@ const arrowVariants = {
 };
 
 export default function CaseStudyCard({ study }: { study: CaseStudy }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const meta = [study.meta.role, study.meta.platform, study.meta.duration];
 
   return (

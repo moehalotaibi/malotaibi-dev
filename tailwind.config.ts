@@ -38,6 +38,8 @@ const config: Config = {
           green: token("--c-green"),
           pink: token("--c-pink"),
           blue: token("--c-blue"),
+          // Status only (risk tables). Not a brand accent: no Accent entry.
+          red: token("--c-red"),
         },
       },
       fontFamily: {

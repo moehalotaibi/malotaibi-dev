@@ -14,9 +14,9 @@ import {
   AnimatePresence,
   motion,
   useMotionValueEvent,
-  useReducedMotion,
   useScroll,
 } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { Accent } from "@/lib/content";
 import { accentBorder, accentText } from "@/lib/accents";
 import { UI } from "@/components/icons";
@@ -36,7 +36,7 @@ type Props = {
 };
 
 export default function VisitPill({ href, title, accent }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const { scrollY } = useScroll();
   const [visible, setVisible] = useState(false);
 

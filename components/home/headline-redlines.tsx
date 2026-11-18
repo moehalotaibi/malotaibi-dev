@@ -27,7 +27,8 @@ import {
   useSyncExternalStore,
   type RefObject,
 } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 /** One measured inter-line gap, in px relative to the overlay's box. */
 type Gap = { top: number; height: number; value: number };
@@ -48,7 +49,7 @@ type Props = {
 };
 
 export default function HeadlineRedlines({ h1Ref }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const fine = useSyncExternalStore(subscribeFine, getFine, getFineServer);
 
   const overlayRef = useRef<HTMLDivElement>(null);

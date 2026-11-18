@@ -5,7 +5,8 @@
 // back on leave. No-op on touch devices and under reduced motion.
 
 import { useEffect, useRef } from "react";
-import { motion, useReducedMotion, useSpring } from "motion/react";
+import { motion, useSpring } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
@@ -27,13 +28,18 @@ export default function Magnetic({
   strength = 0.25,
   radius = 120,
 }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLDivElement>(null);
   const x = useSpring(0, SPRING);
   const y = useSpring(0, SPRING);
 
   useEffect(() => {
-    if (reduced) return;
+    if (reduced) {
+      // Settle at rest if the preference turns on mid-pull.
+      x.jump(0);
+      y.jump(0);
+      return;
+    }
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     const clamp = (v: number) =>

@@ -6,7 +6,8 @@
 // tilt. Fully static under reduced motion.
 
 import { useRef } from "react";
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import TiltCard from "@/components/motion/tilt-card";
@@ -21,7 +22,7 @@ const DOT_POSITION =
 const DOT_VIEWPORT = { once: true, margin: "0px 0px -12% 0px" } as const;
 
 export default function Timeline({ entries = roles }: { entries?: Role[] }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const listRef = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({
     target: listRef,

@@ -5,15 +5,13 @@
 // and under reduced motion.
 // ScrollParallax — translateY driven by scroll progress through the
 // viewport. Static under reduced motion.
+// Both render the same motion.div in either mode (offset held at 0 when
+// reduced): the reduced-motion flag only turns true after hydration, and
+// keeping the element means that switch never remounts the children.
 
 import { useEffect, useRef } from "react";
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { motion, useScroll, useSpring, useTransform } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { ReactNode } from "react";
 
 const SPRING = { stiffness: 260, damping: 28 } as const;
@@ -30,12 +28,16 @@ export function MouseParallax({
   className,
   strength = 12,
 }: MouseParallaxProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const x = useSpring(0, SPRING);
   const y = useSpring(0, SPRING);
 
   useEffect(() => {
-    if (reduced) return;
+    if (reduced) {
+      x.jump(0);
+      y.jump(0);
+      return;
+    }
     if (!window.matchMedia("(pointer: fine)").matches) return;
 
     const onPointerMove = (e: PointerEvent) => {
@@ -48,10 +50,6 @@ export function MouseParallax({
     window.addEventListener("pointermove", onPointerMove, { passive: true });
     return () => window.removeEventListener("pointermove", onPointerMove);
   }, [reduced, strength, x, y]);
-
-  if (reduced) {
-    return <div className={className}>{children}</div>;
-  }
 
   return (
     <motion.div className={className} style={{ x, y }}>
@@ -72,21 +70,14 @@ export function ScrollParallax({
   className,
   speed = 0.15,
 }: ScrollParallaxProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const y = useTransform(scrollYProgress, [0, 1], [speed * 100, -speed * 100]);
-
-  if (reduced) {
-    return (
-      <div ref={ref} className={className}>
-        {children}
-      </div>
-    );
-  }
+  const drift = reduced ? 0 : speed * 100;
+  const y = useTransform(scrollYProgress, [0, 1], [drift, -drift]);
 
   return (
     <motion.div ref={ref} className={className} style={{ y }}>

@@ -9,7 +9,8 @@
 // in step so the mobile browser chrome matches.
 
 import { useSyncExternalStore } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { UI } from "@/components/icons";
 
 type Theme = "dark" | "light";
@@ -100,7 +101,7 @@ function applyTheme(theme: Theme) {
 }
 
 export default function ThemeToggle() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   // Server snapshot is light; on the client the inline layout script has
   // already applied a stored "dark" before this reads the attribute.
   const theme = useSyncExternalStore(subscribe, readTheme, getServerTheme);
@@ -121,7 +122,10 @@ export default function ThemeToggle() {
       {...(reduced ? {} : { whileHover: { y: -1 }, whileTap: { scale: 0.94 } })}
     >
       <motion.span
-        key={theme}
+        // Keyed on the motion mode too: the reduced-motion flag only turns
+        // true after hydration, and a fresh span drops the hidden start
+        // state the server markup carried instead of staying stuck on it.
+        key={`${theme}:${reduced ? "static" : "motion"}`}
         className="flex"
         {...(reduced
           ? {}

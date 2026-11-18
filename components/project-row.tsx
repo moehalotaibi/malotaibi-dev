@@ -9,7 +9,8 @@
 // without one are unchanged. Static under reduced motion.
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { Project } from "@/lib/content";
 import { accentText } from "@/lib/accents";
 import { UI } from "@/components/icons";
@@ -29,7 +30,7 @@ type Props = {
 
 /** Bullet dot that pulses once as its line staggers into view. */
 function BulletMarker() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const base = "mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-sm bg-paper-dim";
 
   if (reduced) {
@@ -55,7 +56,7 @@ function BulletMarker() {
 const MotionLink = motion.create(Link);
 
 export default function ProjectRow({ project, flipped = false }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   const shot = (
     <motion.div
@@ -91,6 +92,10 @@ export default function ProjectRow({ project, flipped = false }: Props) {
                   {project.title}
                   {/* Decorative affordance only — hidden until card hover. */}
                   <motion.span
+                    // Keyed on the motion mode: the reduced-motion flag only
+                    // turns true after hydration, and a fresh span drops the
+                    // "rest" offset the server markup carried.
+                    key={reduced ? "static" : "motion"}
                     className="shrink-0 text-paper-mid opacity-0"
                     aria-hidden="true"
                     variants={

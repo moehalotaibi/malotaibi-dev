@@ -21,7 +21,8 @@ import {
   useSyncExternalStore,
 } from "react";
 import type { CSSProperties, FormEvent } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { StoredComment } from "@/lib/comments-store";
 import { timeAgo } from "@/lib/time-ago";
 
@@ -160,7 +161,7 @@ function PinCard({
 }
 
 export default function AdminRoom() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const storedKey = useSyncExternalStore(
     subscribeStorage,
     getStoredKey,

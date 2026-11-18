@@ -4,7 +4,8 @@
 // the house spring, a keyframed wiggle, and the standard magnetic pill.
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { ReactNode } from "react";
 import Magnetic from "@/components/motion/magnetic";
 import { UI } from "@/components/icons";
@@ -25,7 +26,7 @@ export function PillLink({
   href: string;
   children: ReactNode;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   return (
     <Magnetic>
       <MotionLink

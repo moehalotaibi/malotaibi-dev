@@ -7,12 +7,13 @@
 // aria-expanded); the card is plain text, so focus stays on the pin.
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 const SPRING = { type: "spring", stiffness: 340, damping: 26 } as const;
 
 export default function CommentPin() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [open, setOpen] = useState(false);
 
   // Escape dismisses the card from anywhere on the page.

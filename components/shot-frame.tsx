@@ -5,6 +5,11 @@ type Props = {
   /** Shown in the fake browser chrome's address strip. */
   title?: string;
   ratio?: "video" | "square" | "tall" | "phone" | "wide" | "board";
+  /**
+   * Natural width / height of the shot. Overrides `ratio` so the frame
+   * takes the image's own proportions and nothing is cropped (app screens).
+   */
+  aspect?: number;
   /** Real screenshot (public/ path). Falls back to the monogram grid. */
   image?: string;
   imageAlt?: string;
@@ -16,6 +21,15 @@ type Props = {
    * column passes its own (its full-span figures are ~864px, not 50vw).
    */
   sizes?: string;
+  /**
+   * The mono label in the shot's bottom-left corner. Pass `false` to drop it
+   * on dense UI screens, where it would sit on top of real interface.
+   */
+  cornerLabel?: string | false;
+  /** Mono note on the right of the chrome bar, e.g. "// zoom". */
+  hint?: string;
+  /** Load at once instead of lazily (the one shot near the fold). */
+  eager?: boolean;
 };
 
 const RATIOS: Record<NonNullable<Props["ratio"]>, string> = {
@@ -36,10 +50,14 @@ const RATIOS: Record<NonNullable<Props["ratio"]>, string> = {
 export default function ShotFrame({
   title,
   ratio = "video",
+  aspect,
   image,
   imageAlt,
   fit = "cover",
   sizes = "(min-width: 768px) 50vw, 100vw",
+  cornerLabel = "// preview",
+  hint,
+  eager = false,
 }: Props) {
   return (
     <div className="overflow-hidden rounded-xl border border-rule bg-raised">
@@ -51,17 +69,26 @@ export default function ShotFrame({
           <span className="h-2 w-2 rounded-full bg-rule-strong" />
         </span>
         {title ? (
-          <span className="label truncate normal-case tracking-normal text-paper-dim">
+          <span className="label min-w-0 truncate normal-case tracking-normal text-paper-dim">
             {title}
+          </span>
+        ) : null}
+        {hint ? (
+          <span
+            className="label ms-auto shrink-0 normal-case tracking-normal text-paper-dim"
+            aria-hidden="true"
+          >
+            {hint}
           </span>
         ) : null}
       </div>
 
       {/* Body */}
       <div
-        className={`relative ${RATIOS[ratio]} ${
+        className={`relative ${aspect ? "" : RATIOS[ratio]} ${
           image ? (fit === "contain" ? "bg-white" : "") : "dot-grid"
         }`}
+        style={aspect ? { aspectRatio: String(aspect) } : undefined}
       >
         {image ? (
           <Image
@@ -69,6 +96,7 @@ export default function ShotFrame({
             alt={imageAlt ?? title ?? ""}
             fill
             sizes={sizes}
+            loading={eager ? "eager" : undefined}
             className={
               fit === "contain"
                 ? "object-contain p-10"
@@ -85,9 +113,11 @@ export default function ShotFrame({
             </span>
           </span>
         )}
-        <span className="label absolute bottom-3 left-4 normal-case tracking-normal text-paper-dim">
-          {"// preview"}
-        </span>
+        {cornerLabel ? (
+          <span className="label absolute bottom-3 left-4 normal-case tracking-normal text-paper-dim">
+            {cornerLabel}
+          </span>
+        ) : null}
       </div>
     </div>
   );

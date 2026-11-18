@@ -27,7 +27,8 @@
 // all rest right of x≈292 — clear at every width.
 
 import { useEffect, useRef, useState, type ComponentType } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import {
   PacManShape,
   RoundedSquareShape,
@@ -120,7 +121,7 @@ function AutoLayoutGlyph() {
 }
 
 export default function AutoLayoutToy() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   // on      — the button's state (aria-pressed), flips on every click.
   // arranged — the shapes' target; lags `on` by CHROME_OUT on the way off.

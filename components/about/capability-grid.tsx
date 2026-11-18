@@ -5,7 +5,8 @@
 // inside StaggerItem, so it inherits the item's staggered delay via variant
 // propagation. Static (plain border-t) under reduced motion.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { Variants } from "motion/react";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { capabilities } from "@/lib/content";
@@ -33,7 +34,7 @@ function CellBody({ index, title, body }: { index: string; title: string; body: 
 }
 
 export default function CapabilityGrid() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   if (reduced) {
     return (

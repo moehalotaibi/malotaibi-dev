@@ -13,7 +13,8 @@
 
 import { useRef, useState } from "react";
 import type { FormEvent } from "react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import Magnetic from "@/components/motion/magnetic";
 import { UI } from "@/components/icons";
 import { contact, site } from "@/lib/content";
@@ -83,7 +84,7 @@ function Field({
 }
 
 export default function ContactForm({ accessKey }: { accessKey: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const [values, setValues] = useState<Record<FieldName, string>>({
     name: "",
     email: "",

@@ -29,12 +29,12 @@
     --c-green: 18 134 63; /* #12863f */
     --c-pink: 214 31 105; /* #d61f69 */
     --c-blue: 37 99 235; /* #2563eb */
+    --c-red: 192 50 43; /* #c0322b, status only */
     --grad-violet-a: #8b5cf6;
     --grad-violet-b: #5b21b6;
     --grad-amber-a: #f59e0b;
     --grad-amber-b: #c84c0a;
     --brand-dark-fill: #111210;
-    --glow-blend: multiply;
   }
 
   /* Dark theme — the original warm charcoal canvas and pale accents. */
@@ -56,13 +56,13 @@
     --c-green: 74 222 128; /* #4ade80 */
     --c-pink: 244 114 182; /* #f472b6 */
     --c-blue: 96 165 250; /* #60a5fa */
+    --c-red: 240 120 111; /* #f0786f, status only */
     --grad-violet-a: #c9b8fd;
     --grad-violet-b: #8b5cf6;
     --grad-amber-a: #fce29b;
     --grad-amber-b: #f0a92e;
     /* Dark brand glyphs (Framer, Next.js…) read as cream on the charcoal */
     --brand-dark-fill: #f2efe1;
-    --glow-blend: screen;
   }
 
   html {
@@ -453,17 +453,4 @@
   }
 
   /* Trailing pointer glow — sized here, positioned by motion transforms */
-  .cursor-glow {
-    width: 28px;
-    height: 28px;
-    border-radius: 9999px;
-    background: radial-gradient(
-      circle,
-      rgb(var(--c-violet) / 0.9) 0%,
-      rgb(var(--c-violet) / 0.3) 45%,
-      transparent 72%
-    );
-    mix-blend-mode: var(--glow-blend);
-    opacity: 0.5;
-  }
 }

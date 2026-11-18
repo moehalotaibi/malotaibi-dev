@@ -18,13 +18,8 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from "react";
-import {
-  AnimatePresence,
-  animate,
-  motion,
-  useMotionValue,
-  useReducedMotion,
-} from "motion/react";
+import { AnimatePresence, animate, motion, useMotionValue } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { ACCENT_HEX } from "@/lib/accents";
 import type { Accent } from "@/lib/content";
 
@@ -206,7 +201,7 @@ export default function ColorStylesPanel({
   onReset,
   resizable = false,
 }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   // Figma-rectangle resize state (resizable instance only). Scale lives
   // here, not in the hero — it's the card's own toy state, reset on reload.

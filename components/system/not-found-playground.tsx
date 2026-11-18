@@ -11,7 +11,8 @@
 
 import { useRef, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import Magnetic from "@/components/motion/magnetic";
 import Throwable from "@/components/system/throwable";
@@ -72,7 +73,7 @@ const SHAPES = [
 ] as const;
 
 export default function NotFoundPlayground() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const fine = useSyncExternalStore(subscribeFine, getFine, getFineServer);
   const throwable = fine && !reduced;
 

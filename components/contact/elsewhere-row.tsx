@@ -3,7 +3,8 @@
 // "Elsewhere" pills — social profiles (brand icons) plus the CV, all in
 // new tabs. Magnetic pull + press feedback, static under reduced motion.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import Magnetic from "@/components/motion/magnetic";
 import { Brand, UI } from "@/components/icons";
 import { site, socials } from "@/lib/content";
@@ -11,7 +12,7 @@ import { site, socials } from "@/lib/content";
 const SPRING = { type: "spring", stiffness: 380, damping: 26 } as const;
 
 export default function ElsewhereRow() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const gestures = reduced
     ? {}
     : { whileHover: { scale: 1.04 }, whileTap: { scale: 0.97 } };

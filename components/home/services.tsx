@@ -5,7 +5,8 @@
 // underline bug: the sweep line no longer carries both `mt-auto` and an
 // inline margin — an `mt-auto pt-6` wrapper span owns the spacing.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import TiltCard from "@/components/motion/tilt-card";
@@ -15,7 +16,7 @@ import { services } from "@/lib/content";
 import { SPRING } from "./motion-kit";
 
 export default function ServicesGrid() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <section className="shell pb-section" aria-labelledby="what-you-get">

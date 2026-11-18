@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useAnimationControls, useReducedMotion } from "motion/react";
-import Segments from "@/components/segments";
+import { motion, useAnimationControls } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { footerContent, nav, site, socials } from "@/lib/content";
 import type { Social } from "@/lib/content";
 import { accentText } from "@/lib/accents";
@@ -130,17 +130,12 @@ function CtaRow({
 }
 
 export default function Footer() {
-  const reduced = useReducedMotion() ?? false;
+  const reduced = useReducedMotionSafe();
 
   return (
     <footer className="mt-section">
       <div className="shell">
-        <MotionReveal className="card grid grid-cols-1 gap-10 p-8 sm:grid-cols-2 md:p-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
-          {/* Slogan */}
-          <p className="max-w-[16ch] font-display text-h3 font-medium leading-snug">
-            <Segments segments={footerContent.slogan} />
-          </p>
-
+        <MotionReveal className="card grid grid-cols-1 gap-10 p-8 sm:grid-cols-2 md:p-12 lg:grid-cols-[1fr_1fr_1.4fr]">
           {/* Explore */}
           <nav aria-label="Footer">
             <p

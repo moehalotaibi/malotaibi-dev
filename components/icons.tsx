@@ -18,6 +18,9 @@ import {
   siGit,
   siBlender,
   siMiro,
+  siGoogle,
+  siMeta,
+  siUdacity,
 } from "simple-icons";
 import type { BrandSlug } from "@/lib/content";
 
@@ -46,6 +49,9 @@ const BRANDS: Record<BrandSlug, { title: string; path: string; hex: string }> = 
   git: { title: siGit.title, path: siGit.path, hex: siGit.hex },
   blender: { title: siBlender.title, path: siBlender.path, hex: siBlender.hex },
   miro: { title: siMiro.title, path: siMiro.path, hex: siMiro.hex },
+  google: { title: siGoogle.title, path: siGoogle.path, hex: siGoogle.hex },
+  meta: { title: siMeta.title, path: siMeta.path, hex: siMeta.hex },
+  udacity: { title: siUdacity.title, path: siUdacity.path, hex: siUdacity.hex },
 };
 
 /** Brand color, lightened to cream when the official hex is too dark to read
@@ -76,6 +82,30 @@ export function Brand({
   colored?: boolean;
 }) {
   const brand = BRANDS[slug];
+  // Google's mark is four colours. A one-colour "G" reads as a mistake, so
+  // the coloured variant draws the official four-part mark (48-unit box).
+  if (slug === "google" && colored) {
+    return (
+      <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+        <path
+          fill="#EA4335"
+          d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+        />
+        <path
+          fill="#4285F4"
+          d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+        />
+        <path
+          fill="#FBBC05"
+          d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+        />
+        <path
+          fill="#34A853"
+          d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+        />
+      </svg>
+    );
+  }
   // Fill goes through `style`, not the attribute: the dark-brand fill is a
   // CSS variable, and var() is not allowed in SVG presentation attributes.
   return (
@@ -105,6 +135,13 @@ export type UIIconName =
   | "stack"
   | "code"
   | "globe"
+  | "search"
+  // Method icons for the skills tiles
+  | "layout"
+  | "pointer"
+  | "check"
+  | "sitemap"
+  | "bulb"
   | "sun"
   | "moon";
 
@@ -178,6 +215,42 @@ const STROKE_PATHS: Record<UIIconName, React.ReactNode> = {
       <path d="M3 12h18" />
       <path d="M12 3c3 3.4 3 14.6 0 18" />
       <path d="M12 3c-3 3.4-3 14.6 0 18" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="6.5" />
+      <path d="m16 16 4.5 4.5" />
+    </>
+  ),
+  layout: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 9.5h18" />
+      <path d="M9.5 9.5V20" />
+    </>
+  ),
+  pointer: <path d="M5.5 3.5 19.5 11l-6.2 2.1-2.1 6.2L5.5 3.5Z" />,
+  check: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="m8 12.3 2.7 2.7L16 9.5" />
+    </>
+  ),
+  sitemap: (
+    <>
+      <rect x="9" y="3" width="6" height="5" rx="1" />
+      <rect x="2.5" y="16" width="6" height="5" rx="1" />
+      <rect x="15.5" y="16" width="6" height="5" rx="1" />
+      <path d="M12 8v4" />
+      <path d="M5.5 16v-4h13v4" />
+    </>
+  ),
+  bulb: (
+    <>
+      <path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3Z" />
+      <path d="M9.5 19h5" />
+      <path d="M10.5 21.5h3" />
     </>
   ),
   // Theme toggle

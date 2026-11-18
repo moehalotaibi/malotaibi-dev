@@ -10,7 +10,8 @@
 // are disabled).
 
 import { useId, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import { certifications, type Certification } from "@/lib/content";
 
@@ -108,7 +109,7 @@ function GroupRow({
 }
 
 export default function CertificationList() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   // Walk in data order; a group row is emitted where its first member sits.
   const rows: ({ kind: "cert"; cert: Certification } | { kind: "group"; name: string; members: Certification[] })[] = [];

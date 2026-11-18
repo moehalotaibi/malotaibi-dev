@@ -13,7 +13,7 @@
 // stays importable from server pages.
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { useReducedMotion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 const FINE_POINTER_QUERY = "(pointer: fine)";
 
@@ -35,7 +35,7 @@ type Box = {
 };
 
 export default function SectionHeaderRedline() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const finePointer = useSyncExternalStore(
     subscribeFinePointer,
     readFinePointer,

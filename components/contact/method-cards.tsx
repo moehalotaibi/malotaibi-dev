@@ -6,7 +6,8 @@
 // copy button can sit above it as a separate, keyboard-reachable control.
 // Static under reduced motion.
 
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { Variants } from "motion/react";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import TiltCard from "@/components/motion/tilt-card";
@@ -47,7 +48,7 @@ function MethodCard({
   /** Extra control in the top-right slot (sits above the overlay). */
   action?: React.ReactNode;
 }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <TiltCard className="h-full">

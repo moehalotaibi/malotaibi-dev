@@ -10,7 +10,8 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { site } from "@/lib/content";
 
 const PAGE_NAMES: Record<string, string> = {
@@ -84,7 +85,7 @@ const SWAP = { type: "spring", stiffness: 480, damping: 42 } as const;
 
 /** One breadcrumb segment; label changes slide the old up and the new in. */
 function Segment({ label, className }: { label: string; className?: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   return (
     <span className={`relative inline-flex overflow-hidden ${className ?? ""}`}>
       <AnimatePresence mode="popLayout" initial={false}>

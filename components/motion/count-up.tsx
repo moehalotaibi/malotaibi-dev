@@ -7,13 +7,8 @@
 // final value immediately under reduced motion.
 
 import { useEffect, useRef } from "react";
-import {
-  motion,
-  useInView,
-  useReducedMotion,
-  useSpring,
-  useTransform,
-} from "motion/react";
+import { motion, useInView, useSpring, useTransform } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 type Props = {
   value: string;
@@ -32,7 +27,7 @@ function AnimatedInt({ target, play }: { target: number; play: boolean }) {
 }
 
 export default function CountUp({ value, className }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -10% 0px" });
 

@@ -11,6 +11,7 @@ import MotionReveal from "@/components/motion/motion-reveal";
 import { StaggerGroup, StaggerItem } from "@/components/motion/stagger";
 import ShotFrame from "@/components/shot-frame";
 import BeforeAfter from "@/components/work/before-after";
+import CaseBlocks from "@/components/work/case-blocks";
 import type { CaseSection as CaseSectionData } from "@/lib/case-studies";
 import type { Accent } from "@/lib/content";
 import { accentBg, accentBorder, accentText } from "@/lib/accents";
@@ -210,6 +211,11 @@ export default function CaseSection({ section, index, accent }: Props) {
               />
               <p className="label mt-4 text-center">{"// drag to compare"}</p>
             </MotionReveal>
+          ) : null}
+
+          {/* Long-form studies (Diwan) carry ordered blocks instead. */}
+          {section.blocks ? (
+            <CaseBlocks blocks={section.blocks} accent={accent} />
           ) : null}
         </div>
       </div>

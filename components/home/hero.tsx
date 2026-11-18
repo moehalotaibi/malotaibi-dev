@@ -23,13 +23,8 @@ import type {
   ReactNode,
   RefObject,
 } from "react";
-import {
-  AnimatePresence,
-  animate,
-  motion,
-  useMotionValue,
-  useReducedMotion,
-} from "motion/react";
+import { AnimatePresence, animate, motion, useMotionValue } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import MotionReveal from "@/components/motion/motion-reveal";
 import StaggerText from "@/components/motion/stagger-text";
 import Magnetic from "@/components/motion/magnetic";
@@ -157,7 +152,7 @@ function Throwable({
 }
 
 export default function HomeHero() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const fine = useSyncExternalStore(subscribeFine, getFine, getFineServer);
   const throwable = fine && !reduced;
 

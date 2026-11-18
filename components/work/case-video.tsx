@@ -7,7 +7,7 @@
 // (WCAG 2.2.2). The poster is the first frame, so nothing flashes.
 
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 type Props = {
   src: string;
@@ -19,7 +19,7 @@ type Props = {
 };
 
 export default function CaseVideo({ src, poster, title, label }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   // The reader pressed pause — the observer must not restart it.

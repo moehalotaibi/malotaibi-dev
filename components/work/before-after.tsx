@@ -14,10 +14,10 @@ import {
   motion,
   useMotionValue,
   useMotionValueEvent,
-  useReducedMotion,
   useSpring,
   useTransform,
 } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 type Side = { src: string; alt: string };
 
@@ -34,7 +34,7 @@ const INITIAL = 50;
 const clamp = (v: number) => Math.min(MAX, Math.max(MIN, v));
 
 export default function BeforeAfter({ before, after }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const containerRef = useRef<HTMLDivElement>(null);
   const handleRef = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);

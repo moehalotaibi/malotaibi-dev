@@ -5,10 +5,11 @@
 // decorative: aria-hidden and pointer-events-none. Under reduced motion
 // the spring is bypassed and the bar tracks scroll directly.
 
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 
 export default function ReadingProgress({ colorHex }: { colorHex: string }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const { scrollYProgress } = useScroll();
   const smoothed = useSpring(scrollYProgress, { stiffness: 140, damping: 26 });
   const scaleX = reduced ? scrollYProgress : smoothed;

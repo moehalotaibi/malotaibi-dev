@@ -5,14 +5,15 @@
 // no-ops; gestures disabled).
 
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import Magnetic from "@/components/motion/magnetic";
 import { UI } from "@/components/icons";
 
 const MotionLink = motion.create(Link);
 
 export default function ContactCta() {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
 
   return (
     <Magnetic>

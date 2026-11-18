@@ -11,7 +11,8 @@
 // Reduced motion: the path renders fully drawn, anchors are static.
 
 import { useRef, type ReactNode } from "react";
-import { motion, useReducedMotion, useScroll, useSpring } from "motion/react";
+import { motion, useScroll, useSpring } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import { ACCENT_HEX } from "@/lib/accents";
 
 /* ------------------------------------------------------------------ */
@@ -37,13 +38,25 @@ type Point = { x: number; y: number };
 // ends at the commits graph; the guestbook below it stands alone.
 // (Compact profile-card intro, 2026-10-14: skills 1524 · case studies 2370 ·
 // projects 3179 · tech stack 4232 · commits 4566, page 5825.)
+// (2026-11-18: UX Projects became a gallery and moved above Case Studies,
+// which became a card stack: skills 1524 · projects 2370 · case studies 3303
+// · tech stack 4529 · commits 4863, container 6122 → ×4000/6122. Both lists
+// sit on the page colour, so the spine passes behind them and shows only
+// around the section headers.)
+// (Later the same day the profile card gained its facts column and the
+// skills became four cards: skills 1636 · projects 2594 · case studies 3526 ·
+// tech stack 4752 · commits 5087, container 6346 → ×4000/6346.)
+// (Skills became a row of four icon-tile cards: skills 1636 · projects 2366 ·
+// case studies 3298 · tech stack 4524 · commits 4858, container 6117 →
+// ×4000/6117. Re-measure with the section tops whenever a section changes
+// height; the numbers below are only right for the layout they came from.)
 const WAYPOINTS: Point[] = [
-  { x: 500, y: 615 }, // start — just under the certification chip
-  { x: 892, y: 1046 }, // intro → skills
-  { x: 108, y: 1627 }, // skills → case studies
-  { x: 892, y: 2183 }, // case studies → projects
-  { x: 108, y: 2906 }, // projects → tech stack
-  { x: 500, y: 3135 }, // end — top of the commits graph
+  { x: 500, y: 586 }, // start — just under the certification chip
+  { x: 892, y: 1070 }, // intro → skills
+  { x: 108, y: 1547 }, // skills → projects
+  { x: 892, y: 2157 }, // projects → case studies
+  { x: 108, y: 2958 }, // case studies → tech stack
+  { x: 500, y: 3177 }, // end — top of the commits graph
 ];
 
 const ANCHORS = WAYPOINTS.slice(1);
@@ -104,7 +117,7 @@ function AnchorSquare({ point, reduced }: { point: Point; reduced: boolean }) {
 /* ------------------------------------------------------------------ */
 
 export default function SpineContainer({ children }: { children: ReactNode }) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,

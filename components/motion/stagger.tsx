@@ -2,9 +2,12 @@
 
 // Staggered reveal group. Group propagates "hidden"/"show" variants
 // whileInView; each Item fades + rises with a spring. Static under
-// reduced motion.
+// reduced motion. Both modes render the same motion tags: the
+// reduced-motion flag only turns true after hydration, and keeping the
+// elements means that switch updates props instead of remounting children.
 
-import { motion, stagger, useReducedMotion } from "motion/react";
+import { motion, stagger } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/use-reduced-motion-safe";
 import type { Variants } from "motion/react";
 import type { ElementType, ReactNode } from "react";
 
@@ -49,12 +52,11 @@ export function StaggerGroup({
   stagger: interval = 0.06,
   delay = 0,
 }: GroupProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const MotionTag = GROUP_TAGS[as];
-  const StaticTag = as;
 
   if (reduced) {
-    return <StaticTag className={className}>{children}</StaticTag>;
+    return <MotionTag className={className}>{children}</MotionTag>;
   }
 
   const groupVariants: Variants = {
@@ -84,12 +86,22 @@ type ItemProps = {
 };
 
 export function StaggerItem({ children, className, as = "div" }: ItemProps) {
-  const reduced = useReducedMotion();
+  const reduced = useReducedMotionSafe();
   const MotionTag = ITEM_TAGS[as];
-  const StaticTag = as;
 
   if (reduced) {
-    return <StaticTag className={className}>{children}</StaticTag>;
+    // Fresh mount: renders visible, nothing animates. After hydration (where
+    // the server markup started hidden): jumps straight to visible.
+    return (
+      <MotionTag
+        className={className}
+        initial={false}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0 }}
+      >
+        {children}
+      </MotionTag>
+    );
   }
 
   return (
